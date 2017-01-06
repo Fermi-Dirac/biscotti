@@ -42,8 +42,9 @@ class AtomicStructure(object):
         if atomsarray is None:
             atomsarray = []
         self.latticeA = np.array(A)
-        self.latticeB = B
-        self.latticeC = C
+        self.latticeB = np.array(B)
+        self.latticeC = np.array(C)
+        self.lattice = [self.latticeA, self.latticeB, self.latticeC]
         self.name = name
         self.atomsarray = atomsarray
         self.atomscart = atomsarray

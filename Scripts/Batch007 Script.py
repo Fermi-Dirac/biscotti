@@ -1,5 +1,5 @@
-from classes import atoms as Biscotti
-from classes import qecalc as Parsers
+from classes import atoms
+from classes import qecalc
 import os
 from os.path import join as joinpath
 import numpy as np
@@ -11,12 +11,12 @@ InAsSbPurefile = joinpath(bulkpeices, r'InAsSb_X=0.5_10-3_strained_SL.in')
 newbatch = r'Batch007 - Faster'
 newpath = r'D:\Users\Chris\Documents\SivaLab\2016 MDA Type 2 SL\Ab-Initio\Superlattice' + os.path.sep + newbatch
 layersWithSb = 3
-layerswithInAs_List = range(3,10)
+layerswithInAs_List = [3]
 Xlength = 1
 Ywidth = 1
 
-InAs = Biscotti.AtomicStructure.from_QEinput(InAsPurefile)
-InAsSb = Biscotti.AtomicStructure.from_QEinput(InAsSbPurefile)
+InAs = atoms.AtomicStructure.from_QEinput(InAsPurefile)
+InAsSb = atoms.AtomicStructure.from_QEinput(InAsSbPurefile)
 SbSlab = InAsSb.supercell([Xlength, Ywidth, layersWithSb])
 
 # Remove Central Sb Atom
@@ -60,15 +60,48 @@ if SbVacancy or Swap:
     print ("Now we have " + str(SbSlab.totalatoms()))
     print (len(SbSlab.atomsdir))
 
-for layersOfInAs in layerswithInAs_List:
-    InAsSlab = InAs.supercell([Xlength, Ywidth, layersOfInAs])
-    calcStructure = InAsSlab.merge_with(SbSlab)
-    folder = newpath + os.path.sep + "InAs_" + str(Xlength) + "," + str(Ywidth) + "," + "%d" % layersOfInAs + os.path.sep
+InAsSlab = InAs.supercell([Xlength, Ywidth, layerswithInAs_List[0]])
+calcStructure = InAsSlab.merge_with(SbSlab)
+calcStructure.name = '[InAs]Sb_1x1x3-3_T2SSL'
+
+# Load calculation settings form the InAs file
+calcin = qecalc.QECalcIn.import_from_file(InAsSbPurefile)
+calcin.structure = calcStructure
+calcin.name = calcStructure.name
+calcin.control['title'] = calcStructure.name
+calcin.control['prefix'] = 'InAsT2SL'
+calcin.control['calculation'] = 'relax'
+
+for ecut_rho in np.linspace(40*2, 40*6, 9):
+    calcin.system['ecutrho'] = ecut_rho
+    folder = joinpath(newpath, "ecutrho=" + str(ecut_rho))
     if not os.path.exists(folder):
         os.makedirs(folder)
-    newfile =  folder + os.path.sep + calcStructure.name + ".in"
-    calcStructure.write_vasp(newpath, "POSCAR.InAs_" + str(Xlength) + "," + str(Ywidth) + "," + "%d" % layersOfInAs + ".vasp")
-    print("new file created! " + newfile)
-    # This next line of code is kinda shit and needs replaced with the new class ocne it works
-    # TODO read that line above
-    Parsers.changeStructure(InAsSbPurefile, newfile, calcStructure, AutoKpts= 20)
+    calcin.write_to_file(folder, calcin.name + "ecutrho=" + str(ecut_rho) + ".in")
+
+del calcin.system['ecutrho']
+
+for smear in np.linspace(0.01, 0.0001, 9):
+    calcin.system['degauss'] = smear
+    folder = joinpath(newpath, "smear="+str(smear))
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    calcin.write_to_file(folder,calcin.name + "_smear=" + str(smear) + ".in")
+
+calcin.system['degauss'] = 0.001
+
+for dE in np.linspace(1e-3, 1e-4, 5):
+    calcin.control['etot_conv_thr'] = dE
+    suffix = "ion_dE=" + str(dE)
+    folder = joinpath(newpath, suffix)
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    calcin.write_to_file(folder, calcin.name + "_" + suffix + ".in")
+
+calcin.control['etot_conv_thr'] = 1e-3
+
+calcin.control['calculation'] = 'vc-relax'
+folder = joinpath(newpath, 'vc-relax')
+if not os.path.exists(folder):
+    os.makedirs(folder)
+calcin.write_to_file(joinpath(folder), calcin.name + "_vc-relax.in")

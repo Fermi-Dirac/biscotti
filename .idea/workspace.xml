@@ -23,104 +23,46 @@
       <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/atoms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+            <state relative-caret-position="202">
+              <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#2010#2598#0" expanded="false" />
-                <element signature="e#2659#5327#0" expanded="false" />
-                <element signature="e#5392#12764#0" expanded="false" />
-                <element signature="e#13017#14685#0" expanded="false" />
-                <element signature="e#14742#15225#0" expanded="false" />
-                <element signature="e#15282#15874#0" expanded="false" />
-                <element signature="e#15942#18054#0" expanded="false" />
-                <element signature="e#18114#18654#0" expanded="false" />
-                <element signature="e#18695#19133#0" expanded="false" />
-                <element signature="e#19206#19831#0" expanded="false" />
-                <element signature="e#19899#21249#0" expanded="false" />
-                <element signature="e#21296#22458#0" expanded="false" />
+                <element signature="e#2099#2687#0" expanded="false" />
+                <element signature="e#5481#12853#0" expanded="false" />
+                <element signature="e#13106#14774#0" expanded="false" />
+                <element signature="e#14831#15314#0" expanded="false" />
+                <element signature="e#15371#15963#0" expanded="false" />
+                <element signature="e#16031#18143#0" expanded="false" />
+                <element signature="e#18203#18743#0" expanded="false" />
+                <element signature="e#18784#19222#0" expanded="false" />
+                <element signature="e#19295#19920#0" expanded="false" />
+                <element signature="e#19988#21338#0" expanded="false" />
+                <element signature="e#21385#22547#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="516" column="20" selection-start-line="516" selection-start-column="20" selection-end-line="516" selection-end-column="20" />
+            <state relative-caret-position="191">
+              <caret line="213" column="54" selection-start-line="213" selection-start-column="54" selection-end-line="213" selection-end-column="54" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#1268#4722#0" expanded="false" />
                 <element signature="e#4810#5862#0" expanded="false" />
-                <element signature="e#5892#15840#0" expanded="false" />
-                <element signature="e#6085#7796#0" expanded="false" />
                 <element signature="e#7842#8205#0" expanded="false" />
                 <element signature="e#8257#8945#0" expanded="false" />
-                <element signature="e#18838#22595#0" expanded="false" />
-                <element signature="e#25341#26925#0" expanded="false" />
-                <element signature="e#26983#27824#0" expanded="false" />
-                <element signature="e#27893#34362#0" expanded="false" />
-                <element signature="e#34400#34808#0" expanded="false" />
-                <element signature="e#34880#36684#0" expanded="false" />
-                <element signature="e#39298#43385#0" expanded="false" />
-                <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="genericpath.py" pinned="false" current-in-tab="false">
-        <entry file="file://C:/Anaconda3/Lib/genericpath.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="regextest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/regextest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QE_Calc_overview.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding>
-                <element signature="e#23#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QE_Calc_overview(by path).py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Testing.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/Testing.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#16050#25490#0" expanded="false" />
+                <element signature="e#19017#22774#0" expanded="false" />
+                <element signature="e#22874#25424#0" expanded="false" />
+                <element signature="e#25520#27104#0" expanded="false" />
+                <element signature="e#27162#28003#0" expanded="false" />
+                <element signature="e#28072#34541#0" expanded="false" />
+                <element signature="e#34579#34987#0" expanded="false" />
+                <element signature="e#35059#36863#0" expanded="false" />
+                <element signature="e#39477#43564#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -136,25 +78,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InAsSb superlattice.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/InAsSb superlattice.py">
+      <file leaf-file-name="SpeedupCheck.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/SpeedupCheck.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
               <folding>
-                <element signature="e#0#37#0" expanded="true" />
-                <element signature="e#903#2327#0" expanded="false" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MakeCalcFile.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/MakeCalcFile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -181,15 +112,18 @@
         <option value="$PROJECT_DIR$/Scripts/MakeCalcFile.py" />
         <option value="$PROJECT_DIR$/Scripts/testQECalc.py" />
         <option value="$PROJECT_DIR$/Scripts/MakeSummaryFiles.py" />
-        <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice.py" />
-        <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice.py" />
         <option value="$PROJECT_DIR$/Scripts/regextest.py" />
         <option value="$PROJECT_DIR$/Scripts/calc_time_analysis.py" />
         <option value="$PROJECT_DIR$/Scripts/QE_Calc_overview.py" />
         <option value="$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py" />
         <option value="$PROJECT_DIR$/Scripts/Testing.py" />
+        <option value="$PROJECT_DIR$/Scripts/SpeedupCheck.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
+        <option value="$PROJECT_DIR$/Scripts/StrainCell.py" />
+        <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice.py" />
+        <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice.py" />
         <option value="$PROJECT_DIR$/classes/qecalc.py" />
+        <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice newstrain.py" />
       </list>
     </option>
   </component>
@@ -301,7 +235,7 @@
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.QE_Calc_overview(by path)">
+  <component name="RunManager" selected="Python.InAsSb superlattice newstrain">
     <configuration default="false" name="calc_time_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -315,40 +249,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/calc_time_analysis.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="QE_Calc_overview" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/QE_Calc_overview.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="regextest" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/regextest.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -383,6 +283,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/Testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="StrainCell" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/StrainCell.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="InAsSb superlattice newstrain" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts\Batch007 Script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -523,18 +457,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.calc_time_analysis" />
-      <item index="1" class="java.lang.String" itemvalue="Python.QE_Calc_overview" />
-      <item index="2" class="java.lang.String" itemvalue="Python.regextest" />
-      <item index="3" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.Testing" />
+      <item index="1" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.Testing" />
+      <item index="3" class="java.lang.String" itemvalue="Python.StrainCell" />
+      <item index="4" class="java.lang.String" itemvalue="Python.InAsSb superlattice newstrain" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Testing" />
-        <item index="2" class="java.lang.String" itemvalue="Python.calc_time_analysis" />
-        <item index="3" class="java.lang.String" itemvalue="Python.regextest" />
-        <item index="4" class="java.lang.String" itemvalue="Python.QE_Calc_overview" />
+        <item index="0" class="java.lang.String" itemvalue="Python.InAsSb superlattice newstrain" />
+        <item index="1" class="java.lang.String" itemvalue="Python.StrainCell" />
+        <item index="2" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Testing" />
+        <item index="4" class="java.lang.String" itemvalue="Python.calc_time_analysis" />
       </list>
     </recent_temporary>
   </component>
@@ -555,7 +489,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.134375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -609,7 +543,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="15" />
+      <option name="time" value="18" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -620,18 +554,17 @@
           <caret line="7" column="36" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2010#2598#0" expanded="false" />
-            <element signature="e#2659#5327#0" expanded="false" />
-            <element signature="e#5392#12764#0" expanded="false" />
-            <element signature="e#13017#14685#0" expanded="false" />
-            <element signature="e#14742#15225#0" expanded="false" />
-            <element signature="e#15282#15874#0" expanded="false" />
-            <element signature="e#15942#18054#0" expanded="false" />
-            <element signature="e#18114#18654#0" expanded="false" />
-            <element signature="e#18695#19133#0" expanded="false" />
-            <element signature="e#19206#19831#0" expanded="false" />
-            <element signature="e#19899#21249#0" expanded="false" />
-            <element signature="e#21296#22458#0" expanded="false" />
+            <element signature="e#2099#2687#0" expanded="false" />
+            <element signature="e#5481#12853#0" expanded="false" />
+            <element signature="e#13106#14774#0" expanded="false" />
+            <element signature="e#14831#15314#0" expanded="false" />
+            <element signature="e#15371#15963#0" expanded="false" />
+            <element signature="e#16031#18143#0" expanded="false" />
+            <element signature="e#18203#18743#0" expanded="false" />
+            <element signature="e#18784#19222#0" expanded="false" />
+            <element signature="e#19295#19920#0" expanded="false" />
+            <element signature="e#19988#21338#0" expanded="false" />
+            <element signature="e#21385#22547#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -644,18 +577,17 @@
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1268#4722#0" expanded="false" />
             <element signature="e#4810#5862#0" expanded="false" />
-            <element signature="e#5892#15840#0" expanded="false" />
-            <element signature="e#6085#7796#0" expanded="false" />
             <element signature="e#7842#8205#0" expanded="false" />
             <element signature="e#8257#8945#0" expanded="false" />
-            <element signature="e#18838#22595#0" expanded="false" />
-            <element signature="e#25341#26925#0" expanded="false" />
-            <element signature="e#26983#27824#0" expanded="false" />
-            <element signature="e#27893#34362#0" expanded="false" />
-            <element signature="e#34400#34808#0" expanded="false" />
-            <element signature="e#34880#36684#0" expanded="false" />
-            <element signature="e#39298#43385#0" expanded="false" />
-            <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
+            <element signature="e#16050#25490#0" expanded="false" />
+            <element signature="e#19017#22774#0" expanded="false" />
+            <element signature="e#22874#25424#0" expanded="false" />
+            <element signature="e#25520#27104#0" expanded="false" />
+            <element signature="e#27162#28003#0" expanded="false" />
+            <element signature="e#28072#34541#0" expanded="false" />
+            <element signature="e#34579#34987#0" expanded="false" />
+            <element signature="e#35059#36863#0" expanded="false" />
+            <element signature="e#39477#43564#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -674,7 +606,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#903#2327#0" expanded="false" />
+            <element signature="e#931#2355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,18 +617,17 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2010#2598#0" expanded="false" />
-            <element signature="e#2659#5327#0" expanded="false" />
-            <element signature="e#5392#12764#0" expanded="false" />
-            <element signature="e#13017#14685#0" expanded="false" />
-            <element signature="e#14742#15225#0" expanded="false" />
-            <element signature="e#15282#15874#0" expanded="false" />
-            <element signature="e#15942#18054#0" expanded="false" />
-            <element signature="e#18114#18654#0" expanded="false" />
-            <element signature="e#18695#19133#0" expanded="false" />
-            <element signature="e#19206#19831#0" expanded="false" />
-            <element signature="e#19899#21249#0" expanded="false" />
-            <element signature="e#21296#22458#0" expanded="false" />
+            <element signature="e#2099#2687#0" expanded="false" />
+            <element signature="e#5481#12853#0" expanded="false" />
+            <element signature="e#13106#14774#0" expanded="false" />
+            <element signature="e#14831#15314#0" expanded="false" />
+            <element signature="e#15371#15963#0" expanded="false" />
+            <element signature="e#16031#18143#0" expanded="false" />
+            <element signature="e#18203#18743#0" expanded="false" />
+            <element signature="e#18784#19222#0" expanded="false" />
+            <element signature="e#19295#19920#0" expanded="false" />
+            <element signature="e#19988#21338#0" expanded="false" />
+            <element signature="e#21385#22547#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -709,18 +640,17 @@
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1268#4722#0" expanded="false" />
             <element signature="e#4810#5862#0" expanded="false" />
-            <element signature="e#5892#15840#0" expanded="false" />
-            <element signature="e#6085#7796#0" expanded="false" />
             <element signature="e#7842#8205#0" expanded="false" />
             <element signature="e#8257#8945#0" expanded="false" />
-            <element signature="e#18838#22595#0" expanded="false" />
-            <element signature="e#25341#26925#0" expanded="false" />
-            <element signature="e#26983#27824#0" expanded="false" />
-            <element signature="e#27893#34362#0" expanded="false" />
-            <element signature="e#34400#34808#0" expanded="false" />
-            <element signature="e#34880#36684#0" expanded="false" />
-            <element signature="e#39298#43385#0" expanded="false" />
-            <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
+            <element signature="e#16050#25490#0" expanded="false" />
+            <element signature="e#19017#22774#0" expanded="false" />
+            <element signature="e#22874#25424#0" expanded="false" />
+            <element signature="e#25520#27104#0" expanded="false" />
+            <element signature="e#27162#28003#0" expanded="false" />
+            <element signature="e#28072#34541#0" expanded="false" />
+            <element signature="e#34579#34987#0" expanded="false" />
+            <element signature="e#35059#36863#0" expanded="false" />
+            <element signature="e#39477#43564#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -739,7 +669,7 @@
           <caret line="15" column="62" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="62" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#903#2327#0" expanded="false" />
+            <element signature="e#931#2355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,18 +680,17 @@
           <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2010#2598#0" expanded="false" />
-            <element signature="e#2659#5327#0" expanded="false" />
-            <element signature="e#5392#12764#0" expanded="false" />
-            <element signature="e#13017#14685#0" expanded="false" />
-            <element signature="e#14742#15225#0" expanded="false" />
-            <element signature="e#15282#15874#0" expanded="false" />
-            <element signature="e#15942#18054#0" expanded="false" />
-            <element signature="e#18114#18654#0" expanded="false" />
-            <element signature="e#18695#19133#0" expanded="false" />
-            <element signature="e#19206#19831#0" expanded="false" />
-            <element signature="e#19899#21249#0" expanded="false" />
-            <element signature="e#21296#22458#0" expanded="false" />
+            <element signature="e#2099#2687#0" expanded="false" />
+            <element signature="e#5481#12853#0" expanded="false" />
+            <element signature="e#13106#14774#0" expanded="false" />
+            <element signature="e#14831#15314#0" expanded="false" />
+            <element signature="e#15371#15963#0" expanded="false" />
+            <element signature="e#16031#18143#0" expanded="false" />
+            <element signature="e#18203#18743#0" expanded="false" />
+            <element signature="e#18784#19222#0" expanded="false" />
+            <element signature="e#19295#19920#0" expanded="false" />
+            <element signature="e#19988#21338#0" expanded="false" />
+            <element signature="e#21385#22547#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -774,18 +703,17 @@
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1268#4722#0" expanded="false" />
             <element signature="e#4810#5862#0" expanded="false" />
-            <element signature="e#5892#15840#0" expanded="false" />
-            <element signature="e#6085#7796#0" expanded="false" />
             <element signature="e#7842#8205#0" expanded="false" />
             <element signature="e#8257#8945#0" expanded="false" />
-            <element signature="e#18838#22595#0" expanded="false" />
-            <element signature="e#25341#26925#0" expanded="false" />
-            <element signature="e#26983#27824#0" expanded="false" />
-            <element signature="e#27893#34362#0" expanded="false" />
-            <element signature="e#34400#34808#0" expanded="false" />
-            <element signature="e#34880#36684#0" expanded="false" />
-            <element signature="e#39298#43385#0" expanded="false" />
-            <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
+            <element signature="e#16050#25490#0" expanded="false" />
+            <element signature="e#19017#22774#0" expanded="false" />
+            <element signature="e#22874#25424#0" expanded="false" />
+            <element signature="e#25520#27104#0" expanded="false" />
+            <element signature="e#27162#28003#0" expanded="false" />
+            <element signature="e#28072#34541#0" expanded="false" />
+            <element signature="e#34579#34987#0" expanded="false" />
+            <element signature="e#35059#36863#0" expanded="false" />
+            <element signature="e#39477#43564#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -804,7 +732,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#903#2327#0" expanded="false" />
+            <element signature="e#931#2355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -815,18 +743,17 @@
           <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2010#2598#0" expanded="false" />
-            <element signature="e#2659#5327#0" expanded="false" />
-            <element signature="e#5392#12764#0" expanded="false" />
-            <element signature="e#13017#14685#0" expanded="false" />
-            <element signature="e#14742#15225#0" expanded="false" />
-            <element signature="e#15282#15874#0" expanded="false" />
-            <element signature="e#15942#18054#0" expanded="false" />
-            <element signature="e#18114#18654#0" expanded="false" />
-            <element signature="e#18695#19133#0" expanded="false" />
-            <element signature="e#19206#19831#0" expanded="false" />
-            <element signature="e#19899#21249#0" expanded="false" />
-            <element signature="e#21296#22458#0" expanded="false" />
+            <element signature="e#2099#2687#0" expanded="false" />
+            <element signature="e#5481#12853#0" expanded="false" />
+            <element signature="e#13106#14774#0" expanded="false" />
+            <element signature="e#14831#15314#0" expanded="false" />
+            <element signature="e#15371#15963#0" expanded="false" />
+            <element signature="e#16031#18143#0" expanded="false" />
+            <element signature="e#18203#18743#0" expanded="false" />
+            <element signature="e#18784#19222#0" expanded="false" />
+            <element signature="e#19295#19920#0" expanded="false" />
+            <element signature="e#19988#21338#0" expanded="false" />
+            <element signature="e#21385#22547#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -839,18 +766,17 @@
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#1268#4722#0" expanded="false" />
             <element signature="e#4810#5862#0" expanded="false" />
-            <element signature="e#5892#15840#0" expanded="false" />
-            <element signature="e#6085#7796#0" expanded="false" />
             <element signature="e#7842#8205#0" expanded="false" />
             <element signature="e#8257#8945#0" expanded="false" />
-            <element signature="e#18838#22595#0" expanded="false" />
-            <element signature="e#25341#26925#0" expanded="false" />
-            <element signature="e#26983#27824#0" expanded="false" />
-            <element signature="e#27893#34362#0" expanded="false" />
-            <element signature="e#34400#34808#0" expanded="false" />
-            <element signature="e#34880#36684#0" expanded="false" />
-            <element signature="e#39298#43385#0" expanded="false" />
-            <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
+            <element signature="e#16050#25490#0" expanded="false" />
+            <element signature="e#19017#22774#0" expanded="false" />
+            <element signature="e#22874#25424#0" expanded="false" />
+            <element signature="e#25520#27104#0" expanded="false" />
+            <element signature="e#27162#28003#0" expanded="false" />
+            <element signature="e#28072#34541#0" expanded="false" />
+            <element signature="e#34579#34987#0" expanded="false" />
+            <element signature="e#35059#36863#0" expanded="false" />
+            <element signature="e#39477#43564#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -869,7 +795,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#903#2327#0" expanded="false" />
+            <element signature="e#931#2355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -962,13 +888,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/InAsSb superlattice.py">
+    <entry file="file://C:/Anaconda3/Lib/site-packages/numpy/linalg/linalg.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="202">
+          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/regextest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#903#2327#0" expanded="false" />
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/Testing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -989,30 +950,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/regextest.py">
+    <entry file="file://$PROJECT_DIR$/Scripts/StrainCell.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="49" selection-end-line="9" selection-end-column="49" />
+        <state relative-caret-position="490">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/numpy/linalg/linalg.py">
+    <entry file="file://$PROJECT_DIR$/Scripts/InAsSb superlattice.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
           <folding>
-            <element signature="e#23#32#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#931#2355#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1025,66 +979,67 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Testing.py">
+    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+        <state relative-caret-position="191">
+          <caret line="213" column="54" selection-start-line="213" selection-start-column="54" selection-end-line="213" selection-end-column="54" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#1268#4722#0" expanded="false" />
+            <element signature="e#4810#5862#0" expanded="false" />
+            <element signature="e#7842#8205#0" expanded="false" />
+            <element signature="e#8257#8945#0" expanded="false" />
+            <element signature="e#16050#25490#0" expanded="false" />
+            <element signature="e#19017#22774#0" expanded="false" />
+            <element signature="e#22874#25424#0" expanded="false" />
+            <element signature="e#25520#27104#0" expanded="false" />
+            <element signature="e#27162#28003#0" expanded="false" />
+            <element signature="e#28072#34541#0" expanded="false" />
+            <element signature="e#34579#34987#0" expanded="false" />
+            <element signature="e#35059#36863#0" expanded="false" />
+            <element signature="e#39477#43564#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="14" column="38" selection-start-line="14" selection-start-column="38" selection-end-line="14" selection-end-column="38" />
+        <state relative-caret-position="202">
+          <caret line="104" column="0" selection-start-line="104" selection-start-column="0" selection-end-line="104" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#2010#2598#0" expanded="false" />
-            <element signature="e#2659#5327#0" expanded="false" />
-            <element signature="e#5392#12764#0" expanded="false" />
-            <element signature="e#13017#14685#0" expanded="false" />
-            <element signature="e#14742#15225#0" expanded="false" />
-            <element signature="e#15282#15874#0" expanded="false" />
-            <element signature="e#15942#18054#0" expanded="false" />
-            <element signature="e#18114#18654#0" expanded="false" />
-            <element signature="e#18695#19133#0" expanded="false" />
-            <element signature="e#19206#19831#0" expanded="false" />
-            <element signature="e#19899#21249#0" expanded="false" />
-            <element signature="e#21296#22458#0" expanded="false" />
+            <element signature="e#2099#2687#0" expanded="false" />
+            <element signature="e#5481#12853#0" expanded="false" />
+            <element signature="e#13106#14774#0" expanded="false" />
+            <element signature="e#14831#15314#0" expanded="false" />
+            <element signature="e#15371#15963#0" expanded="false" />
+            <element signature="e#16031#18143#0" expanded="false" />
+            <element signature="e#18203#18743#0" expanded="false" />
+            <element signature="e#18784#19222#0" expanded="false" />
+            <element signature="e#19295#19920#0" expanded="false" />
+            <element signature="e#19988#21338#0" expanded="false" />
+            <element signature="e#21385#22547#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+    <entry file="file://$PROJECT_DIR$/Scripts/Batch007 Script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="516" column="20" selection-start-line="516" selection-start-column="20" selection-end-line="516" selection-end-column="20" />
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#1268#4722#0" expanded="false" />
-            <element signature="e#4810#5862#0" expanded="false" />
-            <element signature="e#5892#15840#0" expanded="false" />
-            <element signature="e#6085#7796#0" expanded="false" />
-            <element signature="e#7842#8205#0" expanded="false" />
-            <element signature="e#8257#8945#0" expanded="false" />
-            <element signature="e#18838#22595#0" expanded="false" />
-            <element signature="e#25341#26925#0" expanded="false" />
-            <element signature="e#26983#27824#0" expanded="false" />
-            <element signature="e#27893#34362#0" expanded="false" />
-            <element signature="e#34400#34808#0" expanded="false" />
-            <element signature="e#34880#36684#0" expanded="false" />
-            <element signature="e#39298#43385#0" expanded="false" />
-            <marker date="1483685645934" expanded="false" signature="9007:12152" ph="..." />
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#894#2318#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/SpeedupCheck.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
