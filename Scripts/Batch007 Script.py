@@ -63,6 +63,7 @@ if SbVacancy or Swap:
 InAsSlab = InAs.supercell([Xlength, Ywidth, layerswithInAs_List[0]])
 calcStructure = InAsSlab.merge_with(SbSlab)
 calcStructure.name = '[InAs]Sb_1x1x3-3_T2SSL'
+calcStructure.write_vasp(newpath)
 
 # Load calculation settings form the InAs file
 calcin = qecalc.QECalcIn.import_from_file(InAsSbPurefile)

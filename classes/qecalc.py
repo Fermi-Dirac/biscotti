@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 # logger.setLevel(logging.INFO)
 # logger.addHandler(streamhandler)
 
-logging.basicConfig(level=logging.INFO, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 # End logging.
 
 class CalcTime(object):
@@ -133,7 +133,21 @@ class CalcTime(object):
         return fig
 
 class QECalcIn(object):
+    # This class object is for a pw.x Quantum Espresso input file
+    # it is organized by a few dictionaries which control the various cards for a QE input file
     def __init__(self, name = 'Default', control = None, system = None, electrons = None, ions = None, cell = None, structure = Biscotti.AtomicStructure(), pseudopots = None, kpts = None):
+        """
+
+        :param name: Name of this QE calc object
+        :param control: ordered dictionary of the control namelist
+        :param system: ordered dictionary of the system namelist
+        :param electrons: ordered dictionary of the ELECTRONS namelist
+        :param ions: ordered dictionary of the IONS namelist
+        :param cell: ordered dictionary of the CELL namelist
+        :param structure: atomic structure object to be submitted
+        :param pseudopots: ordered dictionary of the pseudopotentials to be used
+        :param kpts: string, or array representing the  kpts to be used.
+        """
         self.name = name  # Simple string to name the calc. Probably the same as control[title]
         self.structure = structure  # Atomic structure data type in this calculation. This covers Atomic Species and Atomic Positions,and Cell Paraemters
         if control is None:
@@ -182,6 +196,7 @@ class QECalcIn(object):
                     namelist.pop(key)
 
     def validate_calc(self, fix = False):
+        # Checks the allflags dictionary to determine if the flags set do indeed exist for this calculation
         valid = True # innocent until proven guilty
         for namelistkey in self.namelistdict:
             for key in self.namelistdict[namelistkey]:
@@ -198,6 +213,7 @@ class QECalcIn(object):
         return valid
 
     def write_to_file(self, folder = None, filename = None):
+        # Writes this QECalc object to a pw.x QE input file with the .in extension
         if folder is None:
             folder = os.getcwd()
         else:
@@ -260,6 +276,7 @@ class QECalcIn(object):
 
     @staticmethod
     def import_from_file(path):
+        # This imports a QEcalcin object from an input file
         logger.info("Now parsing input file" + path)
         # Current no support for comments!!
         namelistdict = odict()
@@ -294,17 +311,21 @@ class QECalcIn(object):
                     # syntax is KEY = VALUE , ! comment
                     key = line.split('=')[0].strip()
                     value = line.split('=')[1].split(',')[0].strip()
+                    logger.debug("Untyped value is: " + str(value) + " with type " + str(type(value)))
                     if value[0] == "'" :
                         value = value[1:-1] # strip off the ' symbol
                     elif value[0] == ".":
-                        if value[0] == '.true.':
+                        if value == '.true.':
                             value = True
                         else:
                             value = False
-                    else:
+                    elif '.' in value or 'e' in value: # must be float
                         for exp in ["D","d","E"]:
                             value = value.replace(exp, "e")
                         value = float(value)
+                    else: # must be int
+                        value = int(value)  # must be an integer
+                    logger.debug("New key value pair is: " + key + " : " + str(value) + " of type " + str(type(value)))
                     namelistdict[namelist][key] = value
             logger.info("Input file Dictionaries found!")
             # Now dictionaries are populated, need kpts and atomic species and pseduots
@@ -346,6 +367,7 @@ class QECalcIn(object):
                         , [kptstype, kptstring])
 
 class QECalcOut(object):
+    # This class holds the results of a pw.x QE calculation. This one is very much under development
     def __init__(self, outpath = None, inpath = None, relax_list = None, jobstatus = 'unknown' ):
         """
 
@@ -418,6 +440,8 @@ class QECalcOut(object):
 
     @staticmethod
     def import_from_file(outpath, inpath = None):
+        # This function imports a QECalcOut object from an output file from a pw.x calculation
+        # very much work in progress
         path = outpath # legacy
         RelaxationSteps = []
         PressureList = []
@@ -552,6 +576,7 @@ class QECalcOut(object):
         return self.calc_overview_string()
 
 def parseConfig(fname):
+    # Legacy before QECalcOut class
     with open(fname,'r') as fileobj:
         filestring = fileobj.readlines()  #change scope to ensure fileobj is closed
     config = [line.split() for line in filestring]  #split over whitespace, returns a list of list.
@@ -577,6 +602,7 @@ def parseConfig(fname):
     return Dictionary
 
 def writeConfig(outputFileString, calculationDict):
+    # Legacy before QECalcIn class
     with open (outputFileString, 'w') as fileobj :  # write a new output file, here we go!
         fileobj.write('! Quantum esspresso input file created using Biscotti\n\n')
         namelists = ['CONTROL','SYSTEM','ELECTRONS','IONS','CELL'] # print them in this order
@@ -591,6 +617,9 @@ def writeConfig(outputFileString, calculationDict):
         print ("File created!")
 
 def calcOverview(outputfile, verbose = False, GetDOS = False):
+    # Legacy before QECalcOut class
+    # Still somewhat useful as it gets more data
+
     startson_dtformat = '%d%b%Y at %H:%M:%S'
     ends_dtformat = '%H:%M:%S  %d%b%Y'
     # This quickly looks through a QE output file and generates a calculational summary.
@@ -714,6 +743,7 @@ def calcOverview(outputfile, verbose = False, GetDOS = False):
             'volume': volumeList}
 
 def AtomCount(atomicStructure):
+    # Legacy since creation of AtomicStructure class
     species = []
     counts = []
     output = []
@@ -730,6 +760,7 @@ def AtomCount(atomicStructure):
     return output
 
 def calcOverview_to_string(calcOverviewDict, refenergies = None):
+    # Legacy before QECalcOut class
     if refenergies is None:
         refenergies = {'As':-175.65034951, 'In':-410.56656045, 'Sb':-347.3619941658}
     numatoms = 0
@@ -806,6 +837,7 @@ def makeSummaryFile(rootpath=None, outputfile=None, delim = '\t') -> object:
             fileobj.write(writestring)
 
 def makenewcalc(basefile, kpts, cutoff):
+    # Legacy again
     with open(basefile, 'r') as fileobj:
         mainfolder = os.path.split(basefile)[0]
         newpath = os.path.join(mainfolder,'kpts-'+kpts[:2].strip(),'cutoff='+ str(cutoff))
@@ -827,7 +859,7 @@ def makenewcalc(basefile, kpts, cutoff):
                         newfileobj.write(line)
 
 def changeStructure(QEinputfile, newQEfile = None, structure = Biscotti.AtomicStructure(), AutoKpts = False):
-
+    # Legacy, replaced by QECalcIn classes
     # First find the portion of the .in file which has the atomic structure. Namely these portions
 
     # Requires that the SYSTEM variable A = 1, use angstrums!!!
@@ -835,6 +867,7 @@ def changeStructure(QEinputfile, newQEfile = None, structure = Biscotti.AtomicSt
     # Really hope that ntyp matches
 
     # This code is really kind of shit and should be replaced by an actual class with methods.
+    # Yay! It sort of was.
 
     with open(QEinputfile, 'r') as fileobj:
 

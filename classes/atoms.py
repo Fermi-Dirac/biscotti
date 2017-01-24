@@ -3,7 +3,7 @@ import re
 import os
 import logging
 
-# Logging level by default
+# Logging level by default, this is definately configured wrong
 logger = logging.getLogger(__name__)
 # formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 # streamhandler = logging.StreamHandler()
@@ -12,11 +12,18 @@ logger = logging.getLogger(__name__)
 # logger.setLevel(logging.INFO)
 # logger.addHandler(streamhandler)
 
-logging.basicConfig(level=logging.INFO, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
 
 # End logging
 class Atom(object):
     def __init__(self, symbol='X', position = np.zeros(3), velocity = np.zeros(3), mass = 0):
+        """
+
+        :param symbol: Chemical symbol for this atomic species
+        :param position: its position in cartesean coordinates. Default usage is Ansgtrom
+        :param velocity: velocity in Angstrum per second
+        :param mass: rest mass in Kg, allows for isotopes
+        """
         self.symbol = symbol
         self.species = symbol # The letters of the thing
         self.position = np.array(position) # In cartesean coordinates, angstrums
@@ -30,26 +37,27 @@ class Atom(object):
         return (self.symbol + " at " + str(self.position) + " with velocity " + str(self.velocity))
 
 class AtomicStructure(object):
-    """
-        This class represents an atomic structure for a crystal
-    Attributes:
-        Name:       Name of the structure
-        Lattice:    Vectors a, b, and c for the unit cell
-        AtomicPos:  numpy array of atomic positions, organized by species
-        atomsin:    This is a list of atomic species, which is a list of atomic positions and a string for the species
-    """
     def __init__(self, name = 'Default', A = np.array((1,0,0)), B = np.array((0,1,0)), C = np.array((0,0,1)), atomsarray = None):
+        """
+
+        :param name: Name for this atomic structure
+        :param A: Lattice vector 'a'
+        :param B: Lattice vector 'b'
+        :param C: Lattice vector 'c'
+        :param atomsarray: Array of Atom objects whose positions are in cartesean coordinates
+        """
         if atomsarray is None:
+            # sentinal value
             atomsarray = []
         self.latticeA = np.array(A)
         self.latticeB = np.array(B)
         self.latticeC = np.array(C)
-        self.lattice = [self.latticeA, self.latticeB, self.latticeC]
+        self.lattice = [self.latticeA, self.latticeB, self.latticeC] # this is the lattice matrix
         self.name = name
         self.atomsarray = atomsarray
-        self.atomscart = atomsarray
-        self.atoms = atomsarray  # Default functionality is to use cartesean!
-        self.atomsdir = self.cart_to_direct(atomsarray)
+        self.atomscart = atomsarray # allowing for specific usage of cartesean
+        self.atoms = atomsarray  # Default functionality is to use cartesean! Legacy
+        self.atomsdir = self.cart_to_direct(atomsarray) # Direct lattice atomic positions.
 
     def __str__(self):
         return ("Structure '" + self.name
@@ -65,6 +73,7 @@ class AtomicStructure(object):
 
     @staticmethod
     def from_QEinput(inputpath):
+        # this extracts the atomic structures from the pw.x input file
         regexlist = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS']
         with open(inputpath) as fileobj:
             lineslist = fileobj.readlines()
@@ -110,7 +119,7 @@ class AtomicStructure(object):
 
     @staticmethod
     def from_QEOutput(QEoutputfile):
-        # parses a quantum espresso output file and returns the atomic structure
+        # parses a pw.x quantum espresso output file and returns the atomic structure
         structs = []  # Array of all structures
 
         # Parse through the output file to find the atomic structures
@@ -245,7 +254,7 @@ class AtomicStructure(object):
     def supercell(self,latticefactors):
         """
         :param latticefactors: List of 3 integers
-        :return:
+        :return: atomic structure grown in those directions
         """
         verbose = False # Debug flag
         logging.info("   >Starting Supercell<\n")
@@ -276,6 +285,7 @@ class AtomicStructure(object):
         return AtomicStructure(self.name + ' expanded', newLatticeA, newLatticeB, newLatticeC, newatomscart)
 
     def direct_to_cart(self, atomsdir = None):
+        # Takes the direct lattice atoms and produces the cartesean ones
         if atomsdir is None:
             atomsdir = self.atoms
         else:
@@ -291,6 +301,7 @@ class AtomicStructure(object):
         return atomscart
 
     def cart_to_direct(self,atomscart = None):
+        # takes the cartesean atom positions and produces direct lattice ones
         if atomscart is None:
             atomscart = self.atomscart
         else:
@@ -306,6 +317,8 @@ class AtomicStructure(object):
         return atomsdir
 
     def merge_with(self, structure2, translation = None):
+        # This code merges two structures together via a translation vector.
+        # By default, it arranges them 'on top' via the C dimension
         logging.info("-Now starting structure Merge-")
         if translation is None:
             translation = np.array(self.latticeC)
@@ -353,6 +366,8 @@ class AtomicStructure(object):
         return mergedstruct
 
     def check_collisions(self, tolerance = 0.01):
+        # Checks for atomic colisions in a structure via a tolerence factor
+        # good for bug checking
         collisions = False
         for (i, atom) in enumerate(self.atomscart):
             print(atom)
@@ -373,6 +388,7 @@ class AtomicStructure(object):
         return "Total Atoms: nat = " + str(self.totalatoms()) + '\n' + latticestring + "\n\n" + atomstrings
 
     def write_xyz(self, xyzfolder = None, xyzfilename = None):
+        # Writes a .xyz file for plotting in Vesta and the like
         if xyzfolder is None:
             xyzfolder = os.getcwd()
         else:
@@ -388,6 +404,7 @@ class AtomicStructure(object):
         return True
 
     def write_vasp(self, folder = None, filename = None):
+        # Writes a POSCAR-type file for visualiztion in VESTA and the like
         if folder is None:
             folder = os.getcwd()
         else:
@@ -418,6 +435,7 @@ class AtomicStructure(object):
             return True
 
 def makenewcalc(basefile, kpts, cutoff):
+    # TODO Legacy function now replaced by the QECALC class
     """
 
     :param basefile: File path to make a new calc from
