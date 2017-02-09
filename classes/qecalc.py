@@ -14,16 +14,22 @@ from classes import atoms as Biscotti
 
 import logging
 # Logging level by default
-
 logger = logging.getLogger(__name__)
-# formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-# streamhandler = logging.StreamHandler()
-# streamhandler.setFormatter(formatter)
-#
-# logger.setLevel(logging.INFO)
-# logger.addHandler(streamhandler)
+loglevel = logging.INFO
+logger.setLevel(loglevel)
 
-logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+# Handler
+console_handler = logging.StreamHandler()
+console_handler.setLevel(loglevel)
+
+#formatter
+formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+# add handler
+logger.addHandler(console_handler)
+
+# logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
 # End logging.
 
 class CalcTime(object):
@@ -81,7 +87,7 @@ class CalcTime(object):
                             subprockey = keyresult2.group(0).strip()
                         procorder.append(subprockey)
                         subprocdict[subprockey] = []
-                        logger.info("New subprocess key")
+                        logger.debug("New subprocess key")
                     else:
                         if subprockey is None:
                             pass
@@ -94,7 +100,7 @@ class CalcTime(object):
                             #     values[i] = float(re.compile(r'[^\d.]+').sub('', value))  #strip off that annoying 's'
                             timedict[procname] = values
                             subprocdict[subprockey].append(procname)
-                            logger.info("New entry of process: " + procname + " with values: " + str(values))
+                            logger.debug("New entry of process: " + procname + " with values: " + str(values))
             # Now get the start and end datetimes
             start_dt_result = re.search(starttime_regex, filestring)
             dtsplit = re.search(starttime_regex, filestring).group(0).split(' at ')
@@ -368,7 +374,7 @@ class QECalcIn(object):
 
 class QECalcOut(object):
     # This class holds the results of a pw.x QE calculation. This one is very much under development
-    def __init__(self, outpath = None, inpath = None, relax_list = None, jobstatus = 'unknown' ):
+    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, jobstatus = 'unknown' ):
         """
 
         :param outpath: filepath for the quantum espresso output file
@@ -422,14 +428,31 @@ class QECalcOut(object):
         self.finalstructure = self.structurelist[-1]
         self.volumeList = None
 
+        # Reference Energies, These are calculations of 'free' atoms to create total free energy, similar to VASP
+        if refenergies is None:
+            # These are the energies of these species in 'free' cells, e.g. huge boxes
+            refenergies = {'As': -175.65034951, 'In': -410.56656045, 'Sb': -347.3619941658}
+        self.refenergy = 0
+        for atom in self.initialstructure.atoms:
+            self.refenergy += refenergies[atom.species]
+
         # Energy convergances
         if relax_list is None or not relax_list: # is empty
             logger.error("No relaxation data or energies")
             relax_list = [[0]]
         self.relax_list = relax_list
+        self.relax_list_ev = []
+        self.relax_list_free = []
+        self.relax_list_free_ev= []
+        for ionstep in relax_list:
+            self.relax_list_ev.append([estep*13.605698066 for estep in ionstep])
+            self.relax_list_free.append([estep - self.refenergy for estep in ionstep])
+            self.relax_list_free_ev.append([(estep - self.refenergy)*13.605698066 for estep in ionstep])
+
+        # Final energies
         self.final_energy = relax_list[-1][-1]
+        self.formation_energy = self.relax_list_free_ev[-1][-1] # in eV
         self.ion_steps_count = len(self.relax_list)
-        self.formation_energy = 0 # in eV
 
         # Job Status
         self.jobstatus = jobstatus
@@ -451,7 +474,7 @@ class QECalcOut(object):
         jobComplete = False
         cutoff = 0
         logger.info("--Now parsing file " + path)
-        verbose = True
+        verbose = False
 
         with open(path) as fileobj:
             for line in fileobj:
@@ -573,8 +596,74 @@ class QECalcOut(object):
         for value in values:
             returnstring += str(value) + delim
         return returnstring
+
     def __str__(self):
         return self.calc_overview_string()
+
+    def scale_energies(self, free_energy=False, unit='Ry'):
+        scaledenergies = []
+
+        # scale by unit selected, QE outputs in Rydbergs for some God-forsaken reason
+        if unit == 'eV':
+            scale = 13.605698066
+        elif unit == 'eV/atom':
+            scale = 13.605698066/self.initialstructure.totalatoms()
+        elif unit == 'Ry/atom':
+            scale = 1/self.initialstructure.totalatoms()
+        else:
+            scale = 1
+
+        # scale Free energy vs Total Energy
+        if free_energy:
+            refenergy = self.refenergy
+        else:
+            refenergy = 0
+
+        # generate scaled list
+        for ionstep in self.relax_list:
+            scaledenergies.append([(estep-refenergy)*scale for estep in ionstep])
+        return scaledenergies
+
+    def plot_ion_energies(self, axes=None, free_energy=False, unit='Ry'):
+        if axes is None:
+            axes = plt.gca() # this is the 'matplotlib' axes class. NOT actual axes of a plot. Its a 'plot' thingy within a figure
+        fig = plt.gcf()
+        energies_plotted = self.scale_energies(free_energy, unit)
+
+        ylabel = ('Free' if free_energy else 'Total') + ' Energy (' + unit + ')'
+        # Create Ion Plot
+        axes.set_xlabel('Ion Step #')
+        axes.set_ylabel(ylabel)
+        energies = [ionstep[-1] for ionstep in energies_plotted]
+        plotout = axes.plot(energies, linestyle = '-', marker='o', color='r')
+
+        # Create electron plot
+        # if electron_steps:
+        #     e_plot = fig.add_subplot(212) # 2 rows, 1 column, 2nd plot
+        #     e_plot.set_xlabel('Electron Step #')
+        #     e_plot.set_ylabel(ylabel)
+        #     i=0
+        #     for ionstep in energies_plotted:
+        #         steps = [step+i for step in range(len(ionstep))]
+        #         plt.plot(steps, ionstep, linestyle = '-', marker='o')
+        #         i+=len(ionstep)
+
+        return plotout
+
+    def plot_e_energies(self, axes=None, free_energy=False, unit='Ry'):
+        if axes is None:
+            axes = plt.gca() # this is the 'matplotlib' axes class. NOT actual axes of a plot. Its a 'plot' thingy within a figure
+        energies_plotted = self.scale_energies(free_energy, unit)
+        ylabel = ('Free' if free_energy else 'Total') + ' Energy (' + unit + ')'
+        # Create electron plot
+        axes.set_xlabel('Electron Step #')
+        axes.set_ylabel(ylabel)
+        i=0
+        for ionstep in energies_plotted:
+            steps = [step+i for step in range(len(ionstep))]
+            axes.plot(steps, ionstep, linestyle = '-', marker='o')
+            i += len(ionstep)
+        return axes
 
 def parseConfig(fname):
     # Legacy before QECalcOut class

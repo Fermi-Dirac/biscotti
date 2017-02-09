@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Scripts/test qecalc report.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/classes/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/test qecalc report.py" afterPath="$PROJECT_DIR$/Scripts/test qecalc report.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
     </list>
@@ -29,47 +27,35 @@
       <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="577" column="0" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
+            <state relative-caret-position="526">
+              <caret line="665" column="19" selection-start-line="665" selection-start-column="19" selection-end-line="665" selection-end-column="19" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#882#1211#0" expanded="false" />
-                <element signature="e#1269#4723#0" expanded="false" />
-                <element signature="e#4811#5863#0" expanded="false" />
-                <element signature="e#5893#17422#0" expanded="false" />
-                <element signature="e#17656#20443#0" expanded="false" />
-                <element signature="e#20521#24410#0" expanded="false" />
-                <element signature="e#24510#27147#0" expanded="false" />
-                <element signature="e#27243#28863#0" expanded="false" />
-                <element signature="e#28921#29797#0" expanded="false" />
-                <element signature="e#29866#36421#0" expanded="false" />
-                <element signature="e#36459#36920#0" expanded="false" />
-                <element signature="e#36992#38832#0" expanded="false" />
-                <element signature="e#38915#40317#0" expanded="false" />
-                <element signature="e#40364#41348#0" expanded="false" />
-                <element signature="e#41464#45621#0" expanded="false" />
+                <element signature="e#963#1292#0" expanded="false" />
+                <element signature="e#1350#4806#0" expanded="false" />
+                <element signature="e#5976#17505#0" expanded="false" />
+                <element signature="e#21546#25436#0" expanded="false" />
+                <element signature="e#25536#28173#0" expanded="false" />
+                <element signature="e#30903#32523#0" expanded="false" />
+                <element signature="e#32581#33457#0" expanded="false" />
+                <element signature="e#33526#40081#0" expanded="false" />
+                <element signature="e#40119#40580#0" expanded="false" />
+                <element signature="e#40652#42492#0" expanded="false" />
+                <element signature="e#42575#43977#0" expanded="false" />
+                <element signature="e#44024#45008#0" expanded="false" />
+                <element signature="e#45124#49281#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/atoms.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="280" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test qecalc report.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
+            <state relative-caret-position="90">
+              <caret line="84" column="43" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -78,9 +64,21 @@
       <file leaf-file-name="calc_time_analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Scripts/calc_time_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+            <state relative-caret-position="425">
+              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test qecalc report.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -121,10 +119,10 @@
         <option value="$PROJECT_DIR$/Scripts/InAsSb superlattice newstrain.py" />
         <option value="$PROJECT_DIR$/Scripts/Batch007 Script.py" />
         <option value="$PROJECT_DIR$/Scripts/SpeedupCheck.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/classes/__init__.py" />
-        <option value="$PROJECT_DIR$/Scripts/test qecalc report.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
+        <option value="$PROJECT_DIR$/Scripts/test qecalc report.py" />
       </list>
     </option>
   </component>
@@ -510,9 +508,10 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.134375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -522,7 +521,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -558,25 +556,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Scripts/Batch007 Script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/StrainCell.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -879,31 +863,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="577" column="0" selection-start-line="577" selection-start-column="0" selection-end-line="577" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#882#1211#0" expanded="false" />
-            <element signature="e#1269#4723#0" expanded="false" />
-            <element signature="e#4811#5863#0" expanded="false" />
-            <element signature="e#5893#17422#0" expanded="false" />
-            <element signature="e#17656#20443#0" expanded="false" />
-            <element signature="e#20521#24410#0" expanded="false" />
-            <element signature="e#24510#27147#0" expanded="false" />
-            <element signature="e#27243#28863#0" expanded="false" />
-            <element signature="e#28921#29797#0" expanded="false" />
-            <element signature="e#29866#36421#0" expanded="false" />
-            <element signature="e#36459#36920#0" expanded="false" />
-            <element signature="e#36992#38832#0" expanded="false" />
-            <element signature="e#38915#40317#0" expanded="false" />
-            <element signature="e#40364#41348#0" expanded="false" />
-            <element signature="e#41464#45621#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/cutoff script.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -920,29 +879,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/calc_time_analysis.py">
+    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="14" selection-start-line="6" selection-start-column="14" selection-end-line="6" selection-end-column="14" />
+        <state relative-caret-position="253">
+          <caret line="912" column="63" selection-start-line="912" selection-start-column="63" selection-end-line="912" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/figure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="48" selection-start-line="6" selection-start-column="48" selection-end-line="6" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="202">
+          <caret line="695" column="0" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="280" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="280" selection-end-column="0" />
+        <state relative-caret-position="90">
+          <caret line="84" column="43" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/calc_time_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="665" column="19" selection-start-line="665" selection-start-column="19" selection-end-line="665" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#963#1292#0" expanded="false" />
+            <element signature="e#1350#4806#0" expanded="false" />
+            <element signature="e#5976#17505#0" expanded="false" />
+            <element signature="e#21546#25436#0" expanded="false" />
+            <element signature="e#25536#28173#0" expanded="false" />
+            <element signature="e#30903#32523#0" expanded="false" />
+            <element signature="e#32581#33457#0" expanded="false" />
+            <element signature="e#33526#40081#0" expanded="false" />
+            <element signature="e#40119#40580#0" expanded="false" />
+            <element signature="e#40652#42492#0" expanded="false" />
+            <element signature="e#42575#43977#0" expanded="false" />
+            <element signature="e#44024#45008#0" expanded="false" />
+            <element signature="e#45124#49281#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
