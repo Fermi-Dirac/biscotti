@@ -507,6 +507,7 @@ class QECalcOut(object):
 
     def calc_overview_string(self, refenergies = None, add_headers = True, delim = '\t'):
         if refenergies is None:
+            # These are the energies of these species in 'free' cells, e.g. huge boxes
             refenergies = {'As': -175.65034951, 'In': -410.56656045, 'Sb': -347.3619941658}
         refenergy = 0
         for atom in self.initialstructure.atoms:

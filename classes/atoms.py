@@ -126,6 +126,7 @@ class AtomicStructure(object):
         with open(QEoutputfile) as fileobj:
             logger.info("Now importing atomic structures from " + QEoutputfile)
             filestring = fileobj.read()
+
             # First check if this file has any structures at all:
             regex_relax = r'ATOMIC_POSITIONS'
             regex_vcrelax = r'CELL_PARAMETERS'
@@ -147,40 +148,27 @@ class AtomicStructure(object):
             else:
                 logger.info("Variable unit cell detected")
 
-            # Now find the list of SCF calcs
-            regex_start_step = r'\s+Self-consistent Calculation\s+'
-            regex_end_step = r'\s+End of self-consistent calculation\s+'
-            # for vc-relax and relax, we have a new SCF at each step.
-            startmatches = list(re.finditer(regex_start_step, filestring))
-            endmatches = list(re.finditer(regex_end_step, filestring))
-            logger.debug("Start matches: " + str(len(startmatches)) + " end matches: " + str(len(endmatches)))
-            lastendmatch = endmatches.pop() #handling edge case. The last end match may seek to the EOF
-            steplist = []
-            for index, endmatch in enumerate(endmatches):
-                steplist.append(filestring[endmatch.start():startmatches[index+1].start()])
-                # Looking between End and the next Start for the analysis proceedures
-            if len(startmatches) > len(endmatches) + 1:
-                steplist.append(filestring[lastendmatch.start():startmatches[-1].start()])
-                logger.info("This calculation has more starts than ends, did not complete!")
-            else:
-                steplist.append(filestring[lastendmatch.start():])
-            logger.info("Found " + str(len(steplist)) + " matches")
+            # Now to find the steplist of Atomic Positions and Lattices
+            if vcrelaxmatch:
+                regex_cellparam = r'CELL_PARAMETERS.+(\n[ ]+[0-9\. ]+){3}'
+                # Literal CELL_PARAMETERS, then anything followed by newline, then 3 sets of 3 sets of floats and spaces
+                cellparam_matches = list(re.finditer(regex_cellparam, filestring))
+                logger.debug("Found " + str(len(cellparam_matches)) + " lattice matches")
 
-            for index, step in enumerate(steplist):
-                logger.debug("Starting step "+ str(index))
+            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\. ]+)+'
+            # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
+            atompos_matches = list(re.finditer(regex_atompos, filestring))
+            logger.debug("Found "+ str(len(atompos_matches)) + " atom set matches")
+            logger.debug("The first atom set is " + str(atompos_matches[0].group(0)))
+            for index, atompos_match in enumerate(atompos_matches):
                 if vcrelaxmatch:
                     lattice = []
-                    starti = re.search(regex_vcrelax, step).start()
-                    latticelist = filestring[starti:starti + 200].split('\n')
+                    latticelist = cellparam_matches[index].group(0).split('\n')
                     for i in range(3):
                         lattice.append(np.array(latticelist[i+1].split()).astype(float))
-                    logger.info("Lattice is currently: " + str(lattice))
-                atomstart = re.search(regex_relax, step).start()
-                logger.debug(" now checking for end in : " + step[atomstart:atomstart+100])
-                atomsend = re.search('\n\n', step[atomstart:]).start()
-                logger.debug("atoms found at indicies: " + str(atomstart) + " to " + str(atomsend))
-                atomlist = step[atomstart:atomstart + atomsend].split('\n') # make a list of atom strings
-                atomlist.pop(0) #Skip the first which has the header
+                logger.debug("Lattice is currently: " + str(lattice))
+                atomlist = atompos_match.group(0).split('\n')
+                atomlist.pop(0) # the first element is 'ATOMIC_POSITIONS' stuff
                 atoms = []
                 for atomstr in atomlist:
                     logger.debug("Now parsing new atom string: " + atomstr)
@@ -188,11 +176,62 @@ class AtomicStructure(object):
                         break
                     newpos = np.array(atomstr.split()[1:]).astype(float)
                     newspec = atomstr.split()[0]
-                    logger.debug("-New atom " + newspec + " at " + str(newpos))
-                    atoms.append(Atom(newspec, np.dot(newpos, lattice)))
-                logger.info("Added " + str(len(atoms)) + " atoms for this structure")
+                    newatom = Atom(newspec, np.dot(newpos, lattice))
+                    logger.debug("\tNew atom " + str(newatom))
+                    atoms.append(newatom)
+                logger.debug("Added " + str(len(atoms)) + " atoms for this structure")
                 structs.append(AtomicStructure(os.path.split(QEoutputfile)[1], lattice[0], lattice[1], lattice[2], np.array(atoms)))
-                logger.info("Now completing structure " + str(index) + " of " + str(len(steplist)))
+                logger.info("Now completing structure " + str(index+1) + " of " + str(len(atompos_matches)))
+            logger.info(">>\tImport of structure from QE Output file complete!\t<<")
+
+            # # Now find the list of SCF calcs
+            # regex_start_step = r'\s+Self-consistent Calculation\s+'
+            # regex_end_step = r'\s+End of self-consistent calculation\s+'
+            #
+            # # for vc-relax and relax, we have a new SCF at each step.
+            # startmatches = list(re.finditer(regex_start_step, filestring))
+            # endmatches = list(re.finditer(regex_end_step, filestring))
+            # logger.debug("Start matches: " + str(len(startmatches)) + " end matches: " + str(len(endmatches)))
+            # lastendmatch = endmatches.pop() #handling edge case. The last end match may seek to the EOF
+            # steplist = []
+            # for index, endmatch in enumerate(endmatches):
+            #     steplist.append(filestring[endmatch.start():startmatches[index+1].start()])
+            #     # Looking between End and the next Start for the analysis proceedures
+            # if len(startmatches) > len(endmatches) + 1:
+            #     steplist.append(filestring[lastendmatch.start():startmatches[-1].start()])
+            #     logger.info("This calculation has more starts than ends, did not complete!")
+            # else:
+            #     steplist.append(filestring[lastendmatch.start():])
+            # logger.info("Found " + str(len(steplist)) + " matches")
+
+            # for index, step in enumerate(steplist):
+            #     logger.debug("Starting step "+ str(index))
+            #     if vcrelaxmatch:
+            #         lattice = []
+            #         starti = re.search(regex_vcrelax, step).start()
+            #         latticelist = filestring[starti:starti + 200].split('\n')
+            #         for i in range(3):
+            #             lattice.append(np.array(latticelist[i+1].split()).astype(float))
+            #         logger.info("Lattice is currently: " + str(lattice))
+            #     atomstart = re.search(regex_relax, step).start()
+            #     logger.debug(" now checking for end in : " + step[atomstart:atomstart+100])
+            #     atomsend = re.search('\n\n', step[atomstart:]).start()
+            #     logger.debug("atoms found at indicies: " + str(atomstart) + " to " + str(atomsend))
+            #     atomlist = step[atomstart:atomstart + atomsend].split('\n') # make a list of atom strings
+            #     atomlist.pop(0) #Skip the first which has the header
+            #     atoms = []
+
+                # for atomstr in atomlist:
+                #     logger.debug("Now parsing new atom string: " + atomstr)
+                #     if atomstr == 'End final coordinates':
+                #         break
+                #     newpos = np.array(atomstr.split()[1:]).astype(float)
+                #     newspec = atomstr.split()[0]
+                #     logger.debug("-New atom " + newspec + " at " + str(newpos))
+                #     atoms.append(Atom(newspec, np.dot(newpos, lattice)))
+                # logger.info("Added " + str(len(atoms)) + " atoms for this structure")
+                # structs.append(AtomicStructure(os.path.split(QEoutputfile)[1], lattice[0], lattice[1], lattice[2], np.array(atoms)))
+                # logger.info("Now completing structure " + str(index) + " of " + str(len(steplist)))
 
             # lineslist = fileobj.readlines()  # sadly need to read all lines anyway. very inefficient!
             # startline = 0
