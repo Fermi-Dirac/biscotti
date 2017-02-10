@@ -2,8 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Scripts/test qecalc report.py" afterPath="$PROJECT_DIR$/Scripts/test qecalc report.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reporting/calc_analysis_email.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/Batch007 Script.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/BatchZip.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/InAsSb superlattice.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/LazyFile.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/LoggingTesting.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/MakeCalcFile.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/MakeSummaryFiles.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/QE_Calc_overview.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/SpeedupCheck.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/StrainCell.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/Summary for Scripts.tsv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/Testing.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/TestingParser.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/calc_time_analysis.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/cutoff script.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/kpts-4 - Copy.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/pw.x parser.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/regextest.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/relaxation.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/test qecalc report.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/testQECalc.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Scripts/time.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
     </list>
     <ignored path="Biscotti.iws" />
@@ -27,23 +50,22 @@
       <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="665" column="19" selection-start-line="665" selection-start-column="19" selection-end-line="665" selection-end-column="19" />
+            <state relative-caret-position="3348">
+              <caret line="534" column="0" selection-start-line="534" selection-start-column="0" selection-end-line="534" selection-end-column="0" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#963#1292#0" expanded="false" />
                 <element signature="e#1350#4806#0" expanded="false" />
                 <element signature="e#5976#17505#0" expanded="false" />
-                <element signature="e#21546#25436#0" expanded="false" />
-                <element signature="e#25536#28173#0" expanded="false" />
-                <element signature="e#30903#32523#0" expanded="false" />
-                <element signature="e#32581#33457#0" expanded="false" />
-                <element signature="e#33526#40081#0" expanded="false" />
-                <element signature="e#40119#40580#0" expanded="false" />
-                <element signature="e#40652#42492#0" expanded="false" />
-                <element signature="e#42575#43977#0" expanded="false" />
-                <element signature="e#44024#45008#0" expanded="false" />
-                <element signature="e#45124#49281#0" expanded="false" />
+                <element signature="e#25800#28437#0" expanded="false" />
+                <element signature="e#31167#32787#0" expanded="false" />
+                <element signature="e#32845#33721#0" expanded="false" />
+                <element signature="e#33790#40345#0" expanded="false" />
+                <element signature="e#40383#40844#0" expanded="false" />
+                <element signature="e#40916#42756#0" expanded="false" />
+                <element signature="e#42839#44241#0" expanded="false" />
+                <element signature="e#44288#45272#0" expanded="false" />
+                <element signature="e#45388#49545#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -62,23 +84,43 @@
         </entry>
       </file>
       <file leaf-file-name="calc_time_analysis.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Scripts/calc_time_analysis.py">
+        <entry file="file://$PROJECT_DIR$/analysis/calc_time_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test qecalc report.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+      <file leaf-file-name="calc_analysis_email.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+            <state relative-caret-position="238">
+              <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#91#105#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BatchZip.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="smtplib.py" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Anaconda3/Lib/smtplib.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -121,8 +163,10 @@
         <option value="$PROJECT_DIR$/Scripts/SpeedupCheck.py" />
         <option value="$PROJECT_DIR$/classes/__init__.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/Scripts/test qecalc report.py" />
+        <option value="$PROJECT_DIR$/reporting/pymail.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
+        <option value="$PROJECT_DIR$/reporting/calc_analysis_email.py" />
       </list>
     </option>
   </component>
@@ -185,6 +229,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="reporting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="classes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -199,7 +257,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Scripts" />
+              <option name="myItemId" value="analysis" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -233,8 +291,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,24 +306,7 @@
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test qecalc report">
-    <configuration default="false" name="QE_Calc_overview(by path)" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.pymail">
     <configuration default="false" name="StrainCell" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -279,23 +320,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/StrainCell.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="InAsSb superlattice newstrain" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts\Batch007 Script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -330,6 +354,40 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/test qecalc report.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="calc_analysis_email" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/reporting" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reporting/calc_analysis_email.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pymail" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/reporting" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reporting/pymail.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -469,19 +527,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
-      <item index="1" class="java.lang.String" itemvalue="Python.StrainCell" />
-      <item index="2" class="java.lang.String" itemvalue="Python.InAsSb superlattice newstrain" />
-      <item index="3" class="java.lang.String" itemvalue="Python.Batch007 Script" />
-      <item index="4" class="java.lang.String" itemvalue="Python.test qecalc report" />
+      <item index="0" class="java.lang.String" itemvalue="Python.StrainCell" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Batch007 Script" />
+      <item index="2" class="java.lang.String" itemvalue="Python.test qecalc report" />
+      <item index="3" class="java.lang.String" itemvalue="Python.calc_analysis_email" />
+      <item index="4" class="java.lang.String" itemvalue="Python.pymail" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.test qecalc report" />
-        <item index="1" class="java.lang.String" itemvalue="Python.Batch007 Script" />
-        <item index="2" class="java.lang.String" itemvalue="Python.StrainCell" />
-        <item index="3" class="java.lang.String" itemvalue="Python.InAsSb superlattice newstrain" />
-        <item index="4" class="java.lang.String" itemvalue="Python.QE_Calc_overview(by path)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.pymail" />
+        <item index="1" class="java.lang.String" itemvalue="Python.calc_analysis_email" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test qecalc report" />
+        <item index="3" class="java.lang.String" itemvalue="Python.Batch007 Script" />
+        <item index="4" class="java.lang.String" itemvalue="Python.StrainCell" />
       </list>
     </recent_temporary>
   </component>
@@ -508,7 +566,6 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.134375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -521,6 +578,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -561,41 +619,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/classes/atoms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="39" selection-start-line="14" selection-start-column="39" selection-end-line="14" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/BatchZip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="64" selection-start-line="13" selection-start-column="64" selection-end-line="13" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/SpeedupCheck.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/Batch007 Script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Scripts/StrainCell.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -859,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -867,7 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -875,7 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -883,7 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="912" column="63" selection-start-line="912" selection-start-column="63" selection-end-line="912" selection-end-column="63" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -891,7 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="695" column="0" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,35 +931,76 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/smtplib.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding>
+            <element signature="e#58#72#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="665" column="19" selection-start-line="665" selection-start-column="19" selection-end-line="665" selection-end-column="19" />
+        <state relative-caret-position="3348">
+          <caret line="534" column="0" selection-start-line="534" selection-start-column="0" selection-end-line="534" selection-end-column="0" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#963#1292#0" expanded="false" />
             <element signature="e#1350#4806#0" expanded="false" />
             <element signature="e#5976#17505#0" expanded="false" />
-            <element signature="e#21546#25436#0" expanded="false" />
-            <element signature="e#25536#28173#0" expanded="false" />
-            <element signature="e#30903#32523#0" expanded="false" />
-            <element signature="e#32581#33457#0" expanded="false" />
-            <element signature="e#33526#40081#0" expanded="false" />
-            <element signature="e#40119#40580#0" expanded="false" />
-            <element signature="e#40652#42492#0" expanded="false" />
-            <element signature="e#42575#43977#0" expanded="false" />
-            <element signature="e#44024#45008#0" expanded="false" />
-            <element signature="e#45124#49281#0" expanded="false" />
+            <element signature="e#25800#28437#0" expanded="false" />
+            <element signature="e#31167#32787#0" expanded="false" />
+            <element signature="e#32845#33721#0" expanded="false" />
+            <element signature="e#33790#40345#0" expanded="false" />
+            <element signature="e#40383#40844#0" expanded="false" />
+            <element signature="e#40916#42756#0" expanded="false" />
+            <element signature="e#42839#44241#0" expanded="false" />
+            <element signature="e#44288#45272#0" expanded="false" />
+            <element signature="e#45388#49545#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py">
+    <entry file="file://$PROJECT_DIR$/analysis/calc_time_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="67" selection-start-line="11" selection-start-column="67" selection-end-line="11" selection-end-column="67" />
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="52" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#91#105#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -385,7 +385,7 @@ class QECalcOut(object):
         # Things out from a QE calculation:
         # Path Derived Variables
         if outpath is None:
-            outfiles = [file for file in os.listdir(os.getcwd()) if file.split('.')[1] == 'in']
+            outfiles = [file for file in os.listdir(os.getcwd()) if file.split('.')[-1] == 'out']
             if outfiles: # is not empty
                 outpath = outfiles[0]
             else:
@@ -462,9 +462,15 @@ class QECalcOut(object):
             self.jobcomplete = False
 
     @staticmethod
-    def import_from_file(outpath, inpath = None):
+    def import_from_file(outpath=None, inpath = None):
         # This function imports a QECalcOut object from an output file from a pw.x calculation
         # very much work in progress
+        if outpath is None:
+            outfiles = [file for file in os.listdir(os.getcwd()) if file.split('.')[-1] == 'out']
+            if outfiles: # is not empty
+                outpath = outfiles[0]
+            else:
+                logger.error("No output files found!")
         path = outpath # legacy
         RelaxationSteps = []
         PressureList = []
@@ -472,7 +478,6 @@ class QECalcOut(object):
         ionstep = 0
         electronstep = 99
         jobComplete = False
-        cutoff = 0
         logger.info("--Now parsing file " + path)
         verbose = False
 
@@ -526,7 +531,7 @@ class QECalcOut(object):
             print("number of ionic steps is " + str(ionstep))
             print("Here's the giant Relax steps" + str(RelaxationSteps))
             print("Final Energy: " + str(RelaxationSteps[-1][-1]))
-        return QECalcOut(outpath=path, inpath= inpath, relax_list=list(RelaxationSteps), jobstatus= completestring)
+        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), jobstatus= completestring)
 
     def calc_overview_string(self, refenergies = None, add_headers = True, delim = '\t'):
         if refenergies is None:
