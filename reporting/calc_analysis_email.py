@@ -17,10 +17,11 @@ rootpath = os.path.abspath('') # Get calling directory
 try:
     outpath = sys.argv[2]
 except Exception:
-    outpath =
+    outpath = None
+    #r'D:\Users\Chris\Documents\SivaLab\2016 MDA Type 2 SL\Ab-Initio\Bulk\InAsSb_Ideal\Cutoff-kpts\kpts-8\cutoff=34.5454545455\InAsSb_Ideal_Bulk_PAW.in.out'
 
-qecalc.QECalcOut.import_from_file()
-
+calcout = qecalc.QECalcOut.import_from_file(outpath)
+reportpath = calcout.make_report(rootpath)
 # --------------
 # Prepare email
 # --------------
@@ -32,9 +33,11 @@ except Exception:
 
 subject = 'Analysis Report of QE calculation: '
 body = 'Quantum Espresso calculation "'
-relaxplot = r'D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing\relaxation.png'
-attachments = []# [relaxplot]
+attachments = [reportpath]
 
+# ---------------
+#  Email Function
+# ---------------
 def send_mail(send_from, send_to, subject, text, files=None,
               server="127.0.0.1"):
     #assert isinstance(send_to, list)

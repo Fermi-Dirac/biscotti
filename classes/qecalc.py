@@ -1,3 +1,6 @@
+# This class is a wrapper for the input/output from pw.x (pw.exe) function of Quantum Espresso
+# This is the major workhorse of DFT in QE
+
 import re
 import os
 import sys
@@ -11,6 +14,7 @@ BUF_SIZE = 65536  # Hashing buffer size
 
 sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
 from classes import atoms as Biscotti
+from classes.calctime import CalcTime
 
 import logging
 # Logging level by default
@@ -32,111 +36,6 @@ logger.addHandler(console_handler)
 # logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
 # End logging.
 
-class CalcTime(object):
-    def __init__(self, startdt = None, enddt = None, timedict=None, subprocdict=None, procorder = None):
-        if timedict is None:
-            timedict = {}
-        if subprocdict is None:
-            subprocdict = {}
-        if procorder is None:
-            procorder = []
-        self.startdt = startdt
-        self.enddt = enddt
-        self.timedict = timedict
-        self.subprocdict = subprocdict
-        self.procorder = procorder
-
-    @staticmethod
-    def get_time(outputfile):
-        regexstart = r'[ ]*init_run[\s\:]+[0-9\.s]+'
-        regexend = r'This run was terminated on:[\s]+'
-        startson_dtformat = '%d%b%Y at %H:%M:%S'
-        starttime_regex  = r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+'
-        ends_dtformat = '%H:%M:%S  %d%b%Y'
-        endtime_regex = r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}'
-
-        with open(outputfile, 'r') as fileobj:
-
-            filestring = fileobj.read()
-            startresult = re.search(regexstart, filestring)
-            endresult = re.search(regexend, filestring)
-
-            if startresult and endresult:
-                logger.debug("Found start at " + str(startresult.start()))
-                calctimestring = filestring[startresult.start(): endresult.end()]
-            else:
-                calctimestring = ''
-            logger.debug("Match follows\n" + calctimestring)
-            rows = calctimestring.split('\n')
-            timedict = odict()
-            subprockey = 'Main'
-            subprocdict = {subprockey: []}
-            procorder = [subprockey]
-            for row in rows:
-                logger.debug("Now on row: " + row)
-                if row is '':
-                    subprockey = None
-                else:
-                    keyresult = re.search(r'Called by [A-Za-z\*_]+', row)
-                    keyresult2 = re.search(r'[A-Za-z]+\sroutines', row)
-                    if keyresult or keyresult2:
-                        logger.debug("New key to be " + row)
-                        if keyresult:
-                            subprockey = keyresult.group(0).split('by')[1].strip()
-                        else:
-                            subprockey = keyresult2.group(0).strip()
-                        procorder.append(subprockey)
-                        subprocdict[subprockey] = []
-                        logger.debug("New subprocess key")
-                    else:
-                        if subprockey is None:
-                            pass
-                            # Here we could add code to parse the PWSCF step at the end giving total time
-                        else:
-                            procname = row[5:18].strip()
-                            values = [float(row[19:29]), float(row[34:44]), float(row[52:60])]
-                            # for i, value in enumerate(values):
-                            #     logger.debug(value + " : converting to float")
-                            #     values[i] = float(re.compile(r'[^\d.]+').sub('', value))  #strip off that annoying 's'
-                            timedict[procname] = values
-                            subprocdict[subprockey].append(procname)
-                            logger.debug("New entry of process: " + procname + " with values: " + str(values))
-            # Now get the start and end datetimes
-            start_dt_result = re.search(starttime_regex, filestring)
-            dtsplit = re.search(starttime_regex, filestring).group(0).split(' at ')
-            dtstring = dtsplit[0] + ' at ' + dtsplit[1].replace(' ', '0')
-            startdt = dt.datetime.strptime(dtstring, startson_dtformat)
-
-            end_dt_result = re.search(endtime_regex, filestring)
-            dtsplit = end_dt_result.group(0).split('  ')
-            dtstring = dtsplit[0].replace(' ', '0') + '  ' + dtsplit[1]
-            enddt = dt.datetime.strptime(dtstring, ends_dtformat)
-
-        return CalcTime(startdt, enddt, timedict, subprocdict, procorder)
-
-    def pie_charts(self, title = 'Calculation time breakdown', type = 'CPU'):
-        timeindex = {'CPU': 0 , 'cpu': 0, 'WALL' : 1, 'wall' : 1, 'calls' : 2}
-        if type not in timeindex:
-            type = 'CPU'
-        fig = plt.figure()
-        fig.suptitle(title, fontsize = 14, fontweight = 'bold')
-        for i, subproc in enumerate(self.procorder):
-            labels = []
-            sizes = []
-            for key in self.subprocdict[subproc]:
-                units = "(" + "%.2f" % (self.timedict[key][timeindex[type]] / (60 * 60)) + " Hrs)"
-                if type == 'calls':
-                    units = "(" + "%.2f" % (self.timedict[key][timeindex[type]]) + " calls)"
-                labels.append(key + " " + units)
-                sizes.append(self.timedict[key][0])
-            if len(sizes) > 0:
-                plt.subplot(2, len(self.procorder) / 2 + 1, i + 1)
-                # fig = plt.figure(i+1)
-                # ax = fig.gca()
-                plt.pie(sizes, labels=labels, shadow=True, startangle=45, autopct='%1.1f %%')
-                plt.axis('equal')
-                plt.title(subproc)
-        return fig
 
 class QECalcIn(object):
     # This class object is for a pw.x Quantum Espresso input file
@@ -533,13 +432,8 @@ class QECalcOut(object):
             print("Final Energy: " + str(RelaxationSteps[-1][-1]))
         return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), jobstatus= completestring)
 
-    def calc_overview_string(self, refenergies = None, add_headers = True, delim = '\t'):
-        if refenergies is None:
-            # These are the energies of these species in 'free' cells, e.g. huge boxes
-            refenergies = {'As': -175.65034951, 'In': -410.56656045, 'Sb': -347.3619941658}
-        refenergy = 0
-        for atom in self.initialstructure.atoms:
-            refenergy += refenergies[atom.species]
+    def calc_overview_dict(self):
+        refenergy = self.refenergy
         numatoms = self.initialstructure.totalatoms()
         if numatoms == 0:
             numatoms = -1
@@ -549,15 +443,8 @@ class QECalcOut(object):
         iondE = -1
         if len(self.relax_list) > 1:
             iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
-        headers = ['ID',
-                   'Filename',
-                   'Folder',
-                   'Title',
-                   'Calc Type',
-                   'Final Energy (Ry)',
-                   'Last electron step dE (Ry)',
-                   'Last ion step dE (Ry)',
-                   'Final Free Energy (Ry)',
+        keys = ['ID', 'Filename', 'Folder','Title','Calc Type',
+                'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
                    'Final Free Energy (eV)',
                    'Final Free Energy (eV/atom)',
                    'Number of Atoms',
@@ -593,12 +480,16 @@ class QECalcOut(object):
                   self.initialstructure.totalvol(),
                   self.finalstructure.totalvol()
                   ]
+        return odict(zip(keys, values))
+
+    def calc_overview_string(self, add_headers = True, delim = '\t'):
         returnstring = ''
+        summary_dict = self.calc_overview_dict()
         if add_headers:
-            for header in headers:
-                returnstring += header + delim
+            for key in summary_dict:
+                returnstring += key + delim
             returnstring += '\n'
-        for value in values:
+        for value in summary_dict.items():
             returnstring += str(value) + delim
         return returnstring
 
@@ -669,6 +560,61 @@ class QECalcOut(object):
             axes.plot(steps, ionstep, linestyle = '-', marker='o')
             i += len(ionstep)
         return axes
+
+    def plot_summary_table(self, axes=None, headers_list = None):
+        # Get dictionary of the summary
+        summary_dict = self.calc_overview_dict()
+        if headers_list is None:
+            headers_list = summary_dict.keys()
+
+        # initialize and fill the table
+        values = []
+        final_headers = []
+        for header in headers_list:
+            if header in summary_dict:
+                final_headers.append(header)
+                newval = summary_dict[header]
+                if type(newval) is float:
+                    newval = '%0.4g' % newval
+                values.append(newval)
+
+        # make 'axes' for matplotlib
+        if axes is None:
+            axes = plt.gca()
+        axes.axis('off')
+        table = axes.table(cellText=[values], colLabels=final_headers, loc='center')
+        #table.auto_set_font_size(False)
+        table.set_fontsize(12)
+        table.scale(1,5)
+        table_props = table.properties()
+        table_cells = table_props['child_artists']
+        for cell in table_cells:
+            #cell._text.set_fontsize(66)
+            cell.set_height(0.4)
+            #cell._text.set_color('blue')
+            pass
+        return table
+
+    def make_report(self, outputdir=None, reportname = None):
+        if outputdir is None:
+            outputdir = os.path.abspath('')
+        if reportname is None:
+            reportname = self.initialstructure.name + " report.png"
+        # Make figure reference
+        reportfig = plt.figure()
+        # Ion axes
+        ion_axes = reportfig.add_subplot(2,1,1)
+        self.plot_ion_energies(ion_axes, free_energy=True, unit='eV/atom')
+        # electron axes
+        e_axes = reportfig.add_subplot(2,1,2)
+        self.plot_e_energies(e_axes, free_energy=True, unit='eV/atom')
+        # Rescale
+        pl_size = reportfig.get_size_inches()
+        scale = 1.5
+        reportfig.set_size_inches(pl_size[0]*scale, pl_size[1]*scale)
+
+        reportfig.savefig(outputdir + os.path.sep + reportname)
+        return outputdir + os.path.sep + reportname
 
 def parseConfig(fname):
     # Legacy before QECalcOut class
