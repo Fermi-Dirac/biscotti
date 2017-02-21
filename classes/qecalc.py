@@ -11,6 +11,7 @@ from collections import OrderedDict as odict
 import datetime as dt
 import hashlib
 BUF_SIZE = 65536  # Hashing buffer size
+from reporting import email
 
 sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
 from classes import atoms as Biscotti
@@ -271,8 +272,22 @@ class QECalcIn(object):
                         , pseudopots
                         , [kptstype, kptstring])
 
+    def prep_for_slurm(self, slurmfile, num_cores=16, email=True, email_add=None, report_level=None):
+        with open(slurmfile, 'w') as fileobj:
+            fileobj.write("#!/bin/bash\n#")
+            fileobj.write("\n#SBATCH --job-name=" + self.name + "\n")
+            fileobj.write("\n#SBATCH --output=" + "slurmout.txt")
+            fileobj.write("\n#SBATCH --ntasks=" + str(int(num_cores)))
+            # Set timeout to 5 minutes more than quantum espresso, this way QE stops before SLURM kills it
+            fileobj.write("\n#SBATCH --time=" + str(QECalcIn.control['max_seconds']+60*5))
+            fileobj.write("\nSBATCH --mem-per-cpu=" + "MaxMemPerNode") # later we'll figure out RAM requirements
+            fileobj.write("\n\n")
+            fileobj.write("\nsrun hostname")
+            if email and email_add is not None:
+                fileobj.write("\npython ~/bin/python/")
+
 class QECalcOut(object):
-    # This class holds the results of a pw.x QE calculation. This one is very much under development
+    """ This class holds the results of a pw.x QE calculation. This one is very much under development"""
     def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, jobstatus = 'unknown' ):
         """
 
