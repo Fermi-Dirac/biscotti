@@ -1,27 +1,23 @@
 import re
 import datetime as dt
 from collections import OrderedDict as odict
-import matplotlib.pyplot as plt
-
 import logging
-# Logging level by default
+# Setup a logger
 logger = logging.getLogger(__name__)
 loglevel = logging.INFO
 logger.setLevel(loglevel)
-
-# Handler
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)
-
-#formatter
-formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-
-# add handler
+console_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(console_handler)
-
-# logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
 # End logging.
+
+try:
+    import matplotlib.pyplot as plt
+    has_mpl = True
+except ImportError:
+    logger.error("Cannot load matplotlib! Plotting disabled")
+    has_mpl = False
 
 class CalcTime(object):
     def __init__(self, startdt = None, enddt = None, timedict=None, subprocdict=None, procorder = None):
@@ -109,6 +105,9 @@ class CalcTime(object):
         return CalcTime(startdt, enddt, timedict, subprocdict, procorder)
 
     def pie_charts(self, title = 'Calculation time breakdown', type = 'CPU'):
+        if not has_mpl:
+            logger.error("Error, matplotlib not loaded!")
+            return None
         timeindex = {'CPU': 0 , 'cpu': 0, 'WALL' : 1, 'wall' : 1, 'calls' : 2}
         if type not in timeindex:
             type = 'CPU'

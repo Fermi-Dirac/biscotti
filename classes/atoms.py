@@ -89,7 +89,7 @@ class AtomicStructure(object):
             speciesdict = {}
             atomsdir = []
             atomscart = []
-            lattice = np.zeros([3,3])
+            lattice = np.identity(3)
             for i, line in enumerate(lineslist):
                 for regcount, regex in enumerate(regexlist):
                     searchresult = re.findall(regex, line)
@@ -167,8 +167,11 @@ class AtomicStructure(object):
             regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\. ]+)+'
             # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
             atompos_matches = list(re.finditer(regex_atompos, filestring))
-            logger.debug("Found "+ str(len(atompos_matches)) + " atom set matches")
-            logger.debug("The first atom set is " + str(atompos_matches[0].group(0)))
+            if len(atompos_matches) < 1:
+                logger.error("No atoms found?")
+            else:
+                logger.debug("Found "+ str(len(atompos_matches)) + " atom set matches")
+                logger.debug("The first atom set is " + str(atompos_matches[0].group(0)))
 
             # Iterate over all atompos_matches
             for index, atompos_match in enumerate(atompos_matches):

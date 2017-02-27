@@ -5,8 +5,8 @@ This is the major workhorse of DFT in QE
 # Dependancies
 import numpy as np
 # Inter-package dependancies
-from classes import atoms as Biscotti
-from classes.calctime import CalcTime
+from biscotti.classes import atoms as Biscotti
+from biscotti.classes.calctime import CalcTime
 # built-in libs
 import re
 import os
@@ -212,21 +212,25 @@ class QECalcIn(object):
         with open(path, 'r') as fileobj:
             filelist = fileobj.readlines()
             namelist = None
+            cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS', 'ATOMIC_FORCES']
+            cardlists = [card[:8] for card in cardlists] # truncate to first 8 char for quick compare
             for line in filelist:
                 logger.debug("Now on line >" + line.strip() + "<")
                 if line.strip() == "":
                     firstchar = '!'
+                    continue # Empty line
                 else:
                     firstchar = line.strip()[0]
                 if firstchar is '!':
-                    pass # commented line
+                    continue # commented line
                 elif firstchar is '&':
-                    namelist = line.strip()[1:] # skip the '&' symbol
+                    namelist = line.strip()[1:].upper() # skip the '&' symbol, demand uppercase convention for QE files
                     logger.debug("New namelist: " + namelist)
                     namelistdict[namelist] = odict()
                 elif firstchar is '/':
                     key = None
-                elif line.strip()[0:15] == 'CELL_PARAMETERS' :
+                elif line.strip()[0:8] in cardlists:
+                    logger.info("Found all namelist dictionaries, now looking for cards")
                     break # Stop looking for dictionaries
                 else:
                     logger.debug("Found a key value pair at line " + line.strip())
@@ -248,7 +252,7 @@ class QECalcIn(object):
                         value = float(value)
                     else: # must be int
                         value = int(value)  # must be an integer
-                    logger.debug("New key value pair is: " + key + " : " + str(value) + " of type " + str(type(value)))
+                    logger.debug("New key value pair is: (" + key + " , " + str(value) + ") of type " + str(type(value)))
                     namelistdict[namelist][key] = value
             logger.info("Input file Dictionaries found!")
             # Now dictionaries are populated, need kpts and atomic species and pseduots
@@ -439,11 +443,15 @@ class QECalcOut(object):
         self.initialstructure = self.qecalcin.structure
 
         # Structurelist derived attributes
-        self.structurelist = Biscotti.AtomicStructure.from_QEOutput(outpath)
-        if len(self.structurelist) > 0 : # is not empty or None
-            self.finalstructure = self.structurelist[-1]
-        else:
+        if self.qecalcin.control['calculation'] == 'scf':
+            self.structurelist = []
             self.finalstructure = self.initialstructure
+        else:
+            self.structurelist = Biscotti.AtomicStructure.from_QEOutput(outpath)
+            if len(self.structurelist) > 0 : # is not empty or None
+                self.finalstructure = self.structurelist[-1]
+            else:
+                self.finalstructure = self.initialstructure
         self.volumeList = None
 
         # Reference Energies, These are calculations of 'free' atoms to create total free energy, similar to VASP
@@ -452,8 +460,11 @@ class QECalcOut(object):
             refenergies = {'As': -175.65034951, 'In': -410.56656045, 'Sb': -347.3619941658}
         self.refenergy = 0
         for atom in self.initialstructure.atoms:
-            self.refenergy += refenergies[atom.species]
-
+            if atom.species in refenergies:
+                self.refenergy += refenergies[atom.species]
+            else:
+                logger.error("Missing ref energy for atomic species: " + atom.species)
+                pass
         # Energy convergances
         if relax_list is None or not relax_list: # is empty
             logger.error("No relaxation data or energies")

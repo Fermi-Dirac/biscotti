@@ -34,10 +34,11 @@ else:
 if has_email:
     body = 'Your QE calculation' + input_file + ' began on ' + str(dt.datetime.now()) + \
            '\nThe full execution path is: \n' + os.path.abspath('')
-    email.send_mail(email_addr, 'QE calculation ' + input_file + ' has started', body)
+    email.send_mail(email_addr, 'Starting QE calculation: ' + input_file, body)
+    print("Email sent!")
 
 # Begin pw.x call
-subpr.call('mpirun -np 16 pw.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
+subpr.call('mpirun -np 16 --map-by core --bind-to core pw.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
 
 # Email at end
 if has_email:
@@ -51,7 +52,8 @@ if has_email:
             email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end,
                             [input_file + ' report.png'])
         except Exception:
-            email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
+            email.send_mail(email_addr, 'QE calculation: ' + input_file + ' has ended', body_end)
     else:
         email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
+    print("Email sent!")
 subpr.call('Python script complete!', shell=True)
