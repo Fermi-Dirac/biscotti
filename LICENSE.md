@@ -1,2 +1,4 @@
 
-Copyright (C) 2017 Chris B
+Copyright (C) 2017 Chris Buurma
+
+MIT License

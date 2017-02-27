@@ -1,46 +1,52 @@
-# This class is a wrapper for the input/output from pw.x (pw.exe) function of Quantum Espresso
-# This is the major workhorse of DFT in QE
-
+"""
+This class is a wrapper for the input/output from pw.x (pw.exe) function of Quantum Espresso
+This is the major workhorse of DFT in QE
+"""
+# Dependancies
+import numpy as np
+# Inter-package dependancies
+from classes import atoms as Biscotti
+from classes.calctime import CalcTime
+# built-in libs
 import re
 import os
 import sys
-import numpy as np
-from glob import glob
-import matplotlib.pyplot as plt
-from collections import OrderedDict as odict
+# sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
 import datetime as dt
+from glob import glob
+from collections import OrderedDict as odict
 import hashlib
-BUF_SIZE = 65536  # Hashing buffer size
-from reporting import email
-
-sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
-from classes import atoms as Biscotti
-from classes.calctime import CalcTime
-
 import logging
-# Logging level by default
+# Setup a logger
 logger = logging.getLogger(__name__)
 loglevel = logging.INFO
 logger.setLevel(loglevel)
-
-# Handler
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)
-
-#formatter
-formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-
-# add handler
+console_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
 logger.addHandler(console_handler)
-
-# logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
 # End logging.
 
+try:
+    import matplotlib.pyplot as plt
+    has_mpl = True
+except ImportError:
+    logger.error("Cannot load matplotlib! Plotting disabled")
+    has_mpl = False
+
+# Constants
+BUF_SIZE = 65536  # Hashing buffer size
+default_pseudos = {"In" : [114.818, "In.pbe-dn-kjpaw_psl.0.2.2.UPF"],
+                   "As" : [74.9220,  "As.pbe-n-kjpaw_psl.0.2.UPF"],
+                   "Sb" : [121.6700,  "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]}
+#TODO Would be nice to have this kind of stuff in some sort of CONSTANTS library
 
 class QECalcIn(object):
-    # This class object is for a pw.x Quantum Espresso input file
-    # it is organized by a few dictionaries which control the various cards for a QE input file
+    """
+    This class object is for a pw.x Quantum Espresso input file
+    it is organized by a few dictionaries which control the various cards for a QE input file
+    """
+
     def __init__(self, name = 'Default', control = None, system = None, electrons = None, ions = None, cell = None, structure = Biscotti.AtomicStructure(), pseudopots = None, kpts = None):
         """
 
@@ -60,6 +66,8 @@ class QECalcIn(object):
             self.control = odict()
         else:
             self.control = odict(control) # This is a dictionary of all non-default settings in the Control namelist
+            if 'title' in self.control:
+                self.name = self.control['title'] # Change name to title if we found it.
         if system is None:
             self.system = {'nat' : self.structure.totalatoms(), 'ntyp' : 1}
         else:
@@ -157,14 +165,24 @@ class QECalcIn(object):
                     newfile.write(newline)
                 newfile.write('/ \n')
             # Now to do the cards since all namelists are done.
+            # Write pseudopotentials
+            newfile.write("ATOMIC_SPECIES\n")
+            atomspec = set([atom.species for atom in self.structure.atomsdir])
+            for spec in atomspec:
+                if spec in self.pseudopots:
+                    # Then this pseudopot was listed
+                    newfile.write(str(spec) + "  " + self.pseudopots[spec][0] + "  " + self.pseudopots[spec][1] + '\n')
+                else:
+                    # This species did not have a pseudopot listed
+                    logger.error("Warning, Pseudopotential not specified for " + spec)
+                    newfile.write(str(spec) + "  " + default_pseudos[spec][0] + "  " + default_pseudos[spec][1] + '\n')
+            # Cell Parameters
             newfile.write('CELL_PARAMETERS alat\n' \
                              + '  '.join([str(val) for val in self.structure.latticeA]) + '\n' \
                              + '  '.join([str(val) for val in self.structure.latticeB]) + '\n' \
                              + '  '.join([str(val) for val in self.structure.latticeC]) + '\n')
-            newfile.write("ATOMIC_SPECIES\n")
-            for key in self.pseudopots:
-                newfile.write(str(key) + "  " + self.pseudopots[key][0] + "  " + self.pseudopots[key][1] + '\n')
-                # TODO check if species in structure match keys
+
+            # Write atomic positions
             newfile.write('ATOMIC_POSITIONS crystal\n' + '\n'.join( [atom.species
                                                                     + "  " + str(atom.x)
                                                                     + "  " + str(atom.y)
@@ -181,7 +199,7 @@ class QECalcIn(object):
         return newfile
 
     @staticmethod
-    def import_from_file(path):
+    def import_from_file(path: str):
         # This imports a QEcalcin object from an input file
         logger.info("Now parsing input file" + path)
         # Current no support for comments!!
@@ -196,7 +214,6 @@ class QECalcIn(object):
             namelist = None
             for line in filelist:
                 logger.debug("Now on line >" + line.strip() + "<")
-                firstchar = ''
                 if line.strip() == "":
                     firstchar = '!'
                 else:
@@ -261,30 +278,114 @@ class QECalcIn(object):
                     kptstring += line
                 else:
                     pass
+        # Check existing namelists
+        if 'calculation' in namelistdict['CONTROL']:
+            calctype = namelistdict['CONTROL']['calculation']
+            if calctype not in ['scf', 'nscf', 'bands', 'relax', 'md', 'vc-relax', 'vc-md']:
+                calctype = 'scf'
+                namelistdict['CONTROL']['calculation'] = 'scf'
+        else:
+            calctype = 'scf'
+        control = namelistdict['CONTROL']
+        system = namelistdict['SYSTEM']
+        electrons = namelistdict['ELECTRONS']
+        if calctype in ['relax', 'md', 'vc-relax', 'vc-md']:
+            ions = namelistdict['IONS']
+        else:
+            ions = None
+        if calctype in ['vc-relax', 'vc-md']:
+            cell = namelistdict['CELL']
+        else:
+            cell = None
 
-        return QECalcIn(os.path.split(path)[1]
-                        , odict(namelistdict['CONTROL'])
-                        , odict(namelistdict['SYSTEM'])
-                        , odict(namelistdict['ELECTRONS'])
-                        , odict(namelistdict['IONS'])
-                        , odict(namelistdict['CELL'])
+        return QECalcIn(os.path.split(path)[1], control, system, electrons, ions, cell
                         , Biscotti.AtomicStructure.from_QEinput(path)
                         , pseudopots
                         , [kptstype, kptstring])
 
-    def prep_for_slurm(self, slurmfile, num_cores=16, email=True, email_add=None, report_level=None):
-        with open(slurmfile, 'w') as fileobj:
-            fileobj.write("#!/bin/bash\n#")
-            fileobj.write("\n#SBATCH --job-name=" + self.name + "\n")
-            fileobj.write("\n#SBATCH --output=" + "slurmout.txt")
-            fileobj.write("\n#SBATCH --ntasks=" + str(int(num_cores)))
-            # Set timeout to 5 minutes more than quantum espresso, this way QE stops before SLURM kills it
-            fileobj.write("\n#SBATCH --time=" + str(QECalcIn.control['max_seconds']+60*5))
-            fileobj.write("\nSBATCH --mem-per-cpu=" + "MaxMemPerNode") # later we'll figure out RAM requirements
+    def write_slurm_jobscript(self, folder=None, infile = None, slurm_dict = None,
+                              send_email=True, email_addr='', report=True):
+        """
+        Generate a SLURM jobscript file with associated flags. Also supports post-job reporting and email notification
+        :param folder:
+        :param jobscript_name:
+        :param infile:
+        :param num_cores:
+        :param partition:
+        :param email_start:
+        :param email_end:
+        :param email_addr:
+        :param report:
+        :return:
+        """
+        if folder is None:
+            folder = os.getcwd()
+        else:
+            if not os.path.exists(folder):
+                os.makedirs(folder)
+        if infile is None:
+            infile = [file for file in os.listdir() if os.path.splitext(file)[1] == '.in'][0]
+        if slurm_dict is None:
+            try:
+                max_seconds = self.control['max_seconds'] + 60 * 5  # add 5minutes so QE cancels before SLURM
+            except:
+                max_seconds = 60 * 60  # Default is 1 hour
+            time = "%02d:%02d:%02d" % (max_seconds / (60 * 60), (max_seconds / (60)) % 60, max_seconds % 60)
+            flags = ['job-name', 'output', 'ntasks', 'time', 'mem-per-cpu']
+            values = [self.name[-8:], 'slurmout.txt', '16', time, 'MaxMemPerNode']
+            slurm_dict = odict(zip(flags, values))
+        # Set SLURM parameters
+
+        slurm_template = "#!/bin/env python3\n"
+        for key, value in slurm_dict.items():
+            slurm_template += '#SBATCH --' + key + "=" + value + "\n"
+        slurm_template += ("import subprocess as subpr\n" + "import datetime as dt\n" + "import os, sys\n")
+        email_start_template =(
+            "\n\n# Email at start"
+            "\nbody = 'Your QE calculation %(jobname)s began on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')"
+            "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has started', body)"
+        )
+        pw_x_template = (
+            "\n\n# Begin pw.x call"
+            "\nsubpr.call('mpirun -np %(num_cores)s pw.x -i %(infile)s > %(infile)s.out', shell=True)"
+        )
+        email_end_template = (
+            "\n\n# Email at end"
+            "\nbody_end = 'Your QE calculation %(jobname)s ended on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')"
+        )
+        email_report_template =(
+            "\ncalcout = qecalc.QECalcOut.import_from_file('%(infile)s.out', '%(infile)s')"
+            "\ncalcout.make_report(reportname='%(jobname)s report.png')"
+            "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has ended', body_end, ['%(jobname)s report.png'])"
+        )
+        email_noreport_template = "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has ended', body_end)"
+
+        with open(folder + os.path.sep + 'slurm_jobscript.sh', 'w', newline='\n') as fileobj:
+
+            fileobj.write(slurm_template % locals())
+
+            # Only load biscotti if emailing or reporting is on
+            if send_email:
+                fileobj.write("\nfrom biscotti.reporting import email\n")
+            if report:
+                fileobj.write("\nfrom biscotti.classes import qecalc")
+
+            # Email at start
+            if send_email:
+                fileobj.write(email_start_template % locals())
+
+            # pw.x parameters
+            fileobj.write(pw_x_template % locals())
+
+            # End email and reporting
+            if send_email:
+                fileobj.write(email_end_template % locals())
+                if report:
+                    fileobj.write(email_report_template % locals())
+                else:
+                    fileobj.write(email_noreport_template % locals())
+            fileobj.write("\nsubpr.call('python script complete!', shell=True)")
             fileobj.write("\n\n")
-            fileobj.write("\nsrun hostname")
-            if email and email_add is not None:
-                fileobj.write("\npython ~/bin/python/")
 
 class QECalcOut(object):
     """ This class holds the results of a pw.x QE calculation. This one is very much under development"""
@@ -339,7 +440,10 @@ class QECalcOut(object):
 
         # Structurelist derived attributes
         self.structurelist = Biscotti.AtomicStructure.from_QEOutput(outpath)
-        self.finalstructure = self.structurelist[-1]
+        if len(self.structurelist) > 0 : # is not empty or None
+            self.finalstructure = self.structurelist[-1]
+        else:
+            self.finalstructure = self.initialstructure
         self.volumeList = None
 
         # Reference Energies, These are calculations of 'free' atoms to create total free energy, similar to VASP
@@ -391,7 +495,7 @@ class QECalcOut(object):
         volumeList = []
         ionstep = 0
         electronstep = 99
-        jobComplete = False
+        completestring = 'Unknown'
         logger.info("--Now parsing file " + path)
         verbose = False
 
@@ -536,6 +640,9 @@ class QECalcOut(object):
         return scaledenergies
 
     def plot_ion_energies(self, axes=None, free_energy=False, unit='Ry'):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
         if axes is None:
             axes = plt.gca() # this is the 'matplotlib' axes class. NOT actual axes of a plot. Its a 'plot' thingy within a figure
         fig = plt.gcf()
@@ -562,6 +669,9 @@ class QECalcOut(object):
         return plotout
 
     def plot_e_energies(self, axes=None, free_energy=False, unit='Ry'):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
         if axes is None:
             axes = plt.gca() # this is the 'matplotlib' axes class. NOT actual axes of a plot. Its a 'plot' thingy within a figure
         energies_plotted = self.scale_energies(free_energy, unit)
@@ -577,6 +687,9 @@ class QECalcOut(object):
         return axes
 
     def plot_summary_table(self, axes=None, headers_list = None):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
         # Get dictionary of the summary
         summary_dict = self.calc_overview_dict()
         if headers_list is None:
@@ -611,6 +724,9 @@ class QECalcOut(object):
         return table
 
     def make_report(self, outputdir=None, reportname = None):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
         if outputdir is None:
             outputdir = os.path.abspath('')
         if reportname is None:
@@ -631,31 +747,40 @@ class QECalcOut(object):
         reportfig.savefig(outputdir + os.path.sep + reportname)
         return outputdir + os.path.sep + reportname
 
-def parseConfig(fname):
-    # Legacy before QECalcOut class
-    with open(fname,'r') as fileobj:
-        filestring = fileobj.readlines()  #change scope to ensure fileobj is closed
-    config = [line.split() for line in filestring]  #split over whitespace, returns a list of list.
-    namelistsarray = [wordlist[0][1:] for wordlist in config if '&' in ''.join(wordlist) and ''.join(wordlist)[0]=='&']
-    # this iterative searches the list for &'s and puts them in the namelist, getting a list of the special words
-    namelistsarray.append("None")  #add on a dummy index for useless crap
-    Dictionary = {keyword:{} for keyword in namelistsarray}   #create a dictionary using {}, which contains an array of empty dictionries
-    namelist = 'None'  #set first dictionary index to junk, the first namelist is junk
-    for lines in config:
-        lineAsString_NoWhite = ''.join(lines)  #undo the split, no spaces.
-        # Setting the dictionary index
-        if len(lineAsString_NoWhite)>1:    # catching zero-length lines
-            if lineAsString_NoWhite[0] == '/':
-                namelist = "None"  # close a block by sending all data to junk index
-            if lineAsString_NoWhite[0]=='&':
-                namelist = lines[0][1:]  # set proper index if we found the right one
-        # Dict index set, lets populate
-        if "=" in lines:   # then we found a command parameter
-            if '!' not in lines[0]:  # check for commented line
-              Dictionary[namelist][lines[0]]=[lines[2]," ".join(lines[4:])]  # Doesn't check for !; commends
-        else:    # handle comment'ed commands
-            pass
-    return Dictionary
+def makeSummaryFile(rootpath=None, outputfile=None, delim = '\t') -> object:
+    # This function finds all of the .out files from a path and subdirectories and then calls calcoverview-to-string
+    # this gives a spreadsheet-like answer to a batch calculation
+    """
+
+    :param rootpath: The absolute path to the folder which contains all subfoldeers and calculation files
+    :param outputfile: name of the text file where delimited data will be stored
+    :param delim: character which is used as a delimiter between fields.
+    :return: none
+    """
+    if rootpath is None:
+        rootpath = os.getcwd()
+    logger.info("Creating summary file for root path: " + rootpath)
+    # alloutputfiles = [y for x in os.walk(rootpath) for y in glob(os.path.join(x[0], '*.out'))] obfuscated code
+    alloutputfiles = []
+    for folder in os.walk(rootpath):
+        for file in glob(os.path.join(folder[0], '*.out')):
+            alloutputfiles.append(file)
+    if outputfile is None:
+        outputfile = os.path.join(rootpath, 'Summary for ' + os.path.split(rootpath)[1] + '.tsv')
+
+    with open(outputfile, 'w') as fileobj:
+        for index, calcfile in enumerate(alloutputfiles):
+            logger.info("Now on calc file at: " + calcfile)
+            calcresult = QECalcOut.import_from_file(calcfile)
+            add_headers = index == 0
+            writestring = calcresult.calc_overview_string(add_headers= add_headers, delim = delim) + '\n'
+            fileobj.write(writestring)
+
+"""
+---------------------------------------------------
+Begin Legacy Code. :(
+---------------------------------------------------
+"""
 
 def writeConfig(outputFileString, calculationDict):
     # Legacy before QECalcIn class
@@ -863,34 +988,31 @@ def calcOverview_to_string(calcOverviewDict, refenergies = None):
         strings.append(str(value))
     return headers,strings
 
-def makeSummaryFile(rootpath=None, outputfile=None, delim = '\t') -> object:
-    # This function finds all of the .out files from a path and subdirectories and then calls calcoverview-to-string
-    # this gives a spreadsheet-like answer to a batch calculation
-    """
-
-    :param rootpath: The absolute path to the folder which contains all subfoldeers and calculation files
-    :param outputfile: name of the text file where delimited data will be stored
-    :param delim: character which is used as a delimiter between fields.
-    :return: none
-    """
-    if rootpath is None:
-        rootpath = os.getcwd()
-    logger.info("Creating summary file for root path: " + rootpath)
-    # alloutputfiles = [y for x in os.walk(rootpath) for y in glob(os.path.join(x[0], '*.out'))] obfuscated code
-    alloutputfiles = []
-    for folder in os.walk(rootpath):
-        for file in glob(os.path.join(folder[0], '*.out')):
-            alloutputfiles.append(file)
-    if outputfile is None:
-        outputfile = os.path.join(rootpath, 'Summary for ' + os.path.split(rootpath)[1] + '.tsv')
-
-    with open(outputfile, 'w') as fileobj:
-        for index, calcfile in enumerate(alloutputfiles):
-            logger.info("Now on calc file at: " + calcfile)
-            calcresult = QECalcOut.import_from_file(calcfile)
-            add_headers = index == 0
-            writestring = calcresult.calc_overview_string(add_headers= add_headers, delim = delim) + '\n'
-            fileobj.write(writestring)
+def parseConfig(fname):
+    # Legacy before QECalcOut class
+    with open(fname,'r') as fileobj:
+        filestring = fileobj.readlines()  #change scope to ensure fileobj is closed
+    config = [line.split() for line in filestring]  #split over whitespace, returns a list of list.
+    namelistsarray = [wordlist[0][1:] for wordlist in config if '&' in ''.join(wordlist) and ''.join(wordlist)[0]=='&']
+    # this iterative searches the list for &'s and puts them in the namelist, getting a list of the special words
+    namelistsarray.append("None")  #add on a dummy index for useless crap
+    Dictionary = {keyword:{} for keyword in namelistsarray}   #create a dictionary using {}, which contains an array of empty dictionries
+    namelist = 'None'  #set first dictionary index to junk, the first namelist is junk
+    for lines in config:
+        lineAsString_NoWhite = ''.join(lines)  #undo the split, no spaces.
+        # Setting the dictionary index
+        if len(lineAsString_NoWhite)>1:    # catching zero-length lines
+            if lineAsString_NoWhite[0] == '/':
+                namelist = "None"  # close a block by sending all data to junk index
+            if lineAsString_NoWhite[0]=='&':
+                namelist = lines[0][1:]  # set proper index if we found the right one
+        # Dict index set, lets populate
+        if "=" in lines:   # then we found a command parameter
+            if '!' not in lines[0]:  # check for commented line
+              Dictionary[namelist][lines[0]]=[lines[2]," ".join(lines[4:])]  # Doesn't check for !; commends
+        else:    # handle comment'ed commands
+            pass
+    return Dictionary
 
 def makenewcalc(basefile, kpts, cutoff):
     # Legacy again
@@ -992,3 +1114,4 @@ def changeStructure(QEinputfile, newQEfile = None, structure = Biscotti.AtomicSt
         logging.debug("Now writing file " + newQEfile)
         newfile.write(newfilestring)
     return ''
+

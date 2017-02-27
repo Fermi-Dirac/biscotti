@@ -1,33 +1,33 @@
 import smtplib
-from os.path import basename
+from os.path import basename, exists
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.utils import COMMASPACE, formatdate
+from email.utils import formatdate
 
-def send_mail(send_to, subject, text, files=None,
-              server="127.0.0.1"):
-    #assert isinstance(send_to, list)
+def send_mail(send_to : str, subject : str, text : str, files=None,
+              server="smtp.gmail.com:587"):
+    if type(send_to) is list:
+        send_to = ", ".join(send_to) #check for multiple recipients
     username = 'epirlab@gmail.com' # I know this is terribly unsafe
     send_from = username
     password = '31a4!tBzP!xb'
 
     msg = MIMEMultipart()
     msg['From'] = send_from
-    msg['To'] = COMMASPACE.join(send_to)
+    msg['To'] = send_to
     msg['Date'] = formatdate(localtime=True)
     msg['Subject'] = subject
-
     msg.attach(MIMEText(text))
 
     for f in files or []:
-        with open(f, "rb") as fil:
-            part = MIMEApplication(
-                fil.read(),
-                Name=basename(f)
-            )
-            part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-            msg.attach(part)
+        if exists(f):
+            with open(f, "rb") as fil:
+                part = MIMEApplication(fil.read(), Name=basename(f))
+                part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
+                msg.attach(part)
+        else:
+            print("Error, file: " + f + " does not exist.")
 
     smtp = smtplib.SMTP(server)
     smtp.starttls()

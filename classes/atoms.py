@@ -32,15 +32,18 @@ class Atom(object):
         """
         self.symbol = symbol
         self.species = symbol # The letters of the thing
-        self.position = np.array(position) # In cartesean coordinates, angstrums
-        self.x = position[0]
-        self.y = position[1]
-        self.z = position[2]
-        self.velocity = velocity # in Angstrum / sec
+        self.position = np.array(position) # In cartesean coordinates, angstroms
+        self.x, self.y, self.z = position # for quick reference
+        self.velocity = velocity # in Angstrom / sec
         self.mass = mass # allows for isotopes
 
     def __str__(self):
-        return (self.symbol + " at " + str(self.position) + " with velocity " + str(self.velocity))
+        returnstring = self.symbol + " at " + str(self.position)
+        if not np.isclose(self.velocity, np.zeros(3)).all():
+            returnstring += " with velocity " + str(self.velocity) + " A/s"
+        # if self.mass != 0:
+        #     returnstring += " and isotope mass " + str(self.mass) + "Kg"
+        return returnstring
 
 class AtomicStructure(object):
     def __init__(self, name = 'Default', A = np.array((1,0,0)), B = np.array((0,1,0)), C = np.array((0,0,1)), atomsarray = None):
@@ -139,7 +142,7 @@ class AtomicStructure(object):
             atomsmatch = re.search(regex_relax, filestring)
             if not atomsmatch:
                 logger.error("No atoms in this file")
-                return AtomicStructure()
+                return []
             vcrelaxmatch = re.search(regex_vcrelax, filestring)
             lattice = []
             if not vcrelaxmatch:

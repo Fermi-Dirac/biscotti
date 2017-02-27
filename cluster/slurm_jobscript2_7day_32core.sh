@@ -1,16 +1,17 @@
 #!/bin/env python3
 #
-#SBATCH --job-name=3dy16cre
+#SBATCH --job-name=7dy32cre
 #SBATCH --output=slurmout.txt
-#SBATCH --partition=cluster
+#SBATCH --partition=bigmem
 #
-#SBATCH --ntasks=16
+#SBATCH --ntasks=32
 #SBATCH --time=71:30:00
 #SBATCH --mem-per-cpu=MaxMemPerNode
 
 import subprocess as subpr
 import datetime as dt
-import os, sys
+import os
+import sys
 try:
     from biscotti.classes import qecalc
     has_qecalc = True

@@ -1,0 +1,43 @@
+! vc-relax input file template
+! max 2hrs, most values default. ecut = 40Ry
+ &CONTROL
+    calculation     = 'vc-relax' ,
+    title           = 'vc_relax'  ,
+	prefix          = 'vcrelax' ,
+    verbosity       = 'default'  , 
+    restart_mode    = 'from_scratch',
+	max_seconds     = 7200   , !2 hours until timeout
+    wf_collect      = .true. , !write wavefunctions?
+    tstress         = .true.  , !stress tensor? normally off
+    tprnfor         = .true.  , !Calcs forces. normally off unless relaxing
+/
+ &SYSTEM
+    ibrav           = 0     , !0 generic, 1, cubic, 2: fcc, 4: Hexagonal, etc.
+    nat             = N     , ! number of atoms in the unit cell
+    ntyp            = N     , ! number of atomic species in the unit cell
+    ecutwfc         = 40.0 ,! Wavefunction cutoff in Ry
+	ecutrho         = 200.0 , !Energy cutoff for charge density
+    occupations     = 'smearing' ,! guassian smearing for metals. 'fixed' is better for insulators, use 'tetrahedra' if you're doing a DOS calc
+    degauss         = 0.005 , ! energy is Ry of smearing
+/
+&ELECTRONS
+    conv_thr            = 5.0d-7    , ! Convergance threshold for electronic steps
+    mixing_mode         = 'plain'   , ! Can also be thomas-fermi screening, 
+	diago_full_acc      = .false. , ! If true, all empty states are diagonalized with the same threshold as occupied. Good for bands and exition stuff
+/
+&IONS
+/
+&CELL
+	cell_dynamics = 'bfgs'
+	cell_dofree   = 'all'
+/
+ATOMIC_SPECIES
+ Si 1 Si.upf
+CELL_PARAMETERS angstrom
+   1.0 0.0 0.0
+   0.0 1.0 0.0
+   0.0 0.0 1.0
+ATOMIC_POSITIONS crystal
+ Si 0.0 0.0 0.0
+K_POINTS automatic
+  10 10 10 0 0 0

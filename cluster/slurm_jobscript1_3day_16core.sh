@@ -10,7 +10,8 @@
 
 import subprocess as subpr
 import datetime as dt
-import os, sys
+import os
+import sys
 try:
     from biscotti.classes import qecalc
     has_qecalc = True

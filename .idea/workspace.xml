@@ -2,13 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cluster/slurm_jobscript.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/reporting/email.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Chris.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cluster/slurm_jobscript1_3day_16core.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/cluster/slurm_jobscript2_7day_32core.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/feature_plan.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/email_test.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/example_slurm2.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/example_slurm_jobscript.sh.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/stringformat.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/reporting/InAsSb_Ideal_Bulk_PAW.in.out" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/Batch007 Script.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/InAsSb superlattice.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/StrainCell.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/Summary for Scripts.tsv" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/Testing.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/test.in" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/testing/test.out" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/LICENSE.md" afterPath="$PROJECT_DIR$/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/calctime.py" afterPath="$PROJECT_DIR$/classes/calctime.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cluster/slurm_jobscript.py" afterPath="$PROJECT_DIR$/cluster/slurm_jobscript.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reporting/email.py" afterPath="$PROJECT_DIR$/reporting/email.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,30 +44,119 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="286" column="55" selection-start-line="286" selection-start-column="55" selection-end-line="286" selection-end-column="55" />
+            <state relative-caret-position="1054">
+              <caret line="380" column="26" selection-start-line="380" selection-start-column="26" selection-end-line="380" selection-end-column="26" />
               <folding>
-                <element signature="e#139#148#0" expanded="true" />
-                <element signature="e#1415#3745#0" expanded="false" />
-                <element signature="e#3791#4154#0" expanded="false" />
-                <element signature="e#4206#5002#0" expanded="false" />
-                <element signature="e#5073#8471#0" expanded="false" />
-                <element signature="e#8531#12589#0" expanded="false" />
-                <element signature="e#13740#17453#0" expanded="false" />
-                <element signature="e#17536#21683#0" expanded="false" />
-                <element signature="e#21727#23693#0" expanded="false" />
-                <element signature="e#23773#24095#0" expanded="false" />
-                <element signature="e#24232#24953#0" expanded="false" />
-                <element signature="e#25037#26082#0" expanded="false" />
-                <element signature="e#26164#26795#0" expanded="false" />
-                <element signature="e#26871#27989#0" expanded="false" />
-                <element signature="e#28061#28844#0" expanded="false" />
-                <element signature="e#31497#38052#0" expanded="false" />
-                <element signature="e#38090#38551#0" expanded="false" />
+                <element signature="e#157#175#0" expanded="true" />
+                <element signature="e#1733#4192#0" expanded="false" />
+                <element signature="e#4238#4601#0" expanded="false" />
+                <element signature="e#4653#5449#0" expanded="false" />
+                <element signature="e#5520#9432#0" expanded="false" />
+                <element signature="e#9497#14057#0" expanded="false" />
+                <element signature="e#14226#14610#1" expanded="false" />
+                <element signature="e#18234#22085#0" expanded="false" />
+                <element signature="e#22168#26322#0" expanded="false" />
+                <element signature="e#26366#28332#0" expanded="false" />
+                <element signature="e#28412#28734#0" expanded="false" />
+                <element signature="e#28871#29592#0" expanded="false" />
+                <element signature="e#29676#30855#0" expanded="false" />
+                <element signature="e#30937#31702#0" expanded="false" />
+                <element signature="e#31778#33030#0" expanded="false" />
+                <element signature="e#33102#34019#0" expanded="false" />
+                <element signature="e#34102#35504#0" expanded="false" />
+                <element signature="e#35697#36573#0" expanded="false" />
+                <element signature="e#36642#43197#0" expanded="false" />
+                <element signature="e#43235#43696#0" expanded="false" />
+                <element signature="e#43768#45608#0" expanded="false" />
+                <element signature="e#45638#47258#0" expanded="false" />
+                <element signature="e#47305#48289#0" expanded="false" />
+                <element signature="e#48405#52562#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slurm_jobscript.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="email.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reporting/email.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Batch010 Script.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch010 Script.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#41#75#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InAsSb_bond_length.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/no_git/scripts/InAsSb_bond_length.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/atoms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="425">
+                <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="feature_plan.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/feature_plan.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="272">
+                <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -79,9 +184,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Classes/QECalc.py" />
-        <option value="$PROJECT_DIR$/Classes/Atoms.py" />
-        <option value="$PROJECT_DIR$/classes/BatchZip.py" />
         <option value="$PROJECT_DIR$/Scripts/BatchZip.py" />
         <option value="$PROJECT_DIR$/Scripts/MakeCalcFile.py" />
         <option value="$PROJECT_DIR$/Scripts/testQECalc.py" />
@@ -98,13 +200,11 @@
         <option value="$PROJECT_DIR$/Scripts/Batch007 Script.py" />
         <option value="$PROJECT_DIR$/Scripts/SpeedupCheck.py" />
         <option value="$PROJECT_DIR$/classes/__init__.py" />
-        <option value="$PROJECT_DIR$/classes/atoms.py" />
         <option value="$PROJECT_DIR$/Scripts/test qecalc report.py" />
         <option value="$PROJECT_DIR$/reporting/pymail.py" />
         <option value="$PROJECT_DIR$/reporting/calc_analysis_email.py" />
         <option value="$PROJECT_DIR$/analysis/calc_time_analysis.py" />
         <option value="$PROJECT_DIR$/reporting/make_table.py" />
-        <option value="$PROJECT_DIR$/classes/calctime.py" />
         <option value="$PROJECT_DIR$/classes/postproc.py" />
         <option value="$PROJECT_DIR$/classes/proj_wfx.py" />
         <option value="$PROJECT_DIR$/data/pw.x input description.html" />
@@ -113,13 +213,28 @@
         <option value="$PROJECT_DIR$/testing/QE_web_parser.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot2.py" />
-        <option value="$PROJECT_DIR$/cluster/slurm_jobscript.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_scraper_all.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_allnodes.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_scraper.py" />
-        <option value="$PROJECT_DIR$/reporting/email.py" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/testing/Batch007 Script.py" />
+        <option value="$PROJECT_DIR$/testing/example_slurm_jobscript.sh.py" />
+        <option value="$PROJECT_DIR$/testing/stringformat.py" />
+        <option value="$PROJECT_DIR$/testing/example_slurm2.py" />
+        <option value="$PROJECT_DIR$/testing/Batch009 Script.py" />
+        <option value="$PROJECT_DIR$/testing/email_test.pu.py" />
+        <option value="$PROJECT_DIR$/testing/email_test.py" />
+        <option value="$PROJECT_DIR$/no_git/Batches/Batch010 Script.py" />
+        <option value="$PROJECT_DIR$/classes/calctime.py" />
+        <option value="$PROJECT_DIR$/no_git/scripts/InAsSb_bond_length.py" />
+        <option value="$PROJECT_DIR$/no_git/scripts/wtf.py" />
+        <option value="$PROJECT_DIR$/LICENSE.md" />
+        <option value="$PROJECT_DIR$/feature_plan.md" />
+        <option value="$PROJECT_DIR$/classes/atoms.py" />
+        <option value="$PROJECT_DIR$/cluster/slurm_jobscript2_7day_32core.sh" />
+        <option value="$PROJECT_DIR$/reporting/email.py" />
+        <option value="$PROJECT_DIR$/cluster/slurm_jobscript.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
       </list>
     </option>
   </component>
@@ -154,7 +269,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -183,53 +298,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="testing" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="reporting" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="no_git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="no_git" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="scripts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -261,75 +330,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ASE Copies" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../2016 MDA Type 2 SL/Python" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="glob&#9;FILE&#9;file://C:/Anaconda3/Lib/glob.py" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\cluster" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.cluster_temp_plot2">
-    <configuration default="false" name="make_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/reporting" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/reporting/make_table.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="calctime" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/classes" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/classes/calctime.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="QE_web_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.InAsSb_bond_length">
+    <configuration default="false" name="Batch009 Script" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -341,12 +368,46 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/QE_web_parser.py" />
+      <option name="SCRIPT_NAME" value="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches\Batch009 Script.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="cluster_temp_plot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="Batch010 Script" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/no_git/Batches" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/Batches/Batch010 Script.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="email_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/email_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="InAsSb_bond_length" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -358,12 +419,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/scripts/InAsSb_bond_length.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="cluster_temp_plot2" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="wtf" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -375,7 +436,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot2.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/scripts/wtf.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -515,19 +576,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.make_table" />
-      <item index="1" class="java.lang.String" itemvalue="Python.calctime" />
-      <item index="2" class="java.lang.String" itemvalue="Python.QE_web_parser" />
-      <item index="3" class="java.lang.String" itemvalue="Python.cluster_temp_plot" />
-      <item index="4" class="java.lang.String" itemvalue="Python.cluster_temp_plot2" />
+      <item index="0" class="java.lang.String" itemvalue="Python.Batch009 Script" />
+      <item index="1" class="java.lang.String" itemvalue="Python.Batch010 Script" />
+      <item index="2" class="java.lang.String" itemvalue="Python.email_test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
+      <item index="4" class="java.lang.String" itemvalue="Python.wtf" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.cluster_temp_plot2" />
-        <item index="1" class="java.lang.String" itemvalue="Python.cluster_temp_plot" />
-        <item index="2" class="java.lang.String" itemvalue="Python.QE_web_parser" />
-        <item index="3" class="java.lang.String" itemvalue="Python.calctime" />
-        <item index="4" class="java.lang.String" itemvalue="Python.make_table" />
+        <item index="0" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
+        <item index="1" class="java.lang.String" itemvalue="Python.wtf" />
+        <item index="2" class="java.lang.String" itemvalue="Python.Batch010 Script" />
+        <item index="3" class="java.lang.String" itemvalue="Python.email_test" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Batch009 Script" />
       </list>
     </recent_temporary>
   </component>
@@ -559,23 +620,23 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15520833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18385416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25264272" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25792813" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -614,57 +675,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="28" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/GB Genie Classes/geometry.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GB Genie Classes/utilities.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/MakeSummaryFiles.py" />
-    <entry file="file://C:/Anaconda3/Lib/site-packages/numpy/linalg/linalg.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="211" column="0" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/regextest.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/Testing.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/InAsSb superlattice.py" />
-    <entry file="file://C:/Anaconda3/Lib/genericpath.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/BatchZip.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/SpeedupCheck.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/Batch007 Script.py" />
-    <entry file="file://$PROJECT_DIR$/Scripts/StrainCell.py" />
-    <entry file="file://$PROJECT_DIR$/classes/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Scripts/cutoff script.py" />
     <entry file="file://$PROJECT_DIR$/Scripts/MakeCalcFile.py" />
     <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/pyplot.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -686,13 +701,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
           <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/Batch007 Script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -767,20 +775,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/calctime.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="129" column="18" selection-start-line="129" selection-start-column="18" selection-end-line="129" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing/QE_web_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -795,16 +789,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding>
-            <element signature="e#91#105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/pp.x input description.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -812,39 +796,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_allnodes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_scraper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="30" column="76" selection-start-line="30" selection-start-column="15" selection-end-line="30" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-            <element signature="e#254#1228#0" expanded="false" />
-            <element signature="e#1824#2085#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,18 +807,133 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/email.py">
+    <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+        <state relative-caret-position="289">
+          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/test qecalc report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/cutoff script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_allnodes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="39" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../Type II Superlattices/2016 MDA Type 2 SL/Ab-Initio/Superlattice/Batch009 - Faster2/ecutrho=80.0/slurm_jobscript.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/example_slurm2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/stringformat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch007 Script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/example_slurm_jobscript.sh.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch009 Script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/email/mime/multipart.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/Testing.py" />
+    <entry file="file://$PROJECT_DIR$/testing/email_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/scripts/wtf.py" />
+    <entry file="file://$PROJECT_DIR$/LICENSE.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="68">
+            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/scripts/InAsSb_bond_length.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#35#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -871,8 +941,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="255">
-            <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <first_editor relative-caret-position="425">
+            <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
@@ -885,63 +955,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py">
+    <entry file="file://$PROJECT_DIR$/classes/calctime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="50" column="28" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch010 Script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
-            <element signature="e#327#1271#0" expanded="false" />
-            <element signature="e#1309#1587#0" expanded="false" />
-            <element signature="e#1649#1888#0" expanded="false" />
+            <element signature="e#41#75#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feature_plan.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="272">
+            <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2192">
-          <caret line="172" column="50" selection-start-line="172" selection-start-column="50" selection-end-line="172" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <element signature="e#3160#5889#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="595">
+          <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing/test qecalc report.py">
+    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript1_3day_16core.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="646">
+          <caret line="47" column="59" selection-start-line="47" selection-start-column="59" selection-end-line="47" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript2_7day_32core.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/email.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
-            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="286" column="55" selection-start-line="286" selection-start-column="55" selection-end-line="286" selection-end-column="55" />
+        <state relative-caret-position="1054">
+          <caret line="380" column="26" selection-start-line="380" selection-start-column="26" selection-end-line="380" selection-end-column="26" />
           <folding>
-            <element signature="e#139#148#0" expanded="true" />
-            <element signature="e#1415#3745#0" expanded="false" />
-            <element signature="e#3791#4154#0" expanded="false" />
-            <element signature="e#4206#5002#0" expanded="false" />
-            <element signature="e#5073#8471#0" expanded="false" />
-            <element signature="e#8531#12589#0" expanded="false" />
-            <element signature="e#13740#17453#0" expanded="false" />
-            <element signature="e#17536#21683#0" expanded="false" />
-            <element signature="e#21727#23693#0" expanded="false" />
-            <element signature="e#23773#24095#0" expanded="false" />
-            <element signature="e#24232#24953#0" expanded="false" />
-            <element signature="e#25037#26082#0" expanded="false" />
-            <element signature="e#26164#26795#0" expanded="false" />
-            <element signature="e#26871#27989#0" expanded="false" />
-            <element signature="e#28061#28844#0" expanded="false" />
-            <element signature="e#31497#38052#0" expanded="false" />
-            <element signature="e#38090#38551#0" expanded="false" />
+            <element signature="e#157#175#0" expanded="true" />
+            <element signature="e#1733#4192#0" expanded="false" />
+            <element signature="e#4238#4601#0" expanded="false" />
+            <element signature="e#4653#5449#0" expanded="false" />
+            <element signature="e#5520#9432#0" expanded="false" />
+            <element signature="e#9497#14057#0" expanded="false" />
+            <element signature="e#14226#14610#1" expanded="false" />
+            <element signature="e#18234#22085#0" expanded="false" />
+            <element signature="e#22168#26322#0" expanded="false" />
+            <element signature="e#26366#28332#0" expanded="false" />
+            <element signature="e#28412#28734#0" expanded="false" />
+            <element signature="e#28871#29592#0" expanded="false" />
+            <element signature="e#29676#30855#0" expanded="false" />
+            <element signature="e#30937#31702#0" expanded="false" />
+            <element signature="e#31778#33030#0" expanded="false" />
+            <element signature="e#33102#34019#0" expanded="false" />
+            <element signature="e#34102#35504#0" expanded="false" />
+            <element signature="e#35697#36573#0" expanded="false" />
+            <element signature="e#36642#43197#0" expanded="false" />
+            <element signature="e#43235#43696#0" expanded="false" />
+            <element signature="e#43768#45608#0" expanded="false" />
+            <element signature="e#45638#47258#0" expanded="false" />
+            <element signature="e#47305#48289#0" expanded="false" />
+            <element signature="e#48405#52562#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>

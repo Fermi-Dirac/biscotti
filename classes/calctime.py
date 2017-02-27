@@ -99,9 +99,12 @@ class CalcTime(object):
             startdt = dt.datetime.strptime(dtstring, startson_dtformat)
 
             end_dt_result = re.search(endtime_regex, filestring)
-            dtsplit = end_dt_result.group(0).split('  ')
-            dtstring = dtsplit[0].replace(' ', '0') + '  ' + dtsplit[1]
-            enddt = dt.datetime.strptime(dtstring, ends_dtformat)
+            if end_dt_result:
+                dtsplit = end_dt_result.group(0).split('  ')
+                dtstring = dtsplit[0].replace(' ', '0') + '  ' + dtsplit[1]
+                enddt = dt.datetime.strptime(dtstring, ends_dtformat)
+            else:
+                enddt = dt.datetime.max
 
         return CalcTime(startdt, enddt, timedict, subprocdict, procorder)
 
