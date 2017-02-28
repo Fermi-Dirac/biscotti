@@ -15,6 +15,7 @@ logger.addHandler(console_handler)
 try:
     import matplotlib.pyplot as plt
     has_mpl = True
+    plt.style.use('fivethirtyeight')
 except ImportError:
     logger.error("Cannot load matplotlib! Plotting disabled")
     has_mpl = False
@@ -35,6 +36,7 @@ class CalcTime(object):
 
     @staticmethod
     def get_time(outputfile):
+        logger.debug("Starting calctime.get_time on " + outputfile)
         regexstart = r'[ ]*init_run[\s\:]+[0-9\.s]+'
         regexend = r'This run was terminated on:[\s]+'
         startson_dtformat = '%d%b%Y at %H:%M:%S'
@@ -61,7 +63,7 @@ class CalcTime(object):
             procorder = [subprockey]
             for row in rows:
                 logger.debug("Now on row: " + row)
-                if row is '':
+                if row.strip() is '':
                     subprockey = None
                 else:
                     keyresult = re.search(r'Called by [A-Za-z\*_]+', row)

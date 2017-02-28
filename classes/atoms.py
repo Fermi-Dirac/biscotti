@@ -4,21 +4,13 @@ import os
 import logging
 # Logging level by default
 logger = logging.getLogger(__name__)
-loglevel = logging.INFO
+loglevel = logging.DEBUG
 logger.setLevel(loglevel)
-
-# Handler
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)
-
-#formatter
 formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
-
-# add handler
 logger.addHandler(console_handler)
-
-# logging.basicConfig(level=logging.DEBUG, format='%(name)s - %(levelname)s - %(message)s')
 # End logging.
 
 class Atom(object):
@@ -83,52 +75,48 @@ class AtomicStructure(object):
     @staticmethod
     def from_QEinput(inputpath):
         # this extracts the atomic structures from the pw.x input file
-        regexlist = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS']
-        with open(inputpath) as fileobj:
-            lineslist = fileobj.readlines()
-            speciesdict = {}
-            atomsdir = []
-            atomscart = []
-            lattice = np.identity(3)
-            for i, line in enumerate(lineslist):
-                for regcount, regex in enumerate(regexlist):
-                    searchresult = re.findall(regex, line)
-                    if searchresult: # not empty...
-                        logger.debug("Found regex match of line: " + line)
-                        if regcount == 0:
-                            logger.debug("Matching lattice:")
-                            for j in range(3):
-                                logger.debug(lineslist[i+j+1])
-                                lattice[j] = np.array(lineslist[i+j+1].split()).astype(float)
-                            logger.info("Lattice vectors found as\n" + '\n'.join([str(lat) for lat in lattice]))
-                        elif regcount == 1:
-                            logger.info("Getting species masses")
-                            offset = 1
-                            nextline = lineslist[i+offset]
-                            while 'ATOMIC_POSITIONS' not in nextline:
-                                species = nextline.split()
-                                logger.debug("Next species is " + str(species))
-                                speciesdict[species[0]] = species[1]
-                                offset += 1
-                                nextline = lineslist[i+offset]
-                            logger.info("species are " + str(speciesdict))
-                        elif regcount == 2:
-                            logger.info('Getting atomic positions')
-                            offset = 1
-                            nextline = lineslist[i+offset]
-                            while 'K_POINTS' not in nextline:
-                                newatom = nextline.split()
-                                logger.debug('Found new atom string ' + str(newatom))
-                                logger.debug('Next atom is: ' + str(newatom))
-                                atomsdir.append(Atom(newatom[0], np.array(newatom[1:4]).astype(float), mass = speciesdict[newatom[0]]))
-                                atomscart.append(Atom(newatom[0], np.dot(np.array(newatom[1:4]).astype(float), lattice), mass = speciesdict[newatom[0]]))
-                                offset += 1
-                                nextline = lineslist[i+offset]
-        return AtomicStructure(os.path.split(inputpath)[1], lattice[0], lattice[1], lattice[2], atomscart)
+        logger.info("Now importing atomic structures from " + inputpath)
+        with open(inputpath, 'r') as fileobj:
+            filestring = fileobj.read()
+            # Now to find the steplist of Atomic Positions and Lattices
+            regex_cellparam = r'CELL_PARAMETERS.+(\n[ ]*[0-9\-\. ]+){3}'
+            # Literal CELL_PARAMETERS, then anything followed by newline, then 3 sets of 3 sets of floats and spaces
+            cellparam_match = re.search(regex_cellparam, filestring)
+            if cellparam_match:
+                logger.debug("Found CELL_PARAMETERS card")
+                lattice = []
+                latticelist = cellparam_match.group().split('\n')
+                for i in range(3):
+                    lattice.append(np.array(latticelist[i + 1].split()).astype(float))
+                logger.debug("Lattice is: " + str(lattice))
+            else:
+                logger.error("No CELL_PARAMETERS card")
+                lattice = np.identity(3) #TODO account for situations ibrav != 0
+            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\-\. ]+)+'
+            # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
+            atompos_match = re.search(regex_atompos, filestring)
+            if not atompos_match:
+                logger.error("No atoms found?")
+            else:
+                atomlist = atompos_match.group(0).split('\n')
+                atomlist.pop(0)  # the first element is 'ATOMIC_POSITIONS' stuff
+                atoms = []
+                for atomstr in atomlist:
+                    logger.debug("Now parsing new atom string: " + atomstr)
+                    if atomstr == 'End final coordinates':
+                        break
+                    newpos = np.array(atomstr.split()[1:]).astype(float)
+                    newspec = atomstr.split()[0]
+                    newatom = Atom(newspec, np.dot(newpos, lattice)) # Project from Crystal to Cartesean
+                    logger.debug("\tNew atom " + str(newatom))
+                    atoms.append(newatom)
+                logger.debug("Added " + str(len(atoms)) + " atoms for this structure")
+        logger.info(">>\tImport of structure from QE Input file complete!\t<<")
+        return AtomicStructure(os.path.split(inputpath)[1], lattice[0], lattice[1], lattice[2], np.array(atoms))
 
     @staticmethod
     def from_QEOutput(QEoutputfile):
-        # parses a pw.x quantum espresso output file and returns the atomic structure
+        # parses a pw.x quantum espresso output file and returns the atomic structures
         structs = []  # Array of all structures
 
         # Parse through the output file to find the atomic structures
@@ -147,24 +135,28 @@ class AtomicStructure(object):
             lattice = []
             if not vcrelaxmatch:
                 logger.info("Fixed unit cell detected")
+                alat = float(re.search(r'lattice parameter \(alat\).+=[ ]+[0-9\.]+', filestring).group(0).split('=')[1].strip())
+                alat = alat*0.529177249  # Convert from stupid Bohr's to ansgtroms
+                # Ok thats nuts, but i'm finding the lattice parameter alat line, then stripping out the number.
                 starti = re.search(r'crystal axes', filestring).start()
                 latticelist = filestring[starti:starti+400].split('\n')
                 logger.debug(str(latticelist))
                 for i in range(3):
-                    lattice.append(np.array(latticelist[i+1].split()[3:6]).astype(float))
+                    lattice.append(np.array(latticelist[i+1].split()[3:6]).astype(float) * alat)
                     # string looks like: a(1) = (   6.189404   0.000000   0.000000 )
+                    # scaling by 'alat'
                 logger.debug("Fixed lattice is " + str(lattice))
             else:
                 logger.info("Variable unit cell detected")
 
             # Now to find the steplist of Atomic Positions and Lattices
             if vcrelaxmatch:
-                regex_cellparam = r'CELL_PARAMETERS.+(\n[ ]+[0-9\. ]+){3}'
+                regex_cellparam = r'CELL_PARAMETERS.+(\n[ ]+[0-9\-\. ]+){3}'
                 # Literal CELL_PARAMETERS, then anything followed by newline, then 3 sets of 3 sets of floats and spaces
                 cellparam_matches = list(re.finditer(regex_cellparam, filestring))
                 logger.debug("Found " + str(len(cellparam_matches)) + " lattice matches")
 
-            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\. ]+)+'
+            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\-\. ]+)+'
             # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
             atompos_matches = list(re.finditer(regex_atompos, filestring))
             if len(atompos_matches) < 1:

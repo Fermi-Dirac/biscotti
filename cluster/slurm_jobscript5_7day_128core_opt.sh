@@ -1,10 +1,10 @@
 #!/bin/env python3
 #
-#SBATCH --job-name=7dy32cre
+#SBATCH --job-name=opt128cre
 #SBATCH --output=slurmout.txt
 #SBATCH --partition=bigmem
 #
-#SBATCH --ntasks=32
+#SBATCH --ntasks=128
 #SBATCH --time=167:30:00
 #SBATCH --mem-per-cpu=MaxMemPerNode
 
@@ -38,7 +38,7 @@ if has_email:
     print("Email sent!")
 
 # Begin pw.x call
-subpr.call('mpirun -np 32 --map-by core --bind-to core pw.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
+subpr.call('mpirun -np 128 --map-by core --bind-to core pw.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
 
 # Email at end
 if has_email:

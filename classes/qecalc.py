@@ -19,7 +19,7 @@ import hashlib
 import logging
 # Setup a logger
 logger = logging.getLogger(__name__)
-loglevel = logging.INFO
+loglevel = logging.INFO  # <---- Logger Level
 logger.setLevel(loglevel)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)
@@ -30,6 +30,7 @@ logger.addHandler(console_handler)
 try:
     import matplotlib.pyplot as plt
     has_mpl = True
+    plt.style.use('fivethirtyeight')
 except ImportError:
     logger.error("Cannot load matplotlib! Plotting disabled")
     has_mpl = False
@@ -177,7 +178,7 @@ class QECalcIn(object):
                     logger.error("Warning, Pseudopotential not specified for " + spec)
                     newfile.write(str(spec) + "  " + default_pseudos[spec][0] + "  " + default_pseudos[spec][1] + '\n')
             # Cell Parameters
-            newfile.write('CELL_PARAMETERS alat\n' \
+            newfile.write('CELL_PARAMETERS angstrom\n' \
                              + '  '.join([str(val) for val in self.structure.latticeA]) + '\n' \
                              + '  '.join([str(val) for val in self.structure.latticeB]) + '\n' \
                              + '  '.join([str(val) for val in self.structure.latticeC]) + '\n')
@@ -254,16 +255,16 @@ class QECalcIn(object):
                         value = int(value)  # must be an integer
                     logger.debug("New key value pair is: (" + key + " , " + str(value) + ") of type " + str(type(value)))
                     namelistdict[namelist][key] = value
-            logger.info("Input file Dictionaries found!")
+            logger.debug("All input file Dictionaries found!")
             # Now dictionaries are populated, need kpts and atomic species and pseduots
             pseudopots = odict()
             found = False
-            for line in filelist:
+            for line in filelist: # back to the top!
                 if line.strip() == 'ATOMIC_SPECIES':
                     found = True
-                elif line[0:16] == "ATOMIC_POSITIONS":
-                    found = False
-                    break
+                elif line.strip()[0:8] in cardlists: # Found another cardlist
+                    if found is True:
+                        break # We already have all atomic species then
                 elif found:
                     logger.debug("Found pesudopot entry " + line)
                     linesplit = line.split()
@@ -438,9 +439,10 @@ class QECalcOut(object):
                     break
         if inpath is None: # still..
             logger.error("No input files found!")
-
-        self.qecalcin = QECalcIn.import_from_file(inpath)
-        self.initialstructure = self.qecalcin.structure
+        else:
+            self.qecalcin = QECalcIn.import_from_file(inpath)
+            self.initialstructure = self.qecalcin.structure
+            self.name = self.qecalcin.name
 
         # Structurelist derived attributes
         if self.qecalcin.control['calculation'] == 'scf':
@@ -591,7 +593,7 @@ class QECalcOut(object):
         values = [self.ID,
                   self.filename,
                   self.folder,
-                  self.qecalcin.control['title'],
+                  self.qecalcin.name,
                   self.qecalcin.control['calculation'],
                   self.final_energy,
                   dE,
@@ -612,15 +614,21 @@ class QECalcOut(object):
                   ]
         return odict(zip(keys, values))
 
-    def calc_overview_string(self, add_headers = True, delim = '\t'):
+    def calc_overview_string(self, add_headers = True, delim = '\t', transpose = False):
         returnstring = ''
         summary_dict = self.calc_overview_dict()
-        if add_headers:
-            for key in summary_dict:
-                returnstring += key + delim
-            returnstring += '\n'
-        for value in summary_dict.items():
-            returnstring += str(value) + delim
+        if transpose:
+            for key, value in summary_dict.items():
+                if add_headers:
+                    returnstring += key + ":" + delim
+                returnstring += str(value) + '\n\r'
+        else:
+            if add_headers:
+                for key in summary_dict:
+                    returnstring += key + delim
+                returnstring += '\n'
+            for value in summary_dict.values():
+                returnstring += str(value) + delim
         return returnstring
 
     def __str__(self):
@@ -650,33 +658,24 @@ class QECalcOut(object):
             scaledenergies.append([(estep-refenergy)*scale for estep in ionstep])
         return scaledenergies
 
-    def plot_ion_energies(self, axes=None, free_energy=False, unit='Ry'):
+    def plot_ion_energies(self, axes=None, free_energy=False, unit='Ry', delta=False):
         if has_mpl is False:
             logger.error("Matplotlib dependency not loaded. Plotting disabled!")
             return None
         if axes is None:
             axes = plt.gca() # this is the 'matplotlib' axes class. NOT actual axes of a plot. Its a 'plot' thingy within a figure
-        fig = plt.gcf()
         energies_plotted = self.scale_energies(free_energy, unit)
-
-        ylabel = ('Free' if free_energy else 'Total') + ' Energy (' + unit + ')'
+        ylabel = ('Free' if free_energy else 'Total') + ' Energy (' + ('delta ' if delta else '') + unit + ')'
         # Create Ion Plot
         axes.set_xlabel('Ion Step #')
         axes.set_ylabel(ylabel)
         energies = [ionstep[-1] for ionstep in energies_plotted]
+        if delta:
+            delta_e = [0]
+            for i in range(len(energies)-1):
+                delta_e.append(energies[i] - energies[i+1])
+            energies = delta_e
         plotout = axes.plot(energies, linestyle = '-', marker='o', color='r')
-
-        # Create electron plot
-        # if electron_steps:
-        #     e_plot = fig.add_subplot(212) # 2 rows, 1 column, 2nd plot
-        #     e_plot.set_xlabel('Electron Step #')
-        #     e_plot.set_ylabel(ylabel)
-        #     i=0
-        #     for ionstep in energies_plotted:
-        #         steps = [step+i for step in range(len(ionstep))]
-        #         plt.plot(steps, ionstep, linestyle = '-', marker='o')
-        #         i+=len(ionstep)
-
         return plotout
 
     def plot_e_energies(self, axes=None, free_energy=False, unit='Ry'):
@@ -734,17 +733,12 @@ class QECalcOut(object):
             pass
         return table
 
-    def make_report(self, outputdir=None, reportname = None):
+    def plot_report(self, reportfig = None):
         if has_mpl is False:
             logger.error("Matplotlib dependency not loaded. Plotting disabled!")
             return None
-        if outputdir is None:
-            outputdir = os.path.abspath('')
-        if reportname is None:
-            reportname = self.initialstructure.name + " report.png"
-        # Make figure reference
-        reportfig = plt.figure()
-        # Ion axes
+        if reportfig is None:
+            reportfig = plt.figure()
         ion_axes = reportfig.add_subplot(2,1,1)
         self.plot_ion_energies(ion_axes, free_energy=True, unit='eV/atom')
         # electron axes
@@ -754,7 +748,17 @@ class QECalcOut(object):
         pl_size = reportfig.get_size_inches()
         scale = 1.5
         reportfig.set_size_inches(pl_size[0]*scale, pl_size[1]*scale)
+        return reportfig
 
+    def make_report(self, outputdir=None, reportname = None):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
+        if outputdir is None:
+            outputdir = os.path.abspath('')
+        if reportname is None:
+            reportname = self.initialstructure.name + " report.png"
+        reportfig = self.plot_report()
         reportfig.savefig(outputdir + os.path.sep + reportname)
         return outputdir + os.path.sep + reportname
 

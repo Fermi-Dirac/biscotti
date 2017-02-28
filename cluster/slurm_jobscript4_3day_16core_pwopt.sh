@@ -1,11 +1,11 @@
 #!/bin/env python3
 #
-#SBATCH --job-name=7dy32cre
+#SBATCH --job-name=opt16cre
 #SBATCH --output=slurmout.txt
-#SBATCH --partition=bigmem
+#SBATCH --partition=cluster
 #
-#SBATCH --ntasks=32
-#SBATCH --time=167:30:00
+#SBATCH --ntasks=16
+#SBATCH --time=71:30:00
 #SBATCH --mem-per-cpu=MaxMemPerNode
 
 import subprocess as subpr
@@ -34,11 +34,11 @@ else:
 if has_email:
     body = 'Your QE calculation' + input_file + ' began on ' + str(dt.datetime.now()) + \
            '\nThe full execution path is: \n' + os.path.abspath('')
-    email.send_mail(email_addr, 'Starting QE calculation ' + input_file, body)
+    email.send_mail(email_addr, 'Starting QE calculation: ' + input_file, body)
     print("Email sent!")
 
 # Begin pw.x call
-subpr.call('mpirun -np 32 --map-by core --bind-to core pw.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
+subpr.call('mpirun -np 16 --map-by core --bind-to core pw_opt.x -i ' + input_file + ' > ' + input_file + '.out', shell=True)
 
 # Email at end
 if has_email:
@@ -52,7 +52,7 @@ if has_email:
             email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end,
                             [input_file + ' report.png'])
         except Exception:
-            email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
+            email.send_mail(email_addr, 'QE calculation: ' + input_file + ' has ended', body_end)
     else:
         email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
     print("Email sent!")
