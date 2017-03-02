@@ -39,8 +39,9 @@ except ImportError:
 BUF_SIZE = 65536  # Hashing buffer size
 default_pseudos = {"In" : [114.818, "In.pbe-dn-kjpaw_psl.0.2.2.UPF"],
                    "As" : [74.9220,  "As.pbe-n-kjpaw_psl.0.2.UPF"],
-                   "Sb" : [121.6700,  "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]}
-#TODO Would be nice to have this kind of stuff in some sort of CONSTANTS library
+                   "Sb" : [121.6700,  "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]} # Default pseudopotentials
+cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS', 'ATOMIC_FORCES']
+# TODO Would be nice to have this kind of stuff in some sort of CONSTANTS library
 
 class QECalcIn(object):
     """
@@ -172,11 +173,11 @@ class QECalcIn(object):
             for spec in atomspec:
                 if spec in self.pseudopots:
                     # Then this pseudopot was listed
-                    newfile.write(str(spec) + "  " + self.pseudopots[spec][0] + "  " + self.pseudopots[spec][1] + '\n')
+                    newfile.write(str(spec) + "  " + str(self.pseudopots[spec][0]) + "  " + self.pseudopots[spec][1] + '\n')
                 else:
                     # This species did not have a pseudopot listed
                     logger.error("Warning, Pseudopotential not specified for " + spec)
-                    newfile.write(str(spec) + "  " + default_pseudos[spec][0] + "  " + default_pseudos[spec][1] + '\n')
+                    newfile.write(str(spec) + "  " + str(default_pseudos[spec][0]) + "  " + default_pseudos[spec][1] + '\n')
             # Cell Parameters
             newfile.write('CELL_PARAMETERS angstrom\n' \
                              + '  '.join([str(val) for val in self.structure.latticeA]) + '\n' \
@@ -211,82 +212,84 @@ class QECalcIn(object):
             logger.error("Error! file does not exist! checked :" + path)
             return QECalcIn()
         with open(path, 'r') as fileobj:
-            filelist = fileobj.readlines()
-            namelist = None
-            cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS', 'ATOMIC_FORCES']
-            cardlists = [card[:8] for card in cardlists] # truncate to first 8 char for quick compare
-            for line in filelist:
-                logger.debug("Now on line >" + line.strip() + "<")
-                if line.strip() == "":
-                    firstchar = '!'
-                    continue # Empty line
-                else:
-                    firstchar = line.strip()[0]
-                if firstchar is '!':
-                    continue # commented line
-                elif firstchar is '&':
-                    namelist = line.strip()[1:].upper() # skip the '&' symbol, demand uppercase convention for QE files
-                    logger.debug("New namelist: " + namelist)
-                    namelistdict[namelist] = odict()
-                elif firstchar is '/':
-                    key = None
-                elif line.strip()[0:8] in cardlists:
-                    logger.info("Found all namelist dictionaries, now looking for cards")
-                    break # Stop looking for dictionaries
-                else:
-                    logger.debug("Found a key value pair at line " + line.strip())
-                    # found a key-value pair
-                    # syntax is KEY = VALUE , ! comment
-                    key = line.split('=')[0].strip()
-                    value = line.split('=')[1].split(',')[0].strip()
-                    logger.debug("Untyped value is: " + str(value) + " with type " + str(type(value)))
-                    if value[0] == "'" :
-                        value = value[1:-1] # strip off the ' symbol
-                    elif value[0] == ".":
-                        if value == '.true.':
-                            value = True
-                        else:
-                            value = False
-                    elif '.' in value or 'e' in value: # must be float
-                        for exp in ["D","d","E"]:
-                            value = value.replace(exp, "e")
-                        value = float(value)
-                    else: # must be int
-                        value = int(value)  # must be an integer
-                    logger.debug("New key value pair is: (" + key + " , " + str(value) + ") of type " + str(type(value)))
-                    namelistdict[namelist][key] = value
-            logger.debug("All input file Dictionaries found!")
-            # Now dictionaries are populated, need kpts and atomic species and pseduots
-            pseudopots = odict()
-            found = False
-            for line in filelist: # back to the top!
-                if line.strip() == 'ATOMIC_SPECIES':
-                    found = True
-                elif line.strip()[0:8] in cardlists: # Found another cardlist
-                    if found is True:
-                        break # We already have all atomic species then
-                elif found:
-                    logger.debug("Found pesudopot entry " + line)
-                    linesplit = line.split()
-                    pseudopots[linesplit[0]] = [linesplit[1], linesplit[2]]
-                else:
-                    pass
-            # now for kpts
-            found = False
-            kptstring = ''
-            kptstype = ''
-            for line in filelist:
-                if line[0:8] == 'K_POINTS':
-                    kptstype = line[9:].strip()
-                    found = True
-                elif found:
-                    kptstring += line
-                else:
-                    pass
+            filestring = fileobj.read()
+        with open(path, 'r') as fileobj:
+            filelist = fileobj.readlines() # legacy, irritating i know. Could maybe replace with a .split('\n')?
+        namelist = None
+
+        cardlists_short = [card[:8] for card in cardlists] # truncate to first 8 char for quick compare
+        for line in filelist:
+            logger.debug("Now on line >" + line.strip() + "<")
+            if line.strip() == "":
+                firstchar = '!'
+                continue # Empty line
+            else:
+                firstchar = line.strip()[0]
+            if firstchar is '!':
+                continue # commented line
+            elif firstchar is '&':
+                namelist = line.strip()[1:].upper() # skip the '&' symbol, demand uppercase convention for QE files
+                logger.debug("New namelist: " + namelist)
+                namelistdict[namelist] = odict()
+            elif firstchar is '/':
+                key = None
+            elif line.strip()[0:8] in cardlists_short:
+                logger.info("Found all namelist dictionaries, now looking for cards")
+                break # Stop looking for dictionaries
+            else:
+                logger.debug("Found a key value pair at line " + line.strip())
+                # found a key-value pair
+                # syntax is KEY = VALUE , ! comment
+                key = line.split('=')[0].strip()
+                value = line.split('=')[1].split(',')[0].strip()
+                logger.debug("Untyped value is: " + str(value) + " with type " + str(type(value)))
+                if value[0] == "'" :
+                    value = value[1:-1] # strip off the ' symbol
+                elif value[0] == ".":
+                    if value == '.true.':
+                        value = True
+                    else:
+                        value = False
+                elif '.' in value or 'e' in value: # must be float
+                    for exp in ["D","d","E"]:
+                        value = value.replace(exp, "e")
+                    value = float(value)
+                else: # must be int
+                    value = int(value)  # must be an integer
+                logger.debug("New key value pair is: (" + key + " , " + str(value) + ") of type " + str(type(value)))
+                namelistdict[namelist][key] = value
+        logger.debug("All input file Dictionaries found!")
+        # Now dictionaries are populated, need kpts and atomic species and pseduots
+        # Find Pseudopotentials
+        regex_pseudo = r'ATOMIC_SPECIES.*(\n[ ]*[A-Z][a-z][0-9\. ].+)+'
+        pseudopots = odict()
+        pseudo_match = re.search(regex_pseudo, filestring)
+        if not pseudo_match:
+            logger.error("No pseudo-potentials found!")
+        else:
+            pseudo_strings = pseudo_match.group().split('\n')[1:] # strip first entry which is literal ATOMIC SPECIES
+            for pstr in pseudo_strings:
+                linesplit = pstr.split()
+                pseudopots[linesplit[0]] = [linesplit[1], linesplit[2]]
+            logger.info("Loaded " + str(len(pseudopots)) + ' pseudopotentials')
+        # now for kpts
+        regex_kpts = r''
+        found = False
+        kptstring = ''
+        kptstype = ''
+        for line in filelist:
+            if line[0:8] == 'K_POINTS':
+                kptstype = line[9:].strip()
+                found = True
+            elif found:
+                kptstring += line
+            else:
+                pass
         # Check existing namelists
         if 'calculation' in namelistdict['CONTROL']:
             calctype = namelistdict['CONTROL']['calculation']
             if calctype not in ['scf', 'nscf', 'bands', 'relax', 'md', 'vc-relax', 'vc-md']:
+                logger.info("flag 'calculation' not set to accepted list. Resetting to 'scf'")
                 calctype = 'scf'
                 namelistdict['CONTROL']['calculation'] = 'scf'
         else:
@@ -302,7 +305,6 @@ class QECalcIn(object):
             cell = namelistdict['CELL']
         else:
             cell = None
-
         return QECalcIn(os.path.split(path)[1], control, system, electrons, ions, cell
                         , Biscotti.AtomicStructure.from_QEinput(path)
                         , pseudopots
@@ -394,7 +396,7 @@ class QECalcIn(object):
 
 class QECalcOut(object):
     """ This class holds the results of a pw.x QE calculation. This one is very much under development"""
-    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, jobstatus = 'unknown' ):
+    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, pressure_list = None, jobstatus = 'unknown' ):
         """
 
         :param outpath: filepath for the quantum espresso output file
@@ -480,10 +482,11 @@ class QECalcOut(object):
             self.relax_list_free.append([estep - self.refenergy for estep in ionstep])
             self.relax_list_free_ev.append([(estep - self.refenergy)*13.605698066 for estep in ionstep])
 
-        # Final energies
+        # Final energies, stress and pressure
         self.final_energy = relax_list[-1][-1]
         self.formation_energy = self.relax_list_free_ev[-1][-1] # in eV
         self.ion_steps_count = len(self.relax_list)
+        self.pressure_list = pressure_list
 
         # Job Status
         self.jobstatus = jobstatus
@@ -562,7 +565,7 @@ class QECalcOut(object):
             print("number of ionic steps is " + str(ionstep))
             print("Here's the giant Relax steps" + str(RelaxationSteps))
             print("Final Energy: " + str(RelaxationSteps[-1][-1]))
-        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), jobstatus= completestring)
+        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), pressure_list = PressureList, jobstatus= completestring)
 
     def calc_overview_dict(self):
         refenergy = self.refenergy
@@ -589,6 +592,7 @@ class QECalcOut(object):
                    'Final Pressure(kbar)',
                    'Initial Volume (A^3)',
                    'Final Volume (A^3)',
+                'Final Pressure (kbar)'
                    ]
         values = [self.ID,
                   self.filename,
@@ -610,7 +614,8 @@ class QECalcOut(object):
                   self.enddt,
                   0,
                   self.initialstructure.totalvol(),
-                  self.finalstructure.totalvol()
+                  self.finalstructure.totalvol(),
+                  self.pressure_list[-1]
                   ]
         return odict(zip(keys, values))
 
@@ -763,10 +768,10 @@ class QECalcOut(object):
         return outputdir + os.path.sep + reportname
 
 def makeSummaryFile(rootpath=None, outputfile=None, delim = '\t') -> object:
+
+    """
     # This function finds all of the .out files from a path and subdirectories and then calls calcoverview-to-string
     # this gives a spreadsheet-like answer to a batch calculation
-    """
-
     :param rootpath: The absolute path to the folder which contains all subfoldeers and calculation files
     :param outputfile: name of the text file where delimited data will be stored
     :param delim: character which is used as a delimiter between fields.

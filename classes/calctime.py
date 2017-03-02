@@ -106,13 +106,14 @@ class CalcTime(object):
 
         return CalcTime(startdt, enddt, timedict, subprocdict, procorder)
 
-    def pie_charts(self, title = 'Calculation time breakdown', type = 'CPU'):
+    def pie_charts(self, type = 'CPU'):
         if not has_mpl:
             logger.error("Error, matplotlib not loaded!")
             return None
         timeindex = {'CPU': 0 , 'cpu': 0, 'WALL' : 1, 'wall' : 1, 'calls' : 2}
         if type not in timeindex:
             type = 'CPU'
+        title = type + ' time breakdown '
         fig = plt.figure()
         fig.suptitle(title, fontsize = 14, fontweight = 'bold')
         for i, subproc in enumerate(self.procorder):
@@ -128,7 +129,15 @@ class CalcTime(object):
                 plt.subplot(2, len(self.procorder) / 2 + 1, i + 1)
                 # fig = plt.figure(i+1)
                 # ax = fig.gca()
-                plt.pie(sizes, labels=labels, shadow=True, startangle=45, autopct='%1.1f %%')
+                siz_lab = sorted(zip(sizes, labels), key= lambda tup: tup[0], reverse = True)
+                logger.debug("New pie charge, sorted zip is: " + str(siz_lab))
+                pie_size = sum(sizes)
+                new_sizes, new_labels = map(list, zip(*[tup for tup in siz_lab if tup[0]/pie_size > 0.01])) # Unzip
+                if len(new_sizes) < len(sizes): # if we trimmed some
+                    other_size, other_labels = map(list, zip(*[tup for tup in siz_lab if tup[0] / pie_size < 0.01]))
+                    new_sizes.append(sum(other_size)/pie_size)
+                    new_labels.append('Others: ' + '\n'.join(other_labels))
+                plt.pie(new_sizes, labels=new_labels, shadow=True, startangle=45, autopct='%1.1f %%')
                 plt.axis('equal')
                 plt.title(subproc)
         return fig

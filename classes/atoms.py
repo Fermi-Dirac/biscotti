@@ -4,7 +4,7 @@ import os
 import logging
 # Logging level by default
 logger = logging.getLogger(__name__)
-loglevel = logging.DEBUG
+loglevel = logging.INFO
 logger.setLevel(loglevel)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)
@@ -14,7 +14,7 @@ logger.addHandler(console_handler)
 # End logging.
 
 class Atom(object):
-    def __init__(self, symbol='X', position = np.zeros(3), velocity = np.zeros(3), mass = 0):
+    def __init__(self, species='X', position = np.zeros(3), velocity = np.zeros(3), mass = 0):
         """
 
         :param symbol: Chemical symbol for this atomic species
@@ -22,15 +22,14 @@ class Atom(object):
         :param velocity: velocity in Angstrum per second
         :param mass: rest mass in Kg, allows for isotopes
         """
-        self.symbol = symbol
-        self.species = symbol # The letters of the thing
+        self.species = species # The letters of the thing
         self.position = np.array(position) # In cartesean coordinates, angstroms
         self.x, self.y, self.z = position # for quick reference
         self.velocity = velocity # in Angstrom / sec
         self.mass = mass # allows for isotopes
 
     def __str__(self):
-        returnstring = self.symbol + " at " + str(self.position)
+        returnstring = self.species + " at " + str(self.position)
         if not np.isclose(self.velocity, np.zeros(3)).all():
             returnstring += " with velocity " + str(self.velocity) + " A/s"
         # if self.mass != 0:
@@ -188,8 +187,8 @@ class AtomicStructure(object):
                     atoms.append(newatom)
                 logger.debug("Added " + str(len(atoms)) + " atoms for this structure")
                 structs.append(AtomicStructure(os.path.split(QEoutputfile)[1], lattice[0], lattice[1], lattice[2], np.array(atoms)))
-                logger.info("Now completing structure " + str(index+1) + " of " + str(len(atompos_matches)))
-        logger.info(">>\tImport of structure from QE Output file complete!\t<<")
+                logger.debug("Now completing structure " + str(index+1) + " of " + str(len(atompos_matches)))
+        logger.info("Import of structure from QE Output file complete! " + str(len(structs)) + " structures imported")
         return structs
 
     def totalatoms(self):
@@ -204,7 +203,7 @@ class AtomicStructure(object):
         :return: atomic structure grown in those directions
         """
         verbose = False # Debug flag
-        logger.info("   >Starting Supercell<\n")
+        logger.info("Expanding Supercell")
         newLatticeA = self.latticeA * latticefactors[0]
         newLatticeB = self.latticeB * latticefactors[1]
         newLatticeC = self.latticeC * latticefactors[2]
@@ -212,7 +211,7 @@ class AtomicStructure(object):
         newatomsdir = []
         newatomscart = []
         for atom in self.atomsdir:  # for each atom using the Direct lattice
-            logger.info("Expanding atom " + str(atom))
+            logger.debug("Expanding atom " + str(atom))
             newa = (atom.position[0] / latticefactors[0])
             for a in range(latticefactors[0]):
                 newx = newa + (a / latticefactors[0])
@@ -226,9 +225,10 @@ class AtomicStructure(object):
                         logger.debug(" New atom made! : " + str(newatom))
                         newatomsdir.append(newatom)
                         newatomscart.append(Atom(atom.species, np.array(np.dot(np.array([newx, newy, newz]), lattice))))
-            logger.info("Atom expanded, next!")
+            logger.debug("Atom expanded, next!")
 
         #have all the data collected! just create a new atomic structure now...
+        logger.info("Supercell created")
         return AtomicStructure(self.name + ' expanded', newLatticeA, newLatticeB, newLatticeC, newatomscart)
 
     def direct_to_cart(self, atomsdir = None):
