@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/batch_analysis.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/pw.x analysis.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/list all files.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/calctime.py" afterPath="$PROJECT_DIR$/classes/calctime.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/testing/MakeSummaryFiles.py" afterPath="$PROJECT_DIR$/reporting/MakeSummaryFiles.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,18 +22,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="calctime.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/calctime.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1173">
-              <caret line="177" column="19" selection-start-line="177" selection-start-column="19" selection-end-line="177" selection-end-column="19" />
-              <folding>
-                <element signature="e#1138#4770#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="batch_analysis.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/analysis/batch_analysis.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -77,30 +58,42 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
+            <state relative-caret-position="-199">
+              <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
-                <element signature="e#4497#4860#0" expanded="false" />
-                <element signature="e#4912#5708#0" expanded="false" />
-                <element signature="e#5779#9905#0" expanded="false" />
-                <element signature="e#15508#19009#0" expanded="false" />
-                <element signature="e#15508#15642#1" expanded="false" />
-                <element signature="e#19040#35965#0" expanded="false" />
-                <element signature="e#30857#31578#0" expanded="false" />
-                <element signature="e#33498#34750#0" expanded="false" />
-                <element signature="e#35512#35965#0" expanded="false" />
-                <element signature="e#37806#38682#0" expanded="false" />
-                <element signature="e#38751#45306#0" expanded="false" />
-                <element signature="e#45344#45805#0" expanded="false" />
-                <element signature="e#45877#47717#0" expanded="false" />
-                <element signature="e#47747#49367#0" expanded="false" />
-                <element signature="e#49414#50398#0" expanded="false" />
-                <element signature="e#50514#54671#0" expanded="false" />
+                <element signature="e#1505#3517#0" expanded="false" />
+                <element signature="e#3998#6482#0" expanded="false" />
+                <element signature="e#6528#6891#0" expanded="false" />
+                <element signature="e#6943#7739#0" expanded="false" />
+                <element signature="e#7810#11936#0" expanded="false" />
+                <element signature="e#12001#17363#0" expanded="false" />
+                <element signature="e#17556#20106#0" expanded="false" />
+                <element signature="e#20137#37062#0" expanded="false" />
+                <element signature="e#31954#32675#0" expanded="false" />
+                <element signature="e#34595#35847#0" expanded="false" />
+                <element signature="e#36609#37062#0" expanded="false" />
+                <element signature="e#38903#39779#0" expanded="false" />
+                <element signature="e#39848#46403#0" expanded="false" />
+                <element signature="e#46441#46902#0" expanded="false" />
+                <element signature="e#46974#48814#0" expanded="false" />
+                <element signature="e#48844#50464#0" expanded="false" />
+                <element signature="e#50511#51495#0" expanded="false" />
+                <element signature="e#51611#55768#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="slurm_jobscript_template.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript_template.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -127,7 +120,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/atoms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="341">
@@ -242,8 +235,8 @@
         <option value="$PROJECT_DIR$/analysis/pw.x analysis.py" />
         <option value="$PROJECT_DIR$/analysis/batch_analysis.py" />
         <option value="$PROJECT_DIR$/testing/list all files.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
       </list>
     </option>
   </component>
@@ -320,6 +313,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="reporting" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cluster" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -637,7 +644,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
+    <frame x="-7" y="0" width="1932" height="1047" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16701461" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -700,13 +707,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/colors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data/download_docs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1041,32 +1041,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
-          <folding>
-            <element signature="e#157#175#0" expanded="true" />
-            <element signature="e#4497#4860#0" expanded="false" />
-            <element signature="e#4912#5708#0" expanded="false" />
-            <element signature="e#5779#9905#0" expanded="false" />
-            <element signature="e#15508#19009#0" expanded="false" />
-            <element signature="e#15508#15642#1" expanded="false" />
-            <element signature="e#19040#35965#0" expanded="false" />
-            <element signature="e#30857#31578#0" expanded="false" />
-            <element signature="e#33498#34750#0" expanded="false" />
-            <element signature="e#35512#35965#0" expanded="false" />
-            <element signature="e#37806#38682#0" expanded="false" />
-            <element signature="e#38751#45306#0" expanded="false" />
-            <element signature="e#45344#45805#0" expanded="false" />
-            <element signature="e#45877#47717#0" expanded="false" />
-            <element signature="e#47747#49367#0" expanded="false" />
-            <element signature="e#49414#50398#0" expanded="false" />
-            <element signature="e#50514#54671#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reporting/make_table.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1118,6 +1092,42 @@
             <element signature="e#15892#16537#0" expanded="false" />
             <element signature="e#17089#17778#0" expanded="false" />
             <element signature="e#17846#19271#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript_template.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="e#157#175#0" expanded="true" />
+            <element signature="e#1505#3517#0" expanded="false" />
+            <element signature="e#3998#6482#0" expanded="false" />
+            <element signature="e#6528#6891#0" expanded="false" />
+            <element signature="e#6943#7739#0" expanded="false" />
+            <element signature="e#7810#11936#0" expanded="false" />
+            <element signature="e#12001#17363#0" expanded="false" />
+            <element signature="e#17556#20106#0" expanded="false" />
+            <element signature="e#20137#37062#0" expanded="false" />
+            <element signature="e#31954#32675#0" expanded="false" />
+            <element signature="e#34595#35847#0" expanded="false" />
+            <element signature="e#36609#37062#0" expanded="false" />
+            <element signature="e#38903#39779#0" expanded="false" />
+            <element signature="e#39848#46403#0" expanded="false" />
+            <element signature="e#46441#46902#0" expanded="false" />
+            <element signature="e#46974#48814#0" expanded="false" />
+            <element signature="e#48844#50464#0" expanded="false" />
+            <element signature="e#50511#51495#0" expanded="false" />
+            <element signature="e#51611#55768#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -41,6 +41,58 @@ default_pseudos = {"In" : [114.818, "In.pbe-dn-kjpaw_psl.0.2.2.UPF"],
                    "As" : [74.9220,  "As.pbe-n-kjpaw_psl.0.2.UPF"],
                    "Sb" : [121.6700,  "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]} # Default pseudopotentials
 cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS', 'ATOMIC_FORCES']
+slurm_template = """
+import subprocess as subpr
+import datetime as dt
+import os
+import sys
+pw_x_flags = '%(pw_x_flags)s'
+send_email = %(send_email)s
+email_addr = '%(email_addr)s'
+attach_report = %(attach_report)s
+
+try:
+    from biscotti.classes import qecalc
+except ImportError:
+    print("Cannot load qecalc")
+    attach_report = False
+try:
+    from biscotti.reporting import email
+except ImportError:
+    print("Cannot load email ")
+    send_email = False
+
+if len(sys.argv) > 1:
+    input_file = sys.argv[1]
+else:
+    input_file = [file for file in os.listdir() if os.path.splitext(file)[1] == '.in'][0] # Get first .in file
+# Email at start
+if send_email:
+    body = 'Your QE calculation' + input_file + ' began on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')
+    email.send_mail(email_addr, 'Starting QE calculation ' + input_file, body)
+    print("Email sent!")
+
+# Begin pw.x call
+subpr.call('mpirun -np %(num_cores)s --map-by core --bind-to core pw.x ' + pw_x_flags + ' -i ' + input_file + ' > ' + input_file + '.out', shell=True)
+
+# Email at end
+if send_email:
+    body_end = 'Your QE calculation' + input_file + ' ended on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')
+    if attach_report:
+        calcout = qecalc.QECalcOut.import_from_file(input_file + '.out', input_file)
+        body_end += '\\n\\n' + calcout.calc_overview_string(transpose=True)
+        try: # Just in case no Matplotlib got loaded, but qecalc loaded ok
+            calcout.make_report(reportname=input_file + ' report.png')
+            email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end,
+                            [input_file + ' report.png'])
+        except Exception:
+            email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
+    else:
+        email.send_mail(email_addr, 'QE calculation ' + input_file + ' has ended', body_end)
+    print("Email sent!")
+print("Slurm job complete!")
+"""
+
 # TODO Would be nice to have this kind of stuff in some sort of CONSTANTS library
 
 class QECalcIn(object):
@@ -327,7 +379,7 @@ class QECalcIn(object):
                         , pseudopots
                         , kpts)
 
-    def write_slurm_jobscript(self, folder=None, infile = None, slurm_dict = None,
+    def write_slurm_jobscript(self, folder=None, infile = None, slurm_dict = None, pw_x_flags = '',
                               send_email=True, email_addr='', attach_report=True):
         """
         Generate a SLURM jobscript file with associated flags. Also supports post-job reporting and email notification
@@ -337,68 +389,54 @@ class QECalcIn(object):
         else:
             if not os.path.exists(folder):
                 os.makedirs(folder)
-        if infile is None:
-            infile = [file for file in os.listdir() if os.path.splitext(file)[1] == '.in'][0]
+        # if infile is None:
+        #     infiles = [file for file in os.listdir(folder) if os.path.splitext(file)[1] == '.in']
+        #     if len(infiles) > 1:
+        #         infile = infiles[0]
+        #     else:
+        #         logger.error("Cannot find .in file within " + folder)
         if slurm_dict is None:
-            try:
-                max_seconds = self.control['max_seconds'] + 60 * 5  # add 5minutes so QE cancels before SLURM
-            except:
-                max_seconds = 60 * 60  # Default is 1 hour
-            time = "%02d:%02d:%02d" % (max_seconds / (60 * 60), (max_seconds / (60)) % 60, max_seconds % 60)
-            flags = ['job-name', 'output', 'ntasks', 'time', 'mem-per-cpu']
-            values = [self.name[-8:], 'slurmout.txt', '16', time, 'MaxMemPerNode']
-            slurm_dict = odict(zip(flags, values))
-        # Set SLURM parameters
+            slurm_dict = odict()
 
-        slurm_template = "#!/bin/env python3\n"
+        default_keys = ['job-name', 'output', 'partition', 'ntasks', 'time', 'mem-per-cpu']
+        default_values = ['default','slurmout.txt', 'cluster', 1, '01:00:00', 'MaxMemPerNode']
+        for key, val in zip(default_keys, default_values):
+            slurm_dict.setdefault(key, val)
+        try:
+            max_seconds = self.control['max_seconds'] + 60 * 5  # add 5minutes so QE cancels before SLURM
+            slurm_dict['time'] = "%02d:%02d:%02d" % (max_seconds / (60 * 60), (max_seconds / (60)) % 60, max_seconds % 60)
+        except KeyError:
+            logger.debug("Calculation time not set from .in file")
+        num_cores = slurm_dict['ntasks']
+
+        slurm_file = "#!/bin/env python3"
         for key, value in slurm_dict.items():
-            slurm_template += '#SBATCH --' + key + "=" + value + "\n"
-        slurm_template += ("import subprocess as subpr\n" + "import datetime as dt\n" + "import os, sys\n")
-        email_start_template =(
-            "\n\n# Email at start"
-            "\nbody = 'Your QE calculation %(jobname)s began on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')"
-            "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has started', body)"
-        )
-        pw_x_template = (
-            "\n\n# Begin pw.x call"
-            "\nsubpr.call('mpirun -np %(num_cores)s pw.x -i %(infile)s > %(infile)s.out', shell=True)"
-        )
-        email_end_template = (
-            "\n\n# Email at end"
-            "\nbody_end = 'Your QE calculation %(jobname)s ended on ' + str(dt.datetime.now()) + '\\nThe full execution path is: \\n' + os.path.abspath('')"
-        )
-        email_report_template =(
-            "\ncalcout = qecalc.QECalcOut.import_from_file('%(infile)s.out', '%(infile)s')"
-            "\ncalcout.make_report(reportname='%(jobname)s report.png')"
-            "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has ended', body_end, ['%(jobname)s report.png'])"
-        )
-        email_noreport_template = "\nemail.send_mail('%(email_addr)s', 'QE calculation %(jobname)s has ended', body_end)"
+            slurm_file += '\n#SBATCH --' + key + "=" + value
+        slurm_file += '\n'
+        slurm_file += slurm_template % locals()
 
         with open(folder + os.path.sep + 'slurm_jobscript.sh', 'w', newline='\n') as fileobj:
-
-            fileobj.write(slurm_template % locals())
-
+            fileobj.write(slurm_file)
             # Only load biscotti if emailing or reporting is on
-            if send_email:
-                fileobj.write("\nfrom biscotti.reporting import email\n")
-            if report:
-                fileobj.write("\nfrom biscotti.classes import qecalc")
-
-            # Email at start
-            if send_email:
-                fileobj.write(email_start_template % locals())
-
-            # pw.x parameters
-            fileobj.write(pw_x_template % locals())
-
-            # End email and reporting
-            if send_email:
-                fileobj.write(email_end_template % locals())
-                if report:
-                    fileobj.write(email_report_template % locals())
-                else:
-                    fileobj.write(email_noreport_template % locals())
-            fileobj.write("\nsubpr.call('python script complete!', shell=True)")
+            # if send_email:
+            #     fileobj.write("\nfrom biscotti.reporting import email\n")
+            # if report:
+            #     fileobj.write("\nfrom biscotti.classes import qecalc")
+            #
+            # # Email at start
+            # if send_email:
+            #     fileobj.write(email_start_template % locals())
+            #
+            # # pw.x parameters
+            # fileobj.write(pw_x_template % locals())
+            #
+            # # End email and reporting
+            # if send_email:
+            #     fileobj.write(email_end_template % locals())
+            #     if report:
+            #         fileobj.write(email_report_template % locals())
+            #     else:
+            #         fileobj.write(email_noreport_template % locals())
             fileobj.write("\n\n")
 
 class QECalcOut(object):
