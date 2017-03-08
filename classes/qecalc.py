@@ -91,7 +91,9 @@ class QECalcIn(object):
         else:
             self.pseudopots = odict(pseudopots)
         if kpts is None:
-            self.kpts = ['automatic', np.array([1, 1, 1, 0, 0, 0])] # kpts by Type and then Thing which is what goes underneath. Likely a list, or a list of lists, or the string Gamma
+            self.kpts = {'type' : 'automatic',  # Can be also gamma, tpiba, crystal, and subsets
+                         'grid' : np.array([1, 1, 1]),
+                         'offset' : np.array([0, 0, 0])}
         else:
             self.kpts = kpts
 
@@ -191,12 +193,15 @@ class QECalcIn(object):
                                                                     + "  " + str(atom.z) for atom in self.structure.atomsdir]) \
                          + '\n')
             kptsstring = ''
-            if type(self.kpts[1]) is str:
-                kptsstring = self.kpts[1]
-            if type(self.kpts[1]) is np.array:
-                for val in self.kpts[1]:
-                    kptsstring +=  "%d" % val + " "
-            newfile.write("K_POINTS " + str(self.kpts[0]) + '\n' + kptsstring)
+            if self.kpts['type'] == 'automatic':
+                kptsstring = 'KPOINTS automatic\n' \
+                             + '  '.join([str(val) for val in self.kpts['grid']]) + '  ' \
+                             + '  '.join([str(val) for val in self.kpts['offset']])
+            elif self.kpts['type'] == 'gamma':
+                kptsstring = 'KPOINTS gamma'
+            else:
+                logger.error("Not yet implemented! non-automatic k-pt grids")
+            newfile.write(kptsstring)
             logger.info('File writing complete!')
         return newfile
 
@@ -218,6 +223,7 @@ class QECalcIn(object):
         namelist = None
 
         cardlists_short = [card[:8] for card in cardlists] # truncate to first 8 char for quick compare
+
         for line in filelist:
             logger.debug("Now on line >" + line.strip() + "<")
             if line.strip() == "":
@@ -273,19 +279,30 @@ class QECalcIn(object):
                 pseudopots[linesplit[0]] = [linesplit[1], linesplit[2]]
             logger.info("Loaded " + str(len(pseudopots)) + ' pseudopotentials')
         # now for kpts
-        regex_kpts = r''
+        regex_kpts = r'K_POINTS.+'
         found = False
         kptstring = ''
         kptstype = ''
+        kpts = {}
         for line in filelist:
             if line[0:8] == 'K_POINTS':
-                kptstype = line[9:].strip()
+                kptstype = line[9:].split()[0]
                 found = True
             elif found:
-                kptstring += line
+                if line[0:8] in cardlists_short:
+                    break # End loop, found a new cardlist
+                else:
+                    kptstring += line
             else:
                 pass
+        kpts['type'] = kptstype
+        if kptstype == 'automatic':
+            grid_offset = kptstring.split()
+            kpts['grid'] = np.array(grid_offset[0:3])
+            kpts['offset'] = np.array(grid_offset[3:])
+
         # Check existing namelists
+
         if 'calculation' in namelistdict['CONTROL']:
             calctype = namelistdict['CONTROL']['calculation']
             if calctype not in ['scf', 'nscf', 'bands', 'relax', 'md', 'vc-relax', 'vc-md']:
@@ -308,22 +325,12 @@ class QECalcIn(object):
         return QECalcIn(os.path.split(path)[1], control, system, electrons, ions, cell
                         , Biscotti.AtomicStructure.from_QEinput(path)
                         , pseudopots
-                        , [kptstype, kptstring])
+                        , kpts)
 
     def write_slurm_jobscript(self, folder=None, infile = None, slurm_dict = None,
-                              send_email=True, email_addr='', report=True):
+                              send_email=True, email_addr='', attach_report=True):
         """
         Generate a SLURM jobscript file with associated flags. Also supports post-job reporting and email notification
-        :param folder:
-        :param jobscript_name:
-        :param infile:
-        :param num_cores:
-        :param partition:
-        :param email_start:
-        :param email_end:
-        :param email_addr:
-        :param report:
-        :return:
         """
         if folder is None:
             folder = os.getcwd()
@@ -578,6 +585,8 @@ class QECalcOut(object):
         iondE = -1
         if len(self.relax_list) > 1:
             iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
+        if len(self.pressure_list) < 1:
+            self.pressure_list = [0]
         keys = ['ID', 'Filename', 'Folder','Title','Calc Type',
                 'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
                    'Final Free Energy (eV)',
@@ -780,11 +789,17 @@ def makeSummaryFile(rootpath=None, outputfile=None, delim = '\t') -> object:
     if rootpath is None:
         rootpath = os.getcwd()
     logger.info("Creating summary file for root path: " + rootpath)
-    # alloutputfiles = [y for x in os.walk(rootpath) for y in glob(os.path.join(x[0], '*.out'))] obfuscated code
     alloutputfiles = []
+    for folder in os.walk(rootpath):
+        for file in os.listdir(folder[0]):
+            if file.endswith('out'):
+                alloutputfiles.append(folder[0] + os.sep + file)
+
     for folder in os.walk(rootpath):
         for file in glob(os.path.join(folder[0], '*.out')):
             alloutputfiles.append(file)
+    if len(alloutputfiles) < 1:
+        logger.warning("No .out files found in " + rootpath)
     if outputfile is None:
         outputfile = os.path.join(rootpath, 'Summary for ' + os.path.split(rootpath)[1] + '.tsv')
 

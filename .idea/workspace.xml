@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/batch_analysis.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/pw.x analysis.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/list all files.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/calctime.py" afterPath="$PROJECT_DIR$/classes/calctime.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reporting/BatchZip.py" afterPath="$PROJECT_DIR$/reporting/BatchZip.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/debug qecalc.py" afterPath="$PROJECT_DIR$/testing/debug qecalc.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/testing/MakeSummaryFiles.py" afterPath="$PROJECT_DIR$/reporting/MakeSummaryFiles.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,8 +32,84 @@
       <file leaf-file-name="calctime.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/calctime.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="1173">
+              <caret line="177" column="19" selection-start-line="177" selection-start-column="19" selection-end-line="177" selection-end-column="19" />
+              <folding>
+                <element signature="e#1138#4770#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="batch_analysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/batch_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pw.x analysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/pw.x analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="list all files.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testing/list all files.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="15" column="50" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
+              <folding>
+                <element signature="e#157#175#0" expanded="true" />
+                <element signature="e#4497#4860#0" expanded="false" />
+                <element signature="e#4912#5708#0" expanded="false" />
+                <element signature="e#5779#9905#0" expanded="false" />
+                <element signature="e#15508#19009#0" expanded="false" />
+                <element signature="e#15508#15642#1" expanded="false" />
+                <element signature="e#19040#35965#0" expanded="false" />
+                <element signature="e#30857#31578#0" expanded="false" />
+                <element signature="e#33498#34750#0" expanded="false" />
+                <element signature="e#35512#35965#0" expanded="false" />
+                <element signature="e#37806#38682#0" expanded="false" />
+                <element signature="e#38751#45306#0" expanded="false" />
+                <element signature="e#45344#45805#0" expanded="false" />
+                <element signature="e#45877#47717#0" expanded="false" />
+                <element signature="e#47747#49367#0" expanded="false" />
+                <element signature="e#49414#50398#0" expanded="false" />
+                <element signature="e#50514#54671#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="make_table.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reporting/make_table.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -40,8 +118,8 @@
       <file leaf-file-name="BatchZip.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+            <state relative-caret-position="323">
+              <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -53,7 +131,7 @@
         <entry file="file://$PROJECT_DIR$/classes/atoms.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="341">
-              <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+              <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
                 <element signature="e#2565#3153#0" expanded="false" />
@@ -62,10 +140,9 @@
                 <element signature="e#10377#12121#0" expanded="false" />
                 <element signature="e#12178#12734#0" expanded="false" />
                 <element signature="e#12791#13461#0" expanded="false" />
-                <element signature="e#13529#15777#0" expanded="false" />
-                <element signature="e#15837#16482#0" expanded="false" />
-                <element signature="e#17034#17723#0" expanded="false" />
-                <element signature="e#17791#19216#0" expanded="false" />
+                <element signature="e#15892#16537#0" expanded="false" />
+                <element signature="e#17089#17778#0" expanded="false" />
+                <element signature="e#17846#19271#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -83,14 +160,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pymail.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
+      <file leaf-file-name="calc_analysis_email.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-              <folding>
-                <element signature="e#58#72#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -118,9 +193,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Scripts/MakeSummaryFiles.py" />
-        <option value="$PROJECT_DIR$/Scripts/regextest.py" />
-        <option value="$PROJECT_DIR$/Scripts/calc_time_analysis.py" />
         <option value="$PROJECT_DIR$/Scripts/QE_Calc_overview.py" />
         <option value="$PROJECT_DIR$/Scripts/QE_Calc_overview(by path).py" />
         <option value="$PROJECT_DIR$/Scripts/Testing.py" />
@@ -165,18 +237,20 @@
         <option value="$PROJECT_DIR$/__init__.py" />
         <option value="$PROJECT_DIR$/classes/__init__.py" />
         <option value="$PROJECT_DIR$/testing/debug qecalc.py" />
-        <option value="$PROJECT_DIR$/classes/calctime.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/reporting/BatchZip.py" />
+        <option value="$PROJECT_DIR$/classes/calctime.py" />
+        <option value="$PROJECT_DIR$/analysis/pw.x analysis.py" />
+        <option value="$PROJECT_DIR$/analysis/batch_analysis.py" />
+        <option value="$PROJECT_DIR$/testing/list all files.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="-7" />
+    <option name="width" value="1932" />
+    <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -231,6 +305,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="testing" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="reporting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -249,20 +337,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="biscotti" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="analysis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -271,59 +345,26 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="all&#9;null&#9;null&#10;glob&#9;FILE&#9;file://C:/Anaconda3/Lib/glob.py" />
+    <property name="SearchEverywhereHistoryKey" value="allout&#9;null&#9;null&#10;alloutput&#9;null&#9;null&#10;all&#9;null&#9;null&#10;glob&#9;FILE&#9;file://C:/Anaconda3/Lib/glob.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\reporting" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\cluster" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.debug qecalc">
-    <configuration default="false" name="Batch010 Script" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/no_git/Batches" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/Batches/Batch010 Script.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="email_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/email_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.batch_analysis">
     <configuration default="false" name="InAsSb_bond_length" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -341,23 +382,6 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="wtf" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/no_git/scripts" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/no_git/scripts/wtf.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
     <configuration default="false" name="debug qecalc" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -371,6 +395,57 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/debug qecalc.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="batch_analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/batch_analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="pw.x analysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/pw.x analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="list all files" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/list all files.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -521,19 +596,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Batch010 Script" />
-      <item index="1" class="java.lang.String" itemvalue="Python.email_test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
-      <item index="3" class="java.lang.String" itemvalue="Python.wtf" />
-      <item index="4" class="java.lang.String" itemvalue="Python.debug qecalc" />
+      <item index="0" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
+      <item index="1" class="java.lang.String" itemvalue="Python.debug qecalc" />
+      <item index="2" class="java.lang.String" itemvalue="Python.batch_analysis" />
+      <item index="3" class="java.lang.String" itemvalue="Python.pw.x analysis" />
+      <item index="4" class="java.lang.String" itemvalue="Python.list all files" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.debug qecalc" />
-        <item index="1" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
-        <item index="2" class="java.lang.String" itemvalue="Python.wtf" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Batch010 Script" />
-        <item index="4" class="java.lang.String" itemvalue="Python.email_test" />
+        <item index="0" class="java.lang.String" itemvalue="Python.batch_analysis" />
+        <item index="1" class="java.lang.String" itemvalue="Python.list all files" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pw.x analysis" />
+        <item index="3" class="java.lang.String" itemvalue="Python.debug qecalc" />
+        <item index="4" class="java.lang.String" itemvalue="Python.InAsSb_bond_length" />
       </list>
     </recent_temporary>
   </component>
@@ -562,26 +637,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18385416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16701461" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38847384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22945571" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -620,52 +695,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="45" />
+      <option name="time" value="47" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Scripts/test qecalc report.py" />
-    <entry file="file://C:/Anaconda3/Lib/smtplib.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/relaxation.png" />
-    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/artist.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="855" column="0" selection-start-line="855" selection-start-column="0" selection-end-line="855" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/table.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="567" column="0" selection-start-line="567" selection-start-column="0" selection-end-line="567" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/axes/_axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="5683" column="0" selection-start-line="5683" selection-start-column="0" selection-end-line="5683" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Anaconda3/Lib/site-packages/matplotlib/colors.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
           <caret line="305" column="0" selection-start-line="305" selection-start-column="0" selection-end-line="305" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/make_table.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -764,13 +802,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -906,34 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="586" column="41" selection-start-line="586" selection-start-column="41" selection-end-line="586" selection-end-column="41" />
-          <folding>
-            <element signature="e#157#175#0" expanded="false" />
-            <element signature="e#1967#4426#0" expanded="false" />
-            <element signature="e#4472#4835#0" expanded="false" />
-            <element signature="e#4887#5683#0" expanded="false" />
-            <element signature="e#5754#9680#0" expanded="false" />
-            <element signature="e#14904#18655#0" expanded="false" />
-            <element signature="e#14904#15288#1" expanded="false" />
-            <element signature="e#24069#27030#0" expanded="false" />
-            <element signature="e#29716#30289#0" expanded="false" />
-            <element signature="e#30426#31147#0" expanded="false" />
-            <element signature="e#33067#34319#0" expanded="false" />
-            <element signature="e#35081#35534#0" expanded="false" />
-            <element signature="e#37212#38088#0" expanded="false" />
-            <element signature="e#38157#44712#0" expanded="false" />
-            <element signature="e#44750#45211#0" expanded="false" />
-            <element signature="e#45283#47123#0" expanded="false" />
-            <element signature="e#47153#48773#0" expanded="false" />
-            <element signature="e#48820#49804#0" expanded="false" />
-            <element signature="e#49920#54077#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/no_git/scripts/cluster_temp_allnodes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -962,10 +965,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+          <folding>
+            <element signature="e#58#72#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/envs/py2/Lib/site-packages/traitlets/tests/utils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/calctime.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state relative-caret-position="1173">
+          <caret line="177" column="19" selection-start-line="177" selection-start-column="19" selection-end-line="177" selection-end-column="19" />
+          <folding>
+            <element signature="e#1138#4770#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/MakeSummaryFiles.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="2" selection-end-column="128" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/pw.x analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/batch_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/list all files.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/QE_Calc_overview.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#47#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="89" selection-start-line="25" selection-start-column="89" selection-end-line="25" selection-end-column="89" />
+          <folding>
+            <element signature="e#157#175#0" expanded="true" />
+            <element signature="e#4497#4860#0" expanded="false" />
+            <element signature="e#4912#5708#0" expanded="false" />
+            <element signature="e#5779#9905#0" expanded="false" />
+            <element signature="e#15508#19009#0" expanded="false" />
+            <element signature="e#15508#15642#1" expanded="false" />
+            <element signature="e#19040#35965#0" expanded="false" />
+            <element signature="e#30857#31578#0" expanded="false" />
+            <element signature="e#33498#34750#0" expanded="false" />
+            <element signature="e#35512#35965#0" expanded="false" />
+            <element signature="e#37806#38682#0" expanded="false" />
+            <element signature="e#38751#45306#0" expanded="false" />
+            <element signature="e#45344#45805#0" expanded="false" />
+            <element signature="e#45877#47717#0" expanded="false" />
+            <element signature="e#47747#49367#0" expanded="false" />
+            <element signature="e#49414#50398#0" expanded="false" />
+            <element signature="e#50514#54671#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/make_table.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="24" column="10" selection-start-line="24" selection-start-column="10" selection-end-line="24" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -980,20 +1085,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
+    <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
-          <folding>
-            <element signature="e#58#72#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="272">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        <state relative-caret-position="323">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
@@ -1003,7 +1106,7 @@
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
-          <caret line="192" column="0" selection-start-line="192" selection-start-column="0" selection-end-line="192" selection-end-column="0" />
+          <caret line="53" column="35" selection-start-line="53" selection-start-column="35" selection-end-line="53" selection-end-column="35" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#2565#3153#0" expanded="false" />
@@ -1012,10 +1115,9 @@
             <element signature="e#10377#12121#0" expanded="false" />
             <element signature="e#12178#12734#0" expanded="false" />
             <element signature="e#12791#13461#0" expanded="false" />
-            <element signature="e#13529#15777#0" expanded="false" />
-            <element signature="e#15837#16482#0" expanded="false" />
-            <element signature="e#17034#17723#0" expanded="false" />
-            <element signature="e#17791#19216#0" expanded="false" />
+            <element signature="e#15892#16537#0" expanded="false" />
+            <element signature="e#17089#17778#0" expanded="false" />
+            <element signature="e#17846#19271#0" expanded="false" />
           </folding>
         </state>
       </provider>

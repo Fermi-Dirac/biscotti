@@ -141,3 +141,38 @@ class CalcTime(object):
                 plt.axis('equal')
                 plt.title(subproc)
         return fig
+
+    def pie_chart(self, axes=None, type='cpu', subproc = None):
+        if has_mpl is False:
+            logger.error("Matplotlib dependency not loaded. Plotting disabled!")
+            return None
+        if axes is None:
+            axes = plt.gca()
+        timeindex = {'CPU': 0, 'cpu': 0, 'WALL': 1, 'wall': 1, 'calls': 2}
+        if type not in timeindex:
+            type = 'CPU'
+        if subproc is None:
+            subproc = self.procorder[0]
+        title = type + ' time spent on ' + str(subproc)
+        labels = []
+        sizes = []
+        for key in self.subprocdict[subproc]:
+            if type == 'calls':
+                units = "(" + "%.2f" % (self.timedict[key][timeindex[type]]) + " calls)"
+            else:
+                units = "(" + "%.2f" % (self.timedict[key][timeindex[type]] / (60 * 60)) + " Hrs)"
+            labels.append(key + " " + units)
+            sizes.append(self.timedict[key][0])
+        if len(sizes) > 0:
+            siz_lab = sorted(zip(sizes, labels), key=lambda tup: tup[0], reverse=True)
+            logger.debug("New pie charge, sorted zip is: " + str(siz_lab))
+            pie_size = sum(sizes)
+            new_sizes, new_labels = map(list, zip(*[tup for tup in siz_lab if tup[0] / pie_size > 0.01]))  # Unzip
+            if len(new_sizes) < len(sizes):  # if we trimmed some
+                other_size, other_labels = map(list, zip(*[tup for tup in siz_lab if tup[0] / pie_size < 0.01]))
+                new_sizes.append(sum(other_size) / pie_size)
+                new_labels.append('Others: ' + '\n'.join(other_labels))
+            axes.pie(new_sizes, labels=new_labels, shadow=True, startangle=45, autopct='%1.1f %%')
+            axes.axis('equal')
+            axes.set_title(title)
+        return axes

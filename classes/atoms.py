@@ -264,8 +264,13 @@ class AtomicStructure(object):
         return atomsdir
 
     def merge_with(self, structure2, translation = None):
-        # This code merges two structures together via a translation vector.
-        # By default, it arranges them 'on top' via the C dimension
+        """
+        This code merges two structures together via a translation vector.
+        By default, it arranges them 'on top' via the C dimension
+        :param structure2: structure to merge with this one
+        :param translation: translation vector between the two. Default is 'end to end' via C
+        :return:
+        """
         logger.info("-Now starting structure Merge-")
         if translation is None:
             translation = np.array(self.latticeC)
@@ -288,7 +293,6 @@ class AtomicStructure(object):
 
         # Now to get all of the atoms together
         logger.debug("Atoms in self: ")
-
         newatomscart = []
         for atom in self.atomsarray:
             newatomscart.append(atom)
@@ -298,18 +302,14 @@ class AtomicStructure(object):
             # Create new Atom instance!
             newatomscart.append(Atom(atom.species, atom.position + translation))
             logger.debug(" " + str(atom.species) + str(atom.position) +" shifted by "+ str(translation))
-
-        # newatomscart = np.array(list(self.atomsarray) + list(np.array(structure2.atomsarray) + np.array(translation)))
-        # tht doesn't work for some reason.... wtf
-
         logger.debug("Cartesean atoms now total of " + str(len(newatomscart)))
-
         logger.debug("New cart atoms list is ")
         for atom in newatomscart:
             logger.debug(str(atom))
 
         mergedstruct = AtomicStructure(self.name + " + " + structure2.name, newlatmatrix[0], newlatmatrix[1], newlatmatrix[2], newatomscart)
         mergedstruct.cart_to_direct(newatomscart)
+        logger.info("Merger complete!")
         return mergedstruct
 
     def check_collisions(self, tolerance = 0.01):
