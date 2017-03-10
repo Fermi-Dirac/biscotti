@@ -46,6 +46,7 @@ import subprocess as subpr
 import datetime as dt
 import os
 import sys
+
 pw_x_flags = '%(pw_x_flags)s'
 send_email = %(send_email)s
 email_addr = '%(email_addr)s'
@@ -73,7 +74,9 @@ if send_email:
     print("Email sent!")
 
 # Begin pw.x call
-subpr.call('mpirun -np %(num_cores)s --map-by core --bind-to core pw.x ' + pw_x_flags + ' -i ' + input_file + ' > ' + input_file + '.out', shell=True)
+mpicall = 'mpirun -np %(num_cores)s --map-by core pw.x ' + pw_x_flags + ' -i ' + input_file + ' > ' + input_file + '.out'
+print("Now calling " + mpicall)
+subpr.call(mpicall, shell=True)
 
 # Email at end
 if send_email:
@@ -246,11 +249,11 @@ class QECalcIn(object):
                          + '\n')
             kptsstring = ''
             if self.kpts['type'] == 'automatic':
-                kptsstring = 'KPOINTS automatic\n' \
+                kptsstring = 'K_POINTS automatic\n' \
                              + '  '.join([str(val) for val in self.kpts['grid']]) + '  ' \
                              + '  '.join([str(val) for val in self.kpts['offset']])
             elif self.kpts['type'] == 'gamma':
-                kptsstring = 'KPOINTS gamma'
+                kptsstring = 'K_POINTS gamma'
             else:
                 logger.error("Not yet implemented! non-automatic k-pt grids")
             newfile.write(kptsstring)
