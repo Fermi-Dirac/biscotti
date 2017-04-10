@@ -52,7 +52,7 @@ class AtomicStructure(object):
         self.latticeA = np.array(A)
         self.latticeB = np.array(B)
         self.latticeC = np.array(C)
-        self.lattice = [self.latticeA, self.latticeB, self.latticeC] # this is the lattice matrix
+        self.lattice = np.array([self.latticeA, self.latticeB, self.latticeC]) # this is the lattice matrix
         self.name = name
         self.atomsarray = atomsarray
         self.atomscart = atomsarray # allowing for specific usage of cartesean
@@ -91,6 +91,7 @@ class AtomicStructure(object):
             else:
                 logger.error("No CELL_PARAMETERS card")
                 lattice = np.identity(3) #TODO account for situations ibrav != 0
+            atoms = []
             regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\-\. ]+)+'
             # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
             atompos_match = re.search(regex_atompos, filestring)
@@ -99,7 +100,6 @@ class AtomicStructure(object):
             else:
                 atomlist = atompos_match.group(0).split('\n')
                 atomlist.pop(0)  # the first element is 'ATOMIC_POSITIONS' stuff
-                atoms = []
                 for atomstr in atomlist:
                     logger.debug("Now parsing new atom string: " + atomstr)
                     if atomstr == 'End final coordinates':
@@ -197,7 +197,7 @@ class AtomicStructure(object):
     def totalvol(self):
         return (0)
 
-    def supercell(self,latticefactors):
+    def supercell(self, latticefactors):
         """
         :param latticefactors: List of 3 integers
         :return: atomic structure grown in those directions
@@ -233,16 +233,12 @@ class AtomicStructure(object):
     def direct_to_cart(self, atomsdir = None):
         # Takes the direct lattice atoms and produces the cartesean ones
         if atomsdir is None:
-            atomsdir = self.atoms
-        else:
-            self.atoms = atomsdir
+            atomsdir = self.atomsdir
         latticematrix = np.array([self.latticeA, self.latticeB, self.latticeC])
         atomscart = []
-        for species in atomsdir:
-            atomlist = []
-            for atom in species[1]:
-                atomlist.append(np.array(np.dot(atom,latticematrix)))
-            atomscart.append([species[0], atomlist])
+        for atom in atomsdir:
+            newatom = Atom(atom.species, np.array(np.dot(atom.position,latticematrix)))
+            atomscart.append(newatom)
         self.atomscart = atomscart
         return atomscart
 
@@ -313,6 +309,100 @@ class AtomicStructure(object):
         mergedstruct.cart_to_direct(newatomscart)
         logger.info("Merger complete!")
         return mergedstruct
+
+    def stack_with(self, struct2, lattice_vec_index = 2):
+        """
+        Stacks an atomic structure end to end with another.
+        Both structures are stacked via the lattice vector index
+        Good for combining supercells of different material structures ocne they've been strained.
+        :param structure2: The second structure to glue to the first
+        :param lattice_vec_index: 0, 1 or 2. The A B or C lattice vector to stack them by
+        :return: the stacked structure
+        """
+
+        logger.info("Now stacking " + self.name + " with " + struct2.name + " by vector index " + str(lattice_vec_index))
+        newlattice = np.identity(3)
+        newlattice[lattice_vec_index] = self.lattice[lattice_vec_index] + struct2.lattice[lattice_vec_index] # this better be the numpy add!
+        logger.debug("New stacked vector is " + str(newlattice[lattice_vec_index]))
+        for i in [1, 2]: # For the other two vectors, pick the longer one. Really hoping that are aligned and correlated.
+            lat_i = lattice_vec_index-i
+            if all(np.isclose(self.lattice[lat_i], struct2.lattice[lat_i])):
+                newlattice[lat_i] = self.lattice[lat_i]
+            else:
+                if np.linalg.norm(self.lattice[lat_i]) > np.linalg.norm(struct2.lattice[lat_i]):
+                    newlattice[lat_i] = self.lattice[lat_i]
+                else:
+                    newlattice[lat_i] = struct2.lattice[lat_i]
+        newatoms = list(self.atomscart)
+        newatoms.extend([Atom(atom.species, atom.position + self.lattice[lattice_vec_index]) for atom in struct2.atomscart])
+        logger.debug("Now stacking " + str(len(self.atomscart)) + " atoms with " + str(len(struct2.atomscart)) + " new atoms")
+        stackedstruct = AtomicStructure(self.name + " + " + struct2.name, newlattice[0], newlattice[1], newlattice[2], newatoms)
+        stackedstruct.cart_to_direct() #likely not needed
+        return stackedstruct
+
+    def strain(self, trans_strain_pct = 0, poisson_ratio=0.35):
+        """
+        Should be able to use a matrix
+        Direction right now is always Z
+        Assumes a cube?
+        :param poisson_ratio:
+        :return:
+        """
+        # Compute axial strain
+        axial_strain_pct = 1 - (1+trans_strain_pct)**(poisson_ratio)
+        logger.debug("Axial strain is " + str(axial_strain_pct))
+
+        # # Find the bounding rectangular cuboid
+        # logger.debug(self.lattice)
+        # xmax, ymax, zmax = np.amax(self.lattice, axis=0)
+        # logger.debug("box is " + str([xmax, ymax, zmax]))
+        #
+        # # Double check for no reason
+        # deltaz = -zmax * (1- (1 + trans_strain_pct)**-poisson_ratio)
+        # logger.debug("delta z: " + str(deltaz))
+        # new_Z = zmax + deltaz
+        # new_Z_2 = zmax * (1 + axial_strain_pct)
+        # logger.info("New Z: " + str(new_Z) + " New Z again: " + str(new_Z_2))
+
+        # Make new lattice vectors
+        for latvec in self.lattice:
+            latvec[0] = latvec[0] * (1+ trans_strain_pct)
+            latvec[1] *= (1 + trans_strain_pct)
+            latvec[2] *= (1 + axial_strain_pct)
+
+        self.latticeA, self.latticeB, self.latticeC = self.lattice
+        self.direct_to_cart()
+
+        logger.debug("New lattice is now " + str(self.lattice))
+        return self.lattice
+
+        #First, strain the X and Y dimensions by strain percent
+        # oldlattice = np.array(self.lattice)
+        # for latvec in self.lattice:
+        #     latvec[2] = latvec[2]*(1 + trstrain_percent)
+
+        # Compute the new length
+
+        # new_xy = (InAs_len + Sb_len) / (InAs_len / InAs_A + Sb_len / Sb_A)
+        # logger.debug("Weighted average is: " + str(new_xy))
+        # change_z_InAs = -InAs_A * (1 - (1 + (new_xy - InAs_A) / InAs_A) ** -poisson_ratio)
+        # logger.debug("New Z stretch/compression for InAs will be: " + str(change_z_InAs))
+        # change_z_Sb = -Sb_A * (1 - ((1 + (new_xy - Sb_A) / Sb_A) ** -poisson_ratio))
+        # logger.debug("New Z stretch/compression for InAsSb will be: " + str(change_z_Sb))
+        # logger.debug("Now adjusting x,y from " + str([InAs_A, Sb_A]) + " to " + str(new_xy))
+        # logger.debug("Now adjusting z from " + str([InAs_A, Sb_A]) + " to " + str(
+        #     [InAs_A + change_z_InAs, Sb_A + change_z_Sb]))
+        #
+        # InAs_struct.latticeA = np.array([new_xy, 0, 0])
+        # InAsSb_struct.latticeA = np.array([new_xy, 0, 0])
+        # InAs_struct.latticeB = np.array([0, new_xy, 0])
+        # InAsSb_struct.latticeB = np.array([0, new_xy, 0])
+        # InAs_struct.latticeC = np.array([0, 0, InAs_A + change_z_InAs])
+        # InAsSb_struct.latticeC = np.array([0, 0, Sb_A + change_z_Sb])
+        # InAs_struct.lattice = [InAs_struct.latticeA, InAs_struct.latticeB, InAs_struct.latticeC]
+        # InAsSb_struct.lattice = [InAsSb_struct.latticeA, InAsSb_struct.latticeB, InAsSb_struct.latticeC]
+        # logger.info("New lattice for InAs is now " + str(InAs_struct.lattice))
+        # logger.info("New lattice for InAsSb is now " + str(InAsSb_struct.lattice))
 
     def check_collisions(self, tolerance = 0.01):
         # Checks for atomic colisions in a structure via a tolerence factor

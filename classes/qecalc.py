@@ -534,7 +534,10 @@ class QECalcOut(object):
         self.final_energy = relax_list[-1][-1]
         self.formation_energy = self.relax_list_free_ev[-1][-1] # in eV
         self.ion_steps_count = len(self.relax_list)
-        self.pressure_list = pressure_list
+        if pressure_list is None:
+            self.pressure_list = list()
+        else:
+            self.pressure_list = pressure_list
 
         # Job Status
         self.jobstatus = jobstatus
@@ -683,7 +686,7 @@ class QECalcOut(object):
                     returnstring += key + delim
                 returnstring += '\n'
             for value in summary_dict.values():
-                returnstring += str(value) + delim
+                returnstring += str(value).replace('\n','') + delim
         return returnstring
 
     def __str__(self):

@@ -92,9 +92,12 @@ class CalcTime(object):
                             logger.debug("New entry of process: " + procname + " with values: " + str(values))
             # Now get the start and end datetimes
             start_dt_result = re.search(starttime_regex, filestring)
-            dtsplit = re.search(starttime_regex, filestring).group(0).split(' at ')
-            dtstring = dtsplit[0] + ' at ' + dtsplit[1].replace(' ', '0')
-            startdt = dt.datetime.strptime(dtstring, startson_dtformat)
+            if start_dt_result:
+                dtsplit = start_dt_result.group(0).split(' at ')
+                dtstring = dtsplit[0] + ' at ' + dtsplit[1].replace(' ', '0')
+                startdt = dt.datetime.strptime(dtstring, startson_dtformat)
+            else:
+                startdt = dt.datetime.min
 
             end_dt_result = re.search(endtime_regex, filestring)
             if end_dt_result:
