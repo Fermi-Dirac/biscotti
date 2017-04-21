@@ -4,7 +4,7 @@ import os
 import logging
 # Logging level by default
 logger = logging.getLogger(__name__)
-loglevel = logging.DEBUG
+loglevel = logging.INFO
 logger.setLevel(loglevel)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(loglevel)

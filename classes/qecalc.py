@@ -277,7 +277,7 @@ class QECalcIn(object):
             filelist = fileobj.readlines() # legacy, irritating i know. Could maybe replace with a .split('\n')?
         namelist = None
 
-        cardlists_short = [card[:8] for card in cardlists] # truncate to first 8 char for quick compare
+        cardlists_short = [card[:8] for card in cardlists]  # truncate to first 8 char for quick compare
 
         for line in filelist:
             logger.debug("Now on line >" + line.strip() + "<")
@@ -546,6 +546,9 @@ class QECalcOut(object):
         else:
             self.jobcomplete = False
 
+        # Auto-populating attributes
+        self.summary_dict = None
+
     @staticmethod
     def import_from_file(outpath=None, inpath = None):
         # This function imports a QECalcOut object from an output file from a pw.x calculation
@@ -619,58 +622,61 @@ class QECalcOut(object):
         return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), pressure_list = PressureList, jobstatus= completestring)
 
     def calc_overview_dict(self):
-        refenergy = self.refenergy
-        numatoms = self.initialstructure.totalatoms()
-        if numatoms == 0:
-            numatoms = -1
-        dE = -1
-        if len(self.relax_list[-1]) > 1:
-            dE = self.relax_list[-1][-1] - self.relax_list[-1][-2]
-        iondE = -1
-        if len(self.relax_list) > 1:
-            iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
-        if len(self.pressure_list) < 1:
-            self.pressure_list = [0]
-        keys = ['ID', 'Filename', 'Folder','Title','Calc Type',
-                'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
-                   'Final Free Energy (eV)',
-                   'Final Free Energy (eV/atom)',
-                   'Number of Atoms',
-                   'Cutoff (Ry)',
-                   'Total # of K-points',
-                   'Job Complete?',
-                   'Calc time (hr)',
-                   'Start Date-Time',
-                   'End Date-Time',
-                   'Final Pressure(kbar)',
-                   'Initial Volume (A^3)',
-                   'Final Volume (A^3)',
-                'Final Pressure (kbar)'
-                   ]
-        values = [self.ID,
-                  self.filename,
-                  self.folder,
-                  self.qecalcin.name,
-                  self.qecalcin.control['calculation'],
-                  self.final_energy,
-                  dE,
-                  iondE,
-                  self.final_energy - refenergy,
-                  (self.final_energy - refenergy)*13.605698066,
-                  (self.final_energy-refenergy)*13.605698066/numatoms,
-                  numatoms,
-                  self.qecalcin.system['ecutwfc'],
-                  self.qecalcin.kpts,
-                  self.jobstatus,
-                  self.totalsec/(60*60),
-                  self.startdt,
-                  self.enddt,
-                  0,
-                  self.initialstructure.totalvol(),
-                  self.finalstructure.totalvol(),
-                  self.pressure_list[-1]
-                  ]
-        return odict(zip(keys, values))
+        if self.summary_dict is not None:
+            # Don't recompute the sumamry dictionary if we already computed it
+            return self.summary_dict
+        else:
+            numatoms = self.initialstructure.totalatoms()
+            if numatoms == 0:
+                numatoms = -1
+            dE = -1
+            if len(self.relax_list[-1]) > 1:
+                dE = self.relax_list[-1][-1] - self.relax_list[-1][-2]
+            iondE = -1
+            if len(self.relax_list) > 1:
+                iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
+            if len(self.pressure_list) < 1:
+                self.pressure_list = [0]
+            keys = ['ID', 'Filename', 'Folder','Title','Calc Type',
+                    'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
+                       'Final Free Energy (eV)',
+                       'Final Free Energy (eV/atom)',
+                       'Number of Atoms',
+                       'Cutoff (Ry)',
+                       'Total # of K-points',
+                       'Job Complete?',
+                       'Calc time (hr)',
+                       'Start Date-Time',
+                       'End Date-Time',
+                       'Final Pressure(kbar)',
+                       'Initial Volume (A^3)',
+                       'Final Volume (A^3)',
+                    'Final Pressure (kbar)'
+                       ]
+            values = [self.ID,
+                      self.filename,
+                      self.folder,
+                      self.qecalcin.name,
+                      self.qecalcin.control['calculation'],
+                      self.final_energy,
+                      dE,
+                      iondE,
+                      self.final_energy - self.refenergy,
+                      (self.final_energy - self.refenergy)*13.605698066,
+                      (self.final_energy-self.refenergy)*13.605698066/numatoms,
+                      numatoms,
+                      self.qecalcin.system['ecutwfc'],
+                      self.qecalcin.kpts,
+                      self.jobstatus,
+                      self.totalsec/(60*60),
+                      self.startdt,
+                      self.enddt,
+                      0,
+                      self.initialstructure.totalvol(),
+                      self.finalstructure.totalvol(),
+                      self.pressure_list[-1]
+                      ]
+            return odict(zip(keys, values))
 
     def calc_overview_string(self, add_headers = True, delim = '\t', transpose = False):
         returnstring = ''
