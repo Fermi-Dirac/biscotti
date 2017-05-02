@@ -562,8 +562,8 @@ class QECalcOut(object):
             else:
                 logger.error("No output files found!")
         path = outpath # legacy
-        RelaxationSteps = []
-        PressureList = []
+        relax_list = []
+        pressure_list = []
         volumeList = []
         ionstep = 0
         electronstep = 99
@@ -571,19 +571,46 @@ class QECalcOut(object):
         logger.info("--Now parsing file " + path)
         verbose = False
         bands = []
+        num_kpts = 1
+
+        regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
+                     'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
+                     'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
+                     'stoptime': r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}',
+                     'done': r'JOB DONE.',
+                     'k-points': r'k points=[\s]*[0-9]*',
+                     'exitcode': r'Exit code:[\s0-9]*',
+                     'pressure': r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
+                     'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*'
+                     }
+        file_regexlist = odict([('num_kpts', r'number of k points=.*'),
+                                ('bands', r'k =.*bands \(ev\):([ \n\r0-9\-\.])+')])
 
         with open(path) as fileobj:
-            regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
-                         'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
-                         'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
-                         'stoptime': r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}',
-                         'done': r'JOB DONE.',
-                         'k-points': r'k points=[\s]*[0-9]*',
-                         'exitcode': r'Exit code:[\s0-9]*',
-                         'pressure': r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
-                         'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*',
-                         'bands': r'k =.*bands \(ev\):([ \n\r0-9\-\.])+'
-                         }
+            filestring = fileobj.read()
+            for param, regex in file_regexlist.items():
+                matches = re.finditer(regex, filestring)
+                if param == 'num_kpts':
+                    num_kpt_str = list(matches)[0].group(0)
+                    num_kpts = int(num_kpt_str.split()[4])
+                    logger.debug("Total k-pts per step is " + str(num_kpts))
+
+                if param == 'bands':
+                    for index, match in enumerate(matches):
+                        scf_index = int(index/num_kpts)
+                        if len(bands) < scf_index + 1:
+                            bands.append({}) # This is the first entry for this scf index, append empty dict
+                        bandlist = match.group(0).split('\n')
+                        thiskptstr = bandlist.pop(0) # remove first line and the letters 'k ='
+                        logger.debug(thiskptstr)
+                        kpt = (float(thiskptstr[3:10]), float(thiskptstr[10:17]), float(thiskptstr[17:24])) #fixed width
+                        logger.debug("Found kpt: " + thiskptstr + " and parsed to array:" + str(kpt))
+                        bands_thiskpt = np.array(' '.join(bandlist).split()).astype(float)
+                        logger.debug("Adding " + str(len(bands_thiskpt)) + " bands to scf index " + str(scf_index) + " at kpt " + str(kpt))
+                        bands[scf_index][kpt] = bands_thiskpt  # Make into one long list
+                    logger.info('Bands added')
+
+        with open(path) as fileobj:
             for line in fileobj: # line by line is pretty terribad
                 for regex in regexlist:
                     searchresult = re.findall(regexlist[regex], line)
@@ -599,13 +626,13 @@ class QECalcOut(object):
                         elif 'total energy' in regex:  # total energy
                             newenergy = float(searchresult[0].split('=')[1])
                             logger.debug("\tthis step energy : " + str(newenergy))
-                            logger.debug("Relax steps size: " + str(len(RelaxationSteps)) + " ionstep: " + str(ionstep))
-                            if len(RelaxationSteps) < ionstep:
-                                RelaxationSteps.append([])
-                            RelaxationSteps[ionstep - 1].append(newenergy)  # ionstep starts at 1, index starts at 0
+                            logger.debug("Relax steps size: " + str(len(relax_list)) + " ionstep: " + str(ionstep))
+                            if len(relax_list) < ionstep:
+                                relax_list.append([])
+                            relax_list[ionstep - 1].append(newenergy)  # ionstep starts at 1, index starts at 0
                         elif 'pressure' in regex:
                             logger.debug("Pressure of " + searchresult[0])
-                            PressureList.append(float(searchresult[0].split('=')[1]))
+                            pressure_list.append(float(searchresult[0].split('=')[1]))
                             pass
                         elif 'volume' in regex:
                             volumeList.append(float(searchresult[0].split('=')[1]))
@@ -617,16 +644,11 @@ class QECalcOut(object):
                             jobComplete = True
                             completestring = 'completed'
                             # break  #don't check any more regex if empty
-                        elif 'bands' in regex:
-                            pass
 
-        logger.info("Relaxation Steps length : " + str(len(RelaxationSteps)))
-        if verbose:
-            print("\n\n--This calculation " + completestring)
-            print("number of ionic steps is " + str(ionstep))
-            print("Here's the giant Relax steps" + str(RelaxationSteps))
-            print("Final Energy: " + str(RelaxationSteps[-1][-1]))
-        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(RelaxationSteps), pressure_list = PressureList, jobstatus= completestring)
+
+
+        logger.info("Relaxation Steps length : " + str(len(relax_list)))
+        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(relax_list), pressure_list = pressure_list, bands=bands, jobstatus= completestring)
 
     def calc_overview_dict(self):
         if self.summary_dict is not None:
@@ -644,25 +666,27 @@ class QECalcOut(object):
                 iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
             if len(self.pressure_list) < 1:
                 self.pressure_list = [0]
-            keys = ['ID', 'Filename', 'Folder','Title','Calc Type',
+            keys = ['ID', 'Filename', 'Folder', 'Full path', 'Title', 'Calc Type',
                     'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
-                       'Final Free Energy (eV)',
-                       'Final Free Energy (eV/atom)',
-                       'Number of Atoms',
-                       'Cutoff (Ry)',
-                       'Total # of K-points',
-                       'Job Complete?',
-                       'Calc time (hr)',
-                       'Start Date-Time',
-                       'End Date-Time',
-                       'Final Pressure(kbar)',
-                       'Initial Volume (A^3)',
-                       'Final Volume (A^3)',
-                    'Final Pressure (kbar)'
+                    'Final Free Energy (eV)',
+                   'Final Free Energy (eV/atom)',
+                   'Number of Atoms',
+                   'Cutoff (Ry)',
+                   'K-point grid',
+                    '# of inequivalent k-pts',
+                    '# of K-S bands per kpt',
+                   'Job Complete?',
+                   'Calc time (hr)',
+                   'Start Date-Time',
+                   'End Date-Time',
+                   'Initial Volume (A^3)',
+                   'Final Volume (A^3)',
+                   'Final Pressure (kbar)'
                        ]
             values = [self.ID,
                       self.filename,
                       self.folder,
+                      self.path,
                       self.qecalcin.name,
                       self.qecalcin.control['calculation'],
                       self.final_energy,
@@ -674,11 +698,12 @@ class QECalcOut(object):
                       numatoms,
                       self.qecalcin.system['ecutwfc'],
                       self.qecalcin.kpts,
+                      len(self.bands[0]),
+                      len(self.bands[0][list(self.bands[0].keys())[0]]),
                       self.jobstatus,
                       self.totalsec/(60*60),
                       self.startdt,
                       self.enddt,
-                      0,
                       self.initialstructure.totalvol(),
                       self.finalstructure.totalvol(),
                       self.pressure_list[-1]

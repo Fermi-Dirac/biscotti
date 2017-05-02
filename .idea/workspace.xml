@@ -2,22 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/render_struct.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/struct_to_VESTA.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/atoms_plot.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/pymatgen_helpers.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/find_bands.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/base.py" afterPath="$PROJECT_DIR$/functions/base.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/Parameter table.ui" afterPath="$PROJECT_DIR$/GUIs/Parameter table.ui" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/Summary for .tsv" afterPath="$PROJECT_DIR$/analysis/pw.x file to POSCAR.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.py" afterPath="$PROJECT_DIR$/GUIs/biscotti_gui.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.ui" afterPath="$PROJECT_DIR$/GUIs/biscotti_gui.ui" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pp.x create.py" afterPath="$PROJECT_DIR$/GUIs/pp.x create.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis.ui" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis.ui" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis.ui.zip" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis.ui.zip" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis2.ui" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis2.ui" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_gui.py" afterPath="$PROJECT_DIR$/GUIs/pw.x_gui.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -31,65 +18,88 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="DockManager">
+    <window id="2">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="atoms.py" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/classes/atoms.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="60">
+                    <caret line="161" column="47" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
+                    <folding>
+                      <element signature="e#0#18#0" expanded="true" />
+                      <element signature="e#10262#10289#0" expanded="false" />
+                      <element signature="e#10384#12091#0" expanded="false" />
+                      <element signature="e#12148#12597#0" expanded="false" />
+                      <element signature="e#12654#13324#0" expanded="false" />
+                      <element signature="e#13392#15942#0" expanded="false" />
+                      <element signature="e#16010#17894#0" expanded="false" />
+                      <element signature="e#17968#21004#0" expanded="false" />
+                      <element signature="e#21064#21709#0" expanded="false" />
+                      <element signature="e#21750#22188#0" expanded="false" />
+                      <element signature="e#22261#22950#0" expanded="false" />
+                      <element signature="e#23018#24444#0" expanded="false" />
+                      <element signature="e#24491#25713#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="Biscotti" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/atoms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <element signature="e#10262#10289#0" expanded="false" />
-                <element signature="e#10384#12091#0" expanded="false" />
-                <element signature="e#12148#12597#0" expanded="false" />
-                <element signature="e#12654#13324#0" expanded="false" />
-                <element signature="e#13392#15942#0" expanded="false" />
-                <element signature="e#16010#17894#0" expanded="false" />
-                <element signature="e#17968#21004#0" expanded="false" />
-                <element signature="e#21064#21709#0" expanded="false" />
-                <element signature="e#21750#22188#0" expanded="false" />
-                <element signature="e#22261#22950#0" expanded="false" />
-                <element signature="e#23018#24444#0" expanded="false" />
-                <element signature="e#24491#25713#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="585" column="26" selection-start-line="585" selection-start-column="26" selection-end-line="585" selection-end-column="26" />
+            <state relative-caret-position="289">
+              <caret line="607" column="89" selection-start-line="607" selection-start-column="89" selection-end-line="607" selection-end-column="89" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
-                <element signature="e#3666#20144#0" expanded="false" />
+                <element signature="e#4034#6517#0" expanded="false" />
                 <element signature="e#6563#6926#0" expanded="false" />
                 <element signature="e#6978#7774#0" expanded="false" />
                 <element signature="e#7845#11973#0" expanded="false" />
                 <element signature="e#12038#17401#0" expanded="false" />
                 <element signature="e#17594#20144#0" expanded="false" />
-                <element signature="e#29549#32018#0" expanded="false" />
-                <element signature="e#32117#32707#0" expanded="false" />
-                <element signature="e#32740#32774#0" expanded="false" />
-                <element signature="e#32844#33565#0" expanded="false" />
-                <element signature="e#33662#34562#0" expanded="false" />
-                <element signature="e#34644#35409#0" expanded="false" />
-                <element signature="e#35485#36737#0" expanded="false" />
-                <element signature="e#37499#37952#0" expanded="false" />
-                <element signature="e#38036#39600#0" expanded="false" />
-                <element signature="e#39793#40669#0" expanded="false" />
-                <element signature="e#40738#47293#0" expanded="false" />
-                <element signature="e#47331#47792#0" expanded="false" />
-                <element signature="e#47864#49704#0" expanded="false" />
-                <element signature="e#49734#51354#0" expanded="false" />
-                <element signature="e#51401#52385#0" expanded="false" />
-                <element signature="e#52501#56658#0" expanded="false" />
+                <element signature="e#30772#33374#0" expanded="false" />
+                <element signature="e#33473#34063#0" expanded="false" />
+                <element signature="e#34096#34130#0" expanded="false" />
+                <element signature="e#34200#34921#0" expanded="false" />
+                <element signature="e#35018#35918#0" expanded="false" />
+                <element signature="e#36000#36765#0" expanded="false" />
+                <element signature="e#36841#38093#0" expanded="false" />
+                <element signature="e#38148#38783#0" expanded="false" />
+                <element signature="e#38855#39308#0" expanded="false" />
+                <element signature="e#39392#40956#0" expanded="false" />
+                <element signature="e#41149#42025#0" expanded="false" />
+                <element signature="e#42094#48649#0" expanded="false" />
+                <element signature="e#48687#49148#0" expanded="false" />
+                <element signature="e#49220#51060#0" expanded="false" />
+                <element signature="e#51090#52710#0" expanded="false" />
+                <element signature="e#52757#53741#0" expanded="false" />
+                <element signature="e#53857#58014#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="find_bands.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/testing/find_bands.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -209,7 +219,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot2.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_scraper_all.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_allnodes.py" />
@@ -260,6 +269,7 @@
         <option value="$PROJECT_DIR$/functions/base.py" />
         <option value="$PROJECT_DIR$/analysis/struct_to_VESTA.py" />
         <option value="$PROJECT_DIR$/classes/qecalc.py" />
+        <option value="$PROJECT_DIR$/testing/find_bands.py" />
       </list>
     </option>
   </component>
@@ -409,24 +419,7 @@
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.struct_to_VESTA">
-    <configuration default="false" name="pw.x file to POSCAR" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/pw.x file to POSCAR.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Python.find_bands">
     <configuration default="false" name="pymatgen_to_Atoms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -491,6 +484,23 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUIs/pw.x_gui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="find_bands" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/find_bands.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -641,19 +651,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.pw.x file to POSCAR" />
-      <item index="1" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
-      <item index="2" class="java.lang.String" itemvalue="Python.render_struct (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
-      <item index="4" class="java.lang.String" itemvalue="Python.pw.x_gui" />
+      <item index="0" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
+      <item index="1" class="java.lang.String" itemvalue="Python.render_struct (1)" />
+      <item index="2" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
+      <item index="3" class="java.lang.String" itemvalue="Python.pw.x_gui" />
+      <item index="4" class="java.lang.String" itemvalue="Python.find_bands" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
+        <item index="0" class="java.lang.String" itemvalue="Python.find_bands" />
         <item index="1" class="java.lang.String" itemvalue="Python.pw.x_gui" />
-        <item index="2" class="java.lang.String" itemvalue="Python.render_struct (1)" />
-        <item index="3" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
-        <item index="4" class="java.lang.String" itemvalue="Python.pw.x file to POSCAR" />
+        <item index="2" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
+        <item index="3" class="java.lang.String" itemvalue="Python.render_struct (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
       </list>
     </recent_temporary>
   </component>
@@ -745,13 +755,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript2_7day_32core.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1150,8 +1153,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/atoms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
+        <state relative-caret-position="60">
+          <caret line="161" column="47" selection-start-line="161" selection-start-column="47" selection-end-line="161" selection-end-column="47" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
             <element signature="e#10262#10289#0" expanded="false" />
@@ -1172,32 +1175,43 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="585" column="26" selection-start-line="585" selection-start-column="26" selection-end-line="585" selection-end-column="26" />
+        <state relative-caret-position="289">
+          <caret line="607" column="89" selection-start-line="607" selection-start-column="89" selection-end-line="607" selection-end-column="89" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
-            <element signature="e#3666#20144#0" expanded="false" />
+            <element signature="e#4034#6517#0" expanded="false" />
             <element signature="e#6563#6926#0" expanded="false" />
             <element signature="e#6978#7774#0" expanded="false" />
             <element signature="e#7845#11973#0" expanded="false" />
             <element signature="e#12038#17401#0" expanded="false" />
             <element signature="e#17594#20144#0" expanded="false" />
-            <element signature="e#29549#32018#0" expanded="false" />
-            <element signature="e#32117#32707#0" expanded="false" />
-            <element signature="e#32740#32774#0" expanded="false" />
-            <element signature="e#32844#33565#0" expanded="false" />
-            <element signature="e#33662#34562#0" expanded="false" />
-            <element signature="e#34644#35409#0" expanded="false" />
-            <element signature="e#35485#36737#0" expanded="false" />
-            <element signature="e#37499#37952#0" expanded="false" />
-            <element signature="e#38036#39600#0" expanded="false" />
-            <element signature="e#39793#40669#0" expanded="false" />
-            <element signature="e#40738#47293#0" expanded="false" />
-            <element signature="e#47331#47792#0" expanded="false" />
-            <element signature="e#47864#49704#0" expanded="false" />
-            <element signature="e#49734#51354#0" expanded="false" />
-            <element signature="e#51401#52385#0" expanded="false" />
-            <element signature="e#52501#56658#0" expanded="false" />
+            <element signature="e#30772#33374#0" expanded="false" />
+            <element signature="e#33473#34063#0" expanded="false" />
+            <element signature="e#34096#34130#0" expanded="false" />
+            <element signature="e#34200#34921#0" expanded="false" />
+            <element signature="e#35018#35918#0" expanded="false" />
+            <element signature="e#36000#36765#0" expanded="false" />
+            <element signature="e#36841#38093#0" expanded="false" />
+            <element signature="e#38148#38783#0" expanded="false" />
+            <element signature="e#38855#39308#0" expanded="false" />
+            <element signature="e#39392#40956#0" expanded="false" />
+            <element signature="e#41149#42025#0" expanded="false" />
+            <element signature="e#42094#48649#0" expanded="false" />
+            <element signature="e#48687#49148#0" expanded="false" />
+            <element signature="e#49220#51060#0" expanded="false" />
+            <element signature="e#51090#52710#0" expanded="false" />
+            <element signature="e#52757#53741#0" expanded="false" />
+            <element signature="e#53857#58014#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/find_bands.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
