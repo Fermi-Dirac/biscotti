@@ -12,7 +12,6 @@ console_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(mes
 logger.addHandler(console_handler)
 # End logging.
 
-
 def list_folder(rootpath : str, extensions = None):
     if not os.path.isdir(rootpath):
         rootpath = os.path.basename(rootpath)

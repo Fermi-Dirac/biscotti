@@ -106,7 +106,6 @@ class QECalcIn(object):
 
     def __init__(self, name = 'Default', control = None, system = None, electrons = None, ions = None, cell = None, structure = Biscotti.AtomicStructure(), pseudopots = None, kpts = None):
         """
-
         :param name: Name of this QE calc object
         :param control: ordered dictionary of the control namelist
         :param system: ordered dictionary of the system namelist
@@ -444,7 +443,7 @@ class QECalcIn(object):
 
 class QECalcOut(object):
     """ This class holds the results of a pw.x QE calculation. This one is very much under development"""
-    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, pressure_list = None, jobstatus = 'unknown' ):
+    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, pressure_list = None, bands=None, jobstatus = 'unknown' ):
         """
 
         :param outpath: filepath for the quantum espresso output file
@@ -470,7 +469,7 @@ class QECalcOut(object):
                 md5hash.update(data)
         self.ID = str("{0}".format(md5hash.hexdigest())) # HASH of Path's file
         self.filename = os.path.basename(outpath)
-        self.folder = os.path.dirname(outpath)
+        self.folder = os.path.basename(os.path.dirname(outpath))
 
         # Calctime derived attributes
         self.calctime = CalcTime.get_time(outpath)
@@ -539,6 +538,9 @@ class QECalcOut(object):
         else:
             self.pressure_list = pressure_list
 
+        # Bands
+        self.bands = bands # Usage:  bands[scf step #][k-kpoint as tuple][band index] = energy in eV
+
         # Job Status
         self.jobstatus = jobstatus
         if jobstatus == 'complete':
@@ -568,19 +570,21 @@ class QECalcOut(object):
         completestring = 'Unknown'
         logger.info("--Now parsing file " + path)
         verbose = False
+        bands = []
 
         with open(path) as fileobj:
-            for line in fileobj:
-                regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
-                             'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
-                             'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
-                             'stoptime': r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}',
-                             'done': r'JOB DONE.',
-                             'k-points': r'k points=[\s]*[0-9]*',
-                             'exitcode': r'Exit code:[\s0-9]*',
-                             'pressure': r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
-                             'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*'
-                             }
+            regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
+                         'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
+                         'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
+                         'stoptime': r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}',
+                         'done': r'JOB DONE.',
+                         'k-points': r'k points=[\s]*[0-9]*',
+                         'exitcode': r'Exit code:[\s0-9]*',
+                         'pressure': r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
+                         'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*',
+                         'bands': r'k =.*bands \(ev\):([ \n\r0-9\-\.])+'
+                         }
+            for line in fileobj: # line by line is pretty terribad
                 for regex in regexlist:
                     searchresult = re.findall(regexlist[regex], line)
                     if searchresult:  # isn't empty..
@@ -613,6 +617,9 @@ class QECalcOut(object):
                             jobComplete = True
                             completestring = 'completed'
                             # break  #don't check any more regex if empty
+                        elif 'bands' in regex:
+                            pass
+
         logger.info("Relaxation Steps length : " + str(len(RelaxationSteps)))
         if verbose:
             print("\n\n--This calculation " + completestring)

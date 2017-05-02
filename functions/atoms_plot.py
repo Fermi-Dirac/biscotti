@@ -22,3 +22,4 @@ def render_atoms(structure : atoms.AtomicStructure, window=gl.GLViewWidget(), ad
         window.addItem(atom_render)
     center = (maxlist+minlist) / 2
     window.pan(center[0], center[1], center[2])
+    return window

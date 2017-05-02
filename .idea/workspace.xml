@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/pp.x create.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/pw.x_gui.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/pymatgen_test.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/testing base.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/testing/write POSCAR.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.ui" afterPath="$PROJECT_DIR$/analysis/biscotti_gui.ui" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/render_struct.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/analysis/struct_to_VESTA.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/atoms_plot.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/functions/pymatgen_helpers.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.py" afterPath="$PROJECT_DIR$/analysis/biscotti_gui.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/atoms.py" afterPath="$PROJECT_DIR$/classes/atoms.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/postproc.py" afterPath="$PROJECT_DIR$/classes/postproc.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/base.py" afterPath="$PROJECT_DIR$/functions/base.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/Parameter table.ui" afterPath="$PROJECT_DIR$/GUIs/Parameter table.ui" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/Summary for .tsv" afterPath="$PROJECT_DIR$/analysis/pw.x file to POSCAR.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.py" afterPath="$PROJECT_DIR$/GUIs/biscotti_gui.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/biscotti_gui.ui" afterPath="$PROJECT_DIR$/GUIs/biscotti_gui.ui" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pp.x create.py" afterPath="$PROJECT_DIR$/GUIs/pp.x create.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis.ui" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis.ui" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis.ui.zip" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis.ui.zip" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_analysis2.ui" afterPath="$PROJECT_DIR$/GUIs/pw.x_analysis2.ui" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/analysis/pw.x_gui.py" afterPath="$PROJECT_DIR$/GUIs/pw.x_gui.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,46 +37,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="atoms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/classes/atoms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#10262#10289#0" expanded="false" />
+                <element signature="e#10384#12091#0" expanded="false" />
+                <element signature="e#12148#12597#0" expanded="false" />
+                <element signature="e#12654#13324#0" expanded="false" />
+                <element signature="e#13392#15942#0" expanded="false" />
+                <element signature="e#16010#17894#0" expanded="false" />
+                <element signature="e#17968#21004#0" expanded="false" />
+                <element signature="e#21064#21709#0" expanded="false" />
+                <element signature="e#21750#22188#0" expanded="false" />
+                <element signature="e#22261#22950#0" expanded="false" />
+                <element signature="e#23018#24444#0" expanded="false" />
+                <element signature="e#24491#25713#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="710">
-              <caret line="262" column="17" selection-start-line="262" selection-start-column="17" selection-end-line="262" selection-end-column="17" />
+            <state relative-caret-position="279">
+              <caret line="585" column="26" selection-start-line="585" selection-start-column="26" selection-end-line="585" selection-end-column="26" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
-                <element signature="e#6564#6927#0" expanded="false" />
-                <element signature="e#6979#7775#0" expanded="false" />
-                <element signature="e#12039#17402#0" expanded="false" />
-                <element signature="e#17595#20145#0" expanded="false" />
-                <element signature="e#20176#37637#0" expanded="false" />
-                <element signature="e#20424#24923#0" expanded="false" />
-                <element signature="e#25006#29190#0" expanded="false" />
-                <element signature="e#29234#31703#0" expanded="false" />
-                <element signature="e#31802#32392#0" expanded="false" />
-                <element signature="e#32425#32459#0" expanded="false" />
-                <element signature="e#35170#36422#0" expanded="false" />
-                <element signature="e#37184#37637#0" expanded="false" />
-                <element signature="e#37721#39285#0" expanded="false" />
-                <element signature="e#39478#40354#0" expanded="false" />
-                <element signature="e#40423#46978#0" expanded="false" />
-                <element signature="e#47016#47477#0" expanded="false" />
-                <element signature="e#47549#49389#0" expanded="false" />
-                <element signature="e#49419#51039#0" expanded="false" />
-                <element signature="e#51086#52070#0" expanded="false" />
-                <element signature="e#52186#56343#0" expanded="false" />
+                <element signature="e#3666#20144#0" expanded="false" />
+                <element signature="e#6563#6926#0" expanded="false" />
+                <element signature="e#6978#7774#0" expanded="false" />
+                <element signature="e#7845#11973#0" expanded="false" />
+                <element signature="e#12038#17401#0" expanded="false" />
+                <element signature="e#17594#20144#0" expanded="false" />
+                <element signature="e#29549#32018#0" expanded="false" />
+                <element signature="e#32117#32707#0" expanded="false" />
+                <element signature="e#32740#32774#0" expanded="false" />
+                <element signature="e#32844#33565#0" expanded="false" />
+                <element signature="e#33662#34562#0" expanded="false" />
+                <element signature="e#34644#35409#0" expanded="false" />
+                <element signature="e#35485#36737#0" expanded="false" />
+                <element signature="e#37499#37952#0" expanded="false" />
+                <element signature="e#38036#39600#0" expanded="false" />
+                <element signature="e#39793#40669#0" expanded="false" />
+                <element signature="e#40738#47293#0" expanded="false" />
+                <element signature="e#47331#47792#0" expanded="false" />
+                <element signature="e#47864#49704#0" expanded="false" />
+                <element signature="e#49734#51354#0" expanded="false" />
+                <element signature="e#51401#52385#0" expanded="false" />
+                <element signature="e#52501#56658#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="biscotti_gui.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analysis/biscotti_gui.py">
+        <entry file="file://$PROJECT_DIR$/GUIs/biscotti_gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="127" column="50" selection-start-line="127" selection-start-column="50" selection-end-line="127" selection-end-column="50" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,11 +108,9 @@
       <file leaf-file-name="proj_wfx.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/proj_wfx.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#183#201#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,18 +118,27 @@
       <file leaf-file-name="postproc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/postproc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pw.x file to POSCAR.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/pw.x file to POSCAR.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
               <folding>
-                <element signature="e#187#205#0" expanded="true" />
-                <element signature="e#784#2404#1" expanded="false" />
+                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="pw.x_gui.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/analysis/pw.x_gui.py">
+        <entry file="file://$PROJECT_DIR$/GUIs/pw.x_gui.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="884">
               <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
@@ -117,36 +152,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pp.x create.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/analysis/pp.x create.py">
+      <file leaf-file-name="pp.x create.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUIs/pp.x create.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/functions/base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
-              <folding>
-                <element signature="e#53#67#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="testing base.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/testing/testing base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pw.x analysis.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/pw.x analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="struct_to_VESTA.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/analysis/struct_to_VESTA.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="106" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="106" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -174,13 +209,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/analysis/calc_time_analysis.py" />
-        <option value="$PROJECT_DIR$/reporting/make_table.py" />
-        <option value="$PROJECT_DIR$/classes/proj_wfx.py" />
-        <option value="$PROJECT_DIR$/data/pw.x input description.html" />
-        <option value="$PROJECT_DIR$/data/download_docs.py" />
-        <option value="$PROJECT_DIR$/data/pp.x input description.html" />
-        <option value="$PROJECT_DIR$/testing/QE_web_parser.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_plot2.py" />
         <option value="$PROJECT_DIR$/no_git/scripts/cluster_temp_scraper_all.py" />
@@ -215,16 +243,23 @@
         <option value="$PROJECT_DIR$/classes/calctime.py" />
         <option value="$PROJECT_DIR$/testing/write POSCAR.py" />
         <option value="$PROJECT_DIR$/functions/base_programs.py" />
-        <option value="$PROJECT_DIR$/classes/atoms.py" />
         <option value="$PROJECT_DIR$/testing/testing base.py" />
-        <option value="$PROJECT_DIR$/functions/base.py" />
         <option value="$PROJECT_DIR$/analysis/biscotti_gui.py" />
         <option value="$PROJECT_DIR$/analysis/pw.x_gui.py" />
         <option value="$PROJECT_DIR$/testing/pymatgen_test.py" />
         <option value="$PROJECT_DIR$/classes/postproc.py" />
         <option value="$PROJECT_DIR$/analysis/pp.x prepare.py" />
-        <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/analysis/pp.x create.py" />
+        <option value="$PROJECT_DIR$/classes/atoms.py" />
+        <option value="$PROJECT_DIR$/testing/render_struct.py" />
+        <option value="$PROJECT_DIR$/analysis/pw.x file to POSCAR.py" />
+        <option value="$PROJECT_DIR$/testing/pymatgen_to_Atoms.py" />
+        <option value="$PROJECT_DIR$/analysis/atoms_plot.py" />
+        <option value="$PROJECT_DIR$/functions/render_struct.py" />
+        <option value="$PROJECT_DIR$/functions/pymatgen_helpers.py" />
+        <option value="$PROJECT_DIR$/functions/base.py" />
+        <option value="$PROJECT_DIR$/analysis/struct_to_VESTA.py" />
+        <option value="$PROJECT_DIR$/classes/qecalc.py" />
       </list>
     </option>
   </component>
@@ -333,6 +368,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="biscotti" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GUIs" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -341,44 +390,27 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="list_folder&#9;null&#9;null&#10;allout&#9;null&#9;null&#10;alloutput&#9;null&#9;null&#10;all&#9;null&#9;null&#10;glob&#9;FILE&#9;file://C:/Anaconda3/Lib/glob.py" />
+    <property name="SearchEverywhereHistoryKey" value="pan&#9;FILE&#9;file://D:/Users/Chris/Documents/SivaLab/Python/biscotti/analysis/pw.x analysis.py&#10;list_folder&#9;null&#9;null&#10;allout&#9;null&#9;null&#10;alloutput&#9;null&#9;null&#10;all&#9;null&#9;null&#10;glob&#9;FILE&#9;file://C:/Anaconda3/Lib/glob.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\GUIs" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\analysis" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\functions" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\reporting" />
+      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\cluster" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
       <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\reporting" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git\Batches" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\no_git" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\testing" />
-      <recent name="D:\Users\Chris\Documents\SivaLab\Python\biscotti\Scripts" />
-    </key>
   </component>
-  <component name="RunManager" selected="Python.pw.x_gui">
-    <configuration default="false" name="Test_strain" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/Test_strain.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <method />
-    </configuration>
-    <configuration default="false" name="biscotti_gui" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.struct_to_VESTA">
+    <configuration default="false" name="pw.x file to POSCAR" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -390,12 +422,12 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/biscotti_gui.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/pw.x file to POSCAR.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="write POSCAR" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="pymatgen_to_Atoms" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -407,24 +439,41 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/write POSCAR.py" />
+      <option name="SCRIPT_NAME" value="D:\Users\Chris\Documents\SivaLab\Python\biscotti\functions\pymatgen_helpers.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
     </configuration>
-    <configuration default="false" name="testing base" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration default="false" name="render_struct (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/testing" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/functions" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testing/testing base.py" />
+      <option name="SCRIPT_NAME" value="D:\Users\Chris\Documents\SivaLab\Python\biscotti\analysis\render_struct.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="struct_to_VESTA" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Biscotti" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/struct_to_VESTA.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -436,12 +485,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/analysis" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/GUIs" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="Biscotti" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/analysis/pw.x_gui.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/GUIs/pw.x_gui.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -592,19 +641,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.Test_strain" />
-      <item index="1" class="java.lang.String" itemvalue="Python.biscotti_gui" />
-      <item index="2" class="java.lang.String" itemvalue="Python.write POSCAR" />
-      <item index="3" class="java.lang.String" itemvalue="Python.testing base" />
+      <item index="0" class="java.lang.String" itemvalue="Python.pw.x file to POSCAR" />
+      <item index="1" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
+      <item index="2" class="java.lang.String" itemvalue="Python.render_struct (1)" />
+      <item index="3" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
       <item index="4" class="java.lang.String" itemvalue="Python.pw.x_gui" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.pw.x_gui" />
-        <item index="1" class="java.lang.String" itemvalue="Python.biscotti_gui" />
-        <item index="2" class="java.lang.String" itemvalue="Python.testing base" />
-        <item index="3" class="java.lang.String" itemvalue="Python.write POSCAR" />
-        <item index="4" class="java.lang.String" itemvalue="Python.Test_strain" />
+        <item index="0" class="java.lang.String" itemvalue="Python.struct_to_VESTA" />
+        <item index="1" class="java.lang.String" itemvalue="Python.pw.x_gui" />
+        <item index="2" class="java.lang.String" itemvalue="Python.render_struct (1)" />
+        <item index="3" class="java.lang.String" itemvalue="Python.pymatgen_to_Atoms" />
+        <item index="4" class="java.lang.String" itemvalue="Python.pw.x file to POSCAR" />
       </list>
     </recent_temporary>
   </component>
@@ -633,13 +682,12 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16666667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1609375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29281184" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -652,6 +700,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -691,58 +740,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="59" />
+      <option name="time" value="61" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch007 Script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/example_slurm_jobscript.sh.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_git/Batches/Batch009 Script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Anaconda3/Lib/email/mime/multipart.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/Testing.py" />
-    <entry file="file://$PROJECT_DIR$/testing/email_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="68" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/no_git/scripts/wtf.py" />
-    <entry file="file://$PROJECT_DIR$/LICENSE.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="68">
-            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cluster/slurm_jobscript2_7day_32core.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -845,13 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/calc_time_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reporting/pymail.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -863,13 +858,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
           <caret line="27" column="4" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/pw.x analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -929,13 +917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/batch_analysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing/write POSCAR.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -985,53 +966,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/atoms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" column="23" selection-start-line="6" selection-start-column="23" selection-end-line="6" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/testing/pymatgen_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing/testing base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/proj_wfx.py">
+    <entry file="file://$USER_HOME$/.PyCharm2016.2/system/python_stubs/1013586911/PyQt4/QtGui/QMainWindow.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Anaconda3/Lib/site-packages/pyqtgraph/opengl/GLViewWidget.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2990">
+          <caret line="246" column="8" selection-start-line="246" selection-start-column="8" selection-end-line="246" selection-end-column="8" />
           <folding>
-            <element signature="e#183#201#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
+            <element signature="e#1832#2218#0" expanded="false" />
+            <element signature="e#9466#10685#0" expanded="false" />
+            <element signature="e#10733#11235#0" expanded="false" />
+            <element signature="e#11364#11849#0" expanded="false" />
+            <element signature="e#11904#12360#0" expanded="false" />
+            <element signature="e#12417#12796#0" expanded="false" />
+            <element signature="e#12839#13028#0" expanded="false" />
+            <element signature="e#13393#14117#0" expanded="false" />
+            <element signature="e#14166#14670#0" expanded="false" />
+            <element signature="e#14732#15358#0" expanded="false" />
+            <element signature="e#15490#18135#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/biscotti_gui.py">
+    <entry file="file://C:/Anaconda3/Lib/site-packages/pymatgen/io/pwscf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="127" column="50" selection-start-line="127" selection-start-column="50" selection-end-line="127" selection-end-column="50" />
+        <state relative-caret-position="1148">
+          <caret line="189" column="0" selection-start-line="189" selection-start-column="0" selection-end-line="189" selection-end-column="0" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#534#4524#0" expanded="false" />
+            <element signature="e#5719#7040#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/postproc.py">
+    <entry file="file://$PROJECT_DIR$/functions/atoms_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
           <folding>
-            <element signature="e#187#205#0" expanded="true" />
-            <element signature="e#784#2404#1" expanded="false" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/pw.x_gui.py">
+    <entry file="file://$PROJECT_DIR$/functions/pymatgen_helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functions/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/render_struct.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUIs/pp.x create.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/pw.x analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/pw.x file to POSCAR.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="93" selection-start-line="10" selection-start-column="93" selection-end-line="10" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUIs/biscotti_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUIs/pw.x_gui.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="52" column="48" selection-start-line="52" selection-start-column="48" selection-end-line="52" selection-end-column="48" />
@@ -1044,60 +1106,98 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+    <entry file="file://$PROJECT_DIR$/analysis/batch_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="710">
-          <caret line="262" column="17" selection-start-line="262" selection-start-column="17" selection-end-line="262" selection-end-column="17" />
-          <folding>
-            <element signature="e#157#175#0" expanded="true" />
-            <element signature="e#6564#6927#0" expanded="false" />
-            <element signature="e#6979#7775#0" expanded="false" />
-            <element signature="e#12039#17402#0" expanded="false" />
-            <element signature="e#17595#20145#0" expanded="false" />
-            <element signature="e#20176#37637#0" expanded="false" />
-            <element signature="e#20424#24923#0" expanded="false" />
-            <element signature="e#25006#29190#0" expanded="false" />
-            <element signature="e#29234#31703#0" expanded="false" />
-            <element signature="e#31802#32392#0" expanded="false" />
-            <element signature="e#32425#32459#0" expanded="false" />
-            <element signature="e#35170#36422#0" expanded="false" />
-            <element signature="e#37184#37637#0" expanded="false" />
-            <element signature="e#37721#39285#0" expanded="false" />
-            <element signature="e#39478#40354#0" expanded="false" />
-            <element signature="e#40423#46978#0" expanded="false" />
-            <element signature="e#47016#47477#0" expanded="false" />
-            <element signature="e#47549#49389#0" expanded="false" />
-            <element signature="e#49419#51039#0" expanded="false" />
-            <element signature="e#51086#52070#0" expanded="false" />
-            <element signature="e#52186#56343#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testing/testing base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="34">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/base.py">
+    <entry file="file://$PROJECT_DIR$/analysis/calc_time_analysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+        <state relative-caret-position="221">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/analysis/struct_to_VESTA.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="106" selection-start-line="10" selection-start-column="106" selection-end-line="10" selection-end-column="106" />
           <folding>
-            <element signature="e#53#67#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analysis/pp.x create.py">
+    <entry file="file://$PROJECT_DIR$/classes/proj_wfx.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
+        <state relative-caret-position="51">
+          <caret line="7" column="16" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/postproc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/atoms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="158" column="54" selection-start-line="158" selection-start-column="54" selection-end-line="158" selection-end-column="54" />
           <folding>
-            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#10262#10289#0" expanded="false" />
+            <element signature="e#10384#12091#0" expanded="false" />
+            <element signature="e#12148#12597#0" expanded="false" />
+            <element signature="e#12654#13324#0" expanded="false" />
+            <element signature="e#13392#15942#0" expanded="false" />
+            <element signature="e#16010#17894#0" expanded="false" />
+            <element signature="e#17968#21004#0" expanded="false" />
+            <element signature="e#21064#21709#0" expanded="false" />
+            <element signature="e#21750#22188#0" expanded="false" />
+            <element signature="e#22261#22950#0" expanded="false" />
+            <element signature="e#23018#24444#0" expanded="false" />
+            <element signature="e#24491#25713#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="585" column="26" selection-start-line="585" selection-start-column="26" selection-end-line="585" selection-end-column="26" />
+          <folding>
+            <element signature="e#157#175#0" expanded="true" />
+            <element signature="e#3666#20144#0" expanded="false" />
+            <element signature="e#6563#6926#0" expanded="false" />
+            <element signature="e#6978#7774#0" expanded="false" />
+            <element signature="e#7845#11973#0" expanded="false" />
+            <element signature="e#12038#17401#0" expanded="false" />
+            <element signature="e#17594#20144#0" expanded="false" />
+            <element signature="e#29549#32018#0" expanded="false" />
+            <element signature="e#32117#32707#0" expanded="false" />
+            <element signature="e#32740#32774#0" expanded="false" />
+            <element signature="e#32844#33565#0" expanded="false" />
+            <element signature="e#33662#34562#0" expanded="false" />
+            <element signature="e#34644#35409#0" expanded="false" />
+            <element signature="e#35485#36737#0" expanded="false" />
+            <element signature="e#37499#37952#0" expanded="false" />
+            <element signature="e#38036#39600#0" expanded="false" />
+            <element signature="e#39793#40669#0" expanded="false" />
+            <element signature="e#40738#47293#0" expanded="false" />
+            <element signature="e#47331#47792#0" expanded="false" />
+            <element signature="e#47864#49704#0" expanded="false" />
+            <element signature="e#49734#51354#0" expanded="false" />
+            <element signature="e#51401#52385#0" expanded="false" />
+            <element signature="e#52501#56658#0" expanded="false" />
           </folding>
         </state>
       </provider>

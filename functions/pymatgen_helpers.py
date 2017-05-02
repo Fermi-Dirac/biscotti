@@ -1,7 +1,13 @@
-import pymatgen as pmg
+try:
+    import pymatgen as pmg
+    pymatgen_avail = True
+except ImportError:
+    print("Error, pymatgen not found. associated functions disabled")
+    pymatgen_avail = False
+
 import biscotti.classes.atoms as atoms
 
-def biscotti_to_pymatgen(bis_struct : atoms.AtomicStructure):
+def struct_biscotti_to_pymatgen(bis_struct : atoms.AtomicStructure):
     coords = []
     species = []
     for atom in bis_struct.atomsdir:
@@ -11,6 +17,6 @@ def biscotti_to_pymatgen(bis_struct : atoms.AtomicStructure):
     pmg_struct = pmg.Structure(lattice, species, coords)
     return pmg_struct
 
-def pymatgen_Structure_to_AtomicStructure():
+def struct_pymatgen_to_biscotti():
     pass
 
