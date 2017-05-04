@@ -45,6 +45,7 @@ class PWX_Setup(QtGui.QMainWindow, Ui_MainWindow):
         self.command_cmbox.currentIndexChanged.connect(self.change_command)
         self.val_cmbox.currentIndexChanged.connect(self.change_val)
         self.load_file_button.clicked.connect(self.load_file_dialog)
+        self.file_display.cursorPositionChanged.connect(self.cursor_changed)
 
         # Main data structures
         self.last_rootpath = None
@@ -61,11 +62,11 @@ class PWX_Setup(QtGui.QMainWindow, Ui_MainWindow):
         # Pre-load data
         self.populate_default_list()
         self.load_selected_default()
-        command_list = []
+        self.command_list = []
         for key, list in self.namelist_dict.items():
-            command_list.append("  " + key)
-            command_list.extend(list)
-        self.command_cmbox.addItems(command_list)
+            self.command_list.append("  " + key)
+            self.command_list.extend(list)
+        self.command_cmbox.addItems(self.command_list)
 
     def populate_default_list(self):
         for filename in os.listdir(self.defaults_path):
@@ -121,6 +122,29 @@ class PWX_Setup(QtGui.QMainWindow, Ui_MainWindow):
             if value in self.val_comments[command]:
                 comment = self.val_comments[command][value]
         self.val_comment_label.setText(comment)
+
+    def cursor_changed(self):
+        cursor_pos = self.file_display.textCursor().position()
+        linestart = 0
+        lineend = len(self.input_text)
+        start = 0 if cursor_pos < 200 else cursor_pos-200
+        end = cursor_pos+200 if cursor_pos + 200 < lineend else lineend
+        for index, char in enumerate(self.input_text[cursor_pos:end]):
+            if char == '\n':
+                lineend = cursor_pos + index
+                break
+        for index, char in enumerate(self.input_text[start:cursor_pos][::-1]):
+            if char == '\n':
+                linestart = cursor_pos - index
+                break
+        selected_line = self.input_text[linestart:lineend]
+        linesplit = selected_line.split('=')
+        if len(linesplit) > 1:
+            command = linesplit[0].strip()
+            value = linesplit[1].split(',')[0].strip()
+            print(command,value)
+            if command in self.command_list:
+                self.command_cmbox.setCurrentIndex(self.command_list.index(command))
 
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)

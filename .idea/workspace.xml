@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/GUIs/pw.x setup calc.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/parser_nb.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/download_docs.py" afterPath="$PROJECT_DIR$/data/download_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testing/find_bands.py" afterPath="$PROJECT_DIR$/testing/find_bands.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUIs/pw.x setup calc.ui" afterPath="$PROJECT_DIR$/GUIs/pw.x setup calc.ui" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUIs/pw.x setup calc.py" afterPath="$PROJECT_DIR$/GUIs/pw.x setup calc.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,8 +69,8 @@
       <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="308" column="41" selection-start-line="308" selection-start-column="41" selection-end-line="308" selection-end-column="41" />
+            <state relative-caret-position="515">
+              <caret line="303" column="24" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="64" />
               <folding>
                 <element signature="e#157#175#0" expanded="true" />
                 <element signature="e#4034#6517#0" expanded="false" />
@@ -158,10 +154,12 @@
       <file leaf-file-name="pw.x setup calc.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/GUIs/pw.x setup calc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+            <state relative-caret-position="216">
+              <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
+                <element signature="e#3784#4562#0" expanded="false" />
+                <element signature="e#4598#4907#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -1205,10 +1203,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/GUIs/pw.x_gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="60" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+            <element signature="e#4022#4223#0" expanded="false" />
+            <element signature="e#4262#5189#0" expanded="false" />
+            <element signature="e#5226#6138#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="308" column="41" selection-start-line="308" selection-start-column="41" selection-end-line="308" selection-end-column="41" />
+        <state relative-caret-position="515">
+          <caret line="303" column="24" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="64" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
             <element signature="e#4034#6517#0" expanded="false" />
@@ -1241,25 +1252,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/GUIs/pw.x_gui.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="60" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-            <element signature="e#4022#4223#0" expanded="false" />
-            <element signature="e#4262#5189#0" expanded="false" />
-            <element signature="e#5226#6138#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/GUIs/pw.x setup calc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="98" column="40" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+        <state relative-caret-position="216">
+          <caret line="132" column="28" selection-start-line="132" selection-start-column="28" selection-end-line="132" selection-end-column="28" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
+            <element signature="e#3784#4562#0" expanded="false" />
+            <element signature="e#4598#4907#0" expanded="false" />
           </folding>
         </state>
       </provider>
