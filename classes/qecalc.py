@@ -540,6 +540,7 @@ class QECalcOut(object):
 
         # Bands
         self.bands = bands # Usage:  bands[scf step #][k-kpoint as tuple][band index] = energy in eV
+        self.fermi_levels = []
 
         # Job Status
         self.jobstatus = jobstatus
@@ -569,10 +570,9 @@ class QECalcOut(object):
         electronstep = 99
         completestring = 'Unknown'
         logger.info("--Now parsing file " + path)
-        verbose = False
         bands = []
         num_kpts = 1
-
+        fermi_levels = []
         regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
                      'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
                      'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
@@ -584,7 +584,8 @@ class QECalcOut(object):
                      'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*'
                      }
         file_regexlist = odict([('num_kpts', r'number of k points=.*'),
-                                ('bands', r'k =.*bands \(ev\):([ \n\r0-9\-\.])+')])
+                                ('bands', r'k =.*bands \(ev\):([ \n\r0-9\-\.])+'),
+                                ('fermi', r'the Fermi energy is[0-9\.\- ]+ev')])
 
         with open(path) as fileobj:
             filestring = fileobj.read()
@@ -609,6 +610,11 @@ class QECalcOut(object):
                         logger.debug("Adding " + str(len(bands_thiskpt)) + " bands to scf index " + str(scf_index) + " at kpt " + str(kpt))
                         bands[scf_index][kpt] = bands_thiskpt  # Make into one long list
                     logger.info('Bands added')
+
+                if param == 'fermi':
+                    for index, match in enumerate(matches):
+                        fermi_level = float(match.group(0).split()[4])
+                        fermi_levels.append(fermi_level)
 
         with open(path) as fileobj:
             for line in fileobj: # line by line is pretty terribad
@@ -645,10 +651,10 @@ class QECalcOut(object):
                             completestring = 'completed'
                             # break  #don't check any more regex if empty
 
-
-
         logger.info("Relaxation Steps length : " + str(len(relax_list)))
-        return QECalcOut(outpath=path, inpath=inpath, relax_list=list(relax_list), pressure_list = pressure_list, bands=bands, jobstatus= completestring)
+        returnobj = QECalcOut(outpath=path, inpath=inpath, relax_list=list(relax_list), pressure_list = pressure_list, bands=bands, jobstatus= completestring)
+        returnobj.fermi_levels = fermi_levels # this should be in init, need to fix my init
+        return returnobj
 
     def calc_overview_dict(self):
         if self.summary_dict is not None:
@@ -669,20 +675,21 @@ class QECalcOut(object):
             keys = ['ID', 'Filename', 'Folder', 'Full path', 'Title', 'Calc Type',
                     'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
                     'Final Free Energy (eV)',
-                   'Final Free Energy (eV/atom)',
-                   'Number of Atoms',
-                   'Cutoff (Ry)',
-                   'K-point grid',
+                    'Final Free Energy (eV/atom)',
+                    'Number of Atoms',
+                    'Cutoff (Ry)',
+                    'K-point grid',
                     '# of inequivalent k-pts',
                     '# of K-S bands per kpt',
-                   'Job Complete?',
-                   'Calc time (hr)',
-                   'Start Date-Time',
-                   'End Date-Time',
-                   'Initial Volume (A^3)',
-                   'Final Volume (A^3)',
-                   'Final Pressure (kbar)'
-                       ]
+                    'Last Fermi Energy (eV)',
+                    'Job Complete?',
+                    'Calc time (hr)',
+                    'Start Date-Time',
+                    'End Date-Time',
+                    'Initial Volume (A^3)',
+                    'Final Volume (A^3)',
+                    'Final Pressure (kbar)'
+                        ]
             values = [self.ID,
                       self.filename,
                       self.folder,
@@ -700,6 +707,7 @@ class QECalcOut(object):
                       self.qecalcin.kpts,
                       len(self.bands[0]),
                       len(self.bands[0][list(self.bands[0].keys())[0]]),
+                      self.fermi_levels[-1],
                       self.jobstatus,
                       self.totalsec/(60*60),
                       self.startdt,

@@ -6,6 +6,7 @@ outpath = r'\\cluster\cbuurma\espresso\Superlattice\Batch019 - Long vc-relax2\T2
 thiscalc = QECalcOut.import_from_file(outpath=outpath)
 kpts = list(thiscalc.bands[-1])
 print(kpts)
-gamma_bands = thiscalc.bands[-1][(0,0,0)]
+gamma_bands = thiscalc.bands[-1][(0,0,0)] - thiscalc.fermi_levels[-1]  #offset by fermi level
+print(thiscalc.fermi_levels)
 idx = np.searchsorted(gamma_bands, 0, side='left')
 print(gamma_bands[idx-4:idx+4])
