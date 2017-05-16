@@ -195,7 +195,7 @@ class AtomicStructure(object):
         return len(self.atomsarray)
 
     def totalvol(self):
-        return (0)
+        return abs(np.dot(np.cross(self.latticeA, self.latticeB), self.latticeC))
 
     def supercell(self, latticefactors):
         """

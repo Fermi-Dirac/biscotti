@@ -135,10 +135,17 @@ class PWX_Analysis(QtGui.QMainWindow, Ui_MainWindow):
         if delta:
             delta_e = [0]
             for i in range(len(energies)-1):
+                diff = energies[i] - energies[i+1]
                 delta_e.append(energies[i] - energies[i+1])
             energies = delta_e
+
+        yaxis = self.plot_1.getAxis('left')
+        logscale = yaxis.logMode
+        if logscale:
+            energies = [abs(energy) for energy in energies]
         # Plot them
         self.plot_1.clear()
+        self.plot_1.enableAutoRange()
         self.plot_1.plot(energies, symbol='o', size=100, pen='k')
 
     def make_e_plot(self):
@@ -152,9 +159,14 @@ class PWX_Analysis(QtGui.QMainWindow, Ui_MainWindow):
         self.plot_2.setLabel('bottom', 'Step #', **labelstyle)
         # Prepare arrays
         energies_plotted = self.calc.scale_energies(free_energy, unit)
+        yaxis = self.plot_2.getAxis('left')
+        logscale = yaxis.logMode
+        if logscale:
+            energies_plotted = [[abs(energy) for energy in ionstep] for ionstep in energies_plotted]
 
         # Plot them
         self.plot_2.clear()
+        self.plot_2.enableAutoRange()
         i = 0
         pens = ['r', 'g', 'b', 'c', 'm', 'k']
         for ionstep in energies_plotted:

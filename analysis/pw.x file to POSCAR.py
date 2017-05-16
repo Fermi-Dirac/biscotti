@@ -2,7 +2,7 @@ from biscotti.classes import atoms
 from tkinter import filedialog
 import os
 calcpath = filedialog.askopenfilename()
-ext = os.path.splitext(calcpath)
+ext = os.path.splitext(calcpath)[1]
 print(ext)
 if ext == '.in':
     struct =  atoms.AtomicStructure.from_QEinput(calcpath)

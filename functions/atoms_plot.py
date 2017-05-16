@@ -2,6 +2,9 @@ from biscotti.classes import atoms
 from pyqtgraph.Qt import QtGui, QtCore
 import pyqtgraph.opengl as gl
 import numpy as np
+import tempfile
+import subprocess
+from os.path import sep
 
 app = QtGui.QApplication([])  # not sure if i can delete this or wtf.
 def render_atoms(structure : atoms.AtomicStructure, window=gl.GLViewWidget(), add_bonds=False, radius=1, scale=1, **kwargs):
@@ -23,3 +26,8 @@ def render_atoms(structure : atoms.AtomicStructure, window=gl.GLViewWidget(), ad
     center = (maxlist+minlist) / 2
     window.pan(center[0], center[1], center[2])
     return window
+
+def structure_to_vesta(struct : atoms.AtomicStructure):
+    vesta_dir = r'C:\Program Files (x86)\VESTA-win64\VESTA.exe'
+    struct.write_vasp(folder=tempfile.gettempdir(), filename='POSCAR ' + struct.name + ".vasp")
+    subprocess.call('"' + vesta_dir + '" "' + tempfile.gettempdir() + sep + 'POSCAR ' + struct.name + '.vasp"')

@@ -443,7 +443,7 @@ class QECalcIn(object):
 
 class QECalcOut(object):
     """ This class holds the results of a pw.x QE calculation. This one is very much under development"""
-    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, pressure_list = None, bands=None, jobstatus = 'unknown' ):
+    def __init__(self, outpath = None, inpath = None, refenergies=None, relax_list = None, pressure_list = None, bands=None, fermi_levels=None, jobstatus = 'unknown' ):
         """
 
         :param outpath: filepath for the quantum espresso output file
@@ -539,9 +539,14 @@ class QECalcOut(object):
             self.pressure_list = pressure_list
 
         # Bands
-        self.bands = bands # Usage:  bands[scf step #][k-kpoint as tuple][band index] = energy in eV
-        self.fermi_levels = []
-
+        if bands is None or not bands:
+            self.bands = np.array([{(0,0,0) : np.array([0])}])
+        else:
+            self.bands = bands # Usage:  bands[scf step #][k-kpoint as tuple][band index] = energy in eV
+        if fermi_levels is None or not fermi_levels:
+            self.fermi_levels = np.array([0])
+        else:
+            self.fermi_levels = fermi_levels
         # Job Status
         self.jobstatus = jobstatus
         if jobstatus == 'complete':
@@ -652,8 +657,8 @@ class QECalcOut(object):
                             # break  #don't check any more regex if empty
 
         logger.info("Relaxation Steps length : " + str(len(relax_list)))
-        returnobj = QECalcOut(outpath=path, inpath=inpath, relax_list=list(relax_list), pressure_list = pressure_list, bands=bands, jobstatus= completestring)
-        returnobj.fermi_levels = fermi_levels # this should be in init, need to fix my init
+        returnobj = QECalcOut(outpath=path, inpath=inpath, relax_list=list(relax_list), pressure_list = pressure_list, bands=bands, fermi_levels = fermi_levels, jobstatus= completestring)
+ # this should be in init, need to fix my init
         return returnobj
 
     def calc_overview_dict(self):
