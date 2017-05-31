@@ -13,6 +13,12 @@ logger.addHandler(console_handler)
 # End logging.
 
 def list_folder(rootpath : str, extensions = None):
+    """
+    This function only lists the rootpath folder and its immediate contents
+    :param rootpath:
+    :param extensions:
+    :return:
+    """
     if not os.path.isdir(rootpath):
         rootpath = os.path.basename(rootpath)
     if extensions is None:
@@ -36,3 +42,20 @@ def scan_folder_for_calcs(rootpath):
         elif file.endswith('.sh'):
             calcs_found.append(('jobscript',rootpath + os.sep + file))
     return calcs_found
+
+def list_folder_deep(rootpath : str, extensions = None):
+    """
+    This function works as List_folder except it searches the entire tree.
+    :param rootpath:
+    :param extensions:
+    :return:
+    """
+    files = []
+    if extensions is None:
+        for folder in os.walk(rootpath):
+            files.extend([folder[0] + os.sep + file for file in os.listdir(folder[0])])
+    else:
+        for folder in os.walk(rootpath):
+            files.extend([folder[0] + os.sep + file for file in os.listdir(folder[0]) if
+                                any(file.endswith(ext) for ext in extensions)])
+    return files

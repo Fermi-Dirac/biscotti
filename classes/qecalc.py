@@ -10,22 +10,13 @@ from biscotti.classes.calctime import CalcTime
 # built-in libs
 import re
 import os
-import sys
-# sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
 import datetime as dt
 from glob import glob
 from collections import OrderedDict as odict
 import hashlib
 import logging
-# Setup a logger
-logger = logging.getLogger(__name__)
-loglevel = logging.INFO  # <---- Logger Level
-logger.setLevel(loglevel)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(loglevel)
-console_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(console_handler)
-# End logging.
+from biscotti import setup_logger
+logger = setup_logger(__name__, logging.WARNING)
 
 try:
     import matplotlib.pyplot as plt
@@ -37,10 +28,11 @@ except ImportError:
 
 # Constants
 BUF_SIZE = 65536  # Hashing buffer size
-default_pseudos = {"In" : [114.818, "In.pbe-dn-kjpaw_psl.0.2.2.UPF"],
-                   "As" : [74.9220,  "As.pbe-n-kjpaw_psl.0.2.UPF"],
-                   "Sb" : [121.6700,  "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]} # Default pseudopotentials
-cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS', 'ATOMIC_FORCES']
+default_pseudos = {"In": [114.818, "In.pbe-dn-kjpaw_psl.0.2.2.UPF"],
+                   "As": [74.9220, "As.pbe-n-kjpaw_psl.0.2.UPF"],
+                   "Sb": [121.6700, "Sb.pbe-n-kjpaw_psl.0.3.1.UPF"]}  # Default pseudopotentials
+cardlists = ['CELL_PARAMETERS', 'ATOMIC_SPECIES', 'ATOMIC_POSITIONS', 'K_POINTS', 'CONSTRAINTS', 'OCCUPATIONS',
+             'ATOMIC_FORCES']
 slurm_template = """
 import subprocess as subpr
 import datetime as dt
@@ -104,7 +96,8 @@ class QECalcIn(object):
     it is organized by a few dictionaries which control the various cards for a QE input file
     """
 
-    def __init__(self, name = 'Default', control = None, system = None, electrons = None, ions = None, cell = None, structure = Biscotti.AtomicStructure(), pseudopots = None, kpts = None):
+    def __init__(self, name='Default', control=None, system=None, electrons=None, ions=None, cell=None,
+                 structure=Biscotti.AtomicStructure(), pseudopots=None, kpts=None):
         """
         :param name: Name of this QE calc object
         :param control: ordered dictionary of the control namelist
@@ -117,21 +110,21 @@ class QECalcIn(object):
         :param kpts: string, or array representing the  kpts to be used.
         """
         self.name = name  # Simple string to name the calc. Probably the same as control[title]
-        self.structure = structure  # Atomic structure data type in this calculation. This covers Atomic Species and Atomic Positions,and Cell Paraemters
+        self.structure = structure  # Atomic structure data type in this calculation.
         if control is None:
             self.control = odict()
         else:
-            self.control = odict(control) # This is a dictionary of all non-default settings in the Control namelist
+            self.control = odict(control)  # This is a dictionary of all non-default settings in the Control namelist
             if 'title' in self.control:
-                self.name = self.control['title'] # Change name to title if we found it.
+                self.name = self.control['title']  # Change name to title if we found it.
         if system is None:
-            self.system = {'nat' : self.structure.totalatoms(), 'ntyp' : 1}
+            self.system = {'nat': self.structure.totalatoms(), 'ntyp': 1}
         else:
-            self.system = odict(system) # Another such dictionary
+            self.system = odict(system)  # Another such dictionary
         if electrons is None:
             self.electrons = odict()
         else:
-            self.electrons = odict(electrons) # ditto
+            self.electrons = odict(electrons)  # ditto
         if ions is None:
             self.ions = odict()
         else:
@@ -145,9 +138,9 @@ class QECalcIn(object):
         else:
             self.pseudopots = odict(pseudopots)
         if kpts is None:
-            self.kpts = {'type' : 'automatic',  # Can be also gamma, tpiba, crystal, and subsets
-                         'grid' : np.array([1, 1, 1]),
-                         'offset' : np.array([0, 0, 0])}
+            self.kpts = {'type': 'automatic',  # Can be also gamma, tpiba, crystal, and subsets
+                         'grid': np.array([1, 1, 1]),
+                         'offset': np.array([0, 0, 0])}
         else:
             self.kpts = kpts
 
@@ -156,7 +149,7 @@ class QECalcIn(object):
         self.namelistdict = odict([('CONTROL', self.control),
                                    ('SYSTEM', self.system),
                                    ('ELECTRONS', self.electrons),
-                                   ('IONS',self.ions),
+                                   ('IONS', self.ions),
                                    ('CELL', self.cell)])
 
     def remove_default_flags(self):
@@ -297,11 +290,12 @@ class QECalcIn(object):
                 logger.info("Found all namelist dictionaries, now looking for cards")
                 break # Stop looking for dictionaries
             else:
-                logger.debug("Found a key value pair at line " + line.strip())
+                logger.debug("Found a key value pair at line: " + line.strip())
                 # found a key-value pair
                 # syntax is KEY = VALUE , ! comment
-                key = line.split('=')[0].strip()
-                value = line.split('=')[1].split(',')[0].strip()
+                splitindex = len(line.split('=')[0])
+                key = line[:splitindex].strip()
+                value = line[splitindex+1:].strip().rstrip(',')  # Get everything after the = symbol, drop any comma
                 logger.debug("Untyped value is: " + str(value) + " with type " + str(type(value)))
                 if value[0] == "'" :
                     value = value[1:-1] # strip off the ' symbol
@@ -316,7 +310,7 @@ class QECalcIn(object):
                     value = float(value)
                 else: # must be int
                     value = int(value)  # must be an integer
-                logger.debug("New key value pair is: (" + key + " , " + str(value) + ") of type " + str(type(value)))
+                logger.debug("New key value pair is: (" + key + ", " + str(value) + ") of type " + str(type(value)))
                 namelistdict[namelist][key] = value
         logger.debug("All input file Dictionaries found!")
         # Now dictionaries are populated, need kpts and atomic species and pseduots
@@ -352,8 +346,8 @@ class QECalcIn(object):
         kpts['type'] = kptstype
         if kptstype == 'automatic':
             grid_offset = kptstring.split()
-            kpts['grid'] = np.array(grid_offset[0:3])
-            kpts['offset'] = np.array(grid_offset[3:])
+            kpts['grid'] = np.array(grid_offset[0:3]).astype(int)
+            kpts['offset'] = np.array(grid_offset[3:]).astype(int)
 
         # Check existing namelists
 
@@ -376,13 +370,13 @@ class QECalcIn(object):
             cell = namelistdict['CELL']
         else:
             cell = None
-        return QECalcIn(os.path.split(path)[1], control, system, electrons, ions, cell
+        return QECalcIn(os.path.basename(path), control, system, electrons, ions, cell
                         , Biscotti.AtomicStructure.from_QEinput(path)
                         , pseudopots
                         , kpts)
 
     def write_slurm_jobscript(self, folder=None, infile = None, slurm_dict = None, pw_x_flags = '',
-                              send_email=True, email_addr='', attach_report=True):
+                              send_email=True, email_addr='', attach_report=True, pyversion = 'python'):
         """
         Generate a SLURM jobscript file with associated flags. Also supports post-job reporting and email notification
         """
@@ -411,7 +405,7 @@ class QECalcIn(object):
             logger.debug("Calculation time not set from .in file")
         num_cores = slurm_dict['ntasks']
 
-        slurm_file = "#!/bin/env python3"
+        slurm_file = "#!/bin/env " + pyversion  # Change the main she-bang to reference python. May need to match your version
         for key, value in slurm_dict.items():
             slurm_file += '\n#SBATCH --' + key + "=" + value
         slurm_file += '\n'
@@ -677,6 +671,7 @@ class QECalcOut(object):
                 iondE = self.relax_list[-1][-1] - self.relax_list[-2][-1]
             if len(self.pressure_list) < 1:
                 self.pressure_list = [0]
+
             keys = ['ID', 'Filename', 'Folder', 'Full path', 'Title', 'Calc Type',
                     'Final Energy (Ry)','Last electron step dE (Ry)','Last ion step dE (Ry)','Final Free Energy (Ry)',
                     'Final Free Energy (eV)',
@@ -726,6 +721,11 @@ class QECalcOut(object):
     def calc_overview_string(self, add_headers = True, delim = '\t', transpose = False):
         returnstring = ''
         summary_dict = self.calc_overview_dict()
+        # Reformat the kpts dict nicely
+        if self.qecalcin.kpts['type'] == 'automatic':
+            kptstring = 'Automatic, grid: ' + str(list(self.qecalcin.kpts['grid'])) + ', offset by ' + str(
+                list(self.qecalcin.kpts['offset']))
+            summary_dict['K-point grid'] = kptstring
         if transpose:
             for key, value in summary_dict.items():
                 if add_headers:
@@ -742,6 +742,9 @@ class QECalcOut(object):
 
     def __str__(self):
         return self.calc_overview_string()
+
+    def to_dict(self):
+        return self.calc_overview_dict()
 
     def scale_energies(self, free_energy=False, unit='Ry'):
         scaledenergies = []
@@ -912,20 +915,23 @@ Begin Legacy Code. :(
 ---------------------------------------------------
 """
 
+
 def writeConfig(outputFileString, calculationDict):
     # Legacy before QECalcIn class
-    with open (outputFileString, 'w') as fileobj :  # write a new output file, here we go!
+    with open(outputFileString, 'w') as fileobj:  # write a new output file, here we go!
         fileobj.write('! Quantum esspresso input file created using Biscotti\n\n')
-        namelists = ['CONTROL','SYSTEM','ELECTRONS','IONS','CELL'] # print them in this order
-        for namelist in namelists :
-            fileobj.write('&'+namelist + '\n')
+        namelists = ['CONTROL', 'SYSTEM', 'ELECTRONS', 'IONS', 'CELL']  # print them in this order
+        for namelist in namelists:
+            fileobj.write('&' + namelist + '\n')
             for command in calculationDict[namelist]:
-                commandstring = "\t" + command + ' = ' + calculationDict[namelist][command][0] + ', !' + calculationDict[namelist][command][1] + '\n' #prints the command, equates to the value, and appends any comments
-                print (commandstring)
+                commandstring = "\t" + command + ' = ' + calculationDict[namelist][command][0] + ', !' + \
+                                calculationDict[namelist][command][
+                                    1] + '\n'  # prints the command, equates to the value, and appends any comments
+                print(commandstring)
                 fileobj.write(commandstring)
                 # end all commands for this namelist
             fileobj.write('/ \n')  # end this namelist
-        print ("File created!")
+        print("File created!")
 
 def calcOverview(outputfile, verbose = False, GetDOS = False):
     # Legacy before QECalcOut class
@@ -960,48 +966,48 @@ def calcOverview(outputfile, verbose = False, GetDOS = False):
     cutoff = 0
     if verbose : print ("\n--Now parsing file " + outputfile)
     with open(outputfile) as fileobj:
-        for line in fileobj :
-            regexlist = {'iteration' : r'iteration #[\s]+[0-9]+',
-                         'total energy' : r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
-                         'cutoff' : r'kinetic-energy cutoff[\s]*=[\s]*[\-\.0-9]*',
+        for line in fileobj:
+            regexlist = {'iteration': r'iteration #[\s]+[0-9]+',
+                         'total energy': r'[\s]*total energy[\s]*=[\s]*[\-\.0-9]*',
+                         'cutoff': r'kinetic-energy cutoff[\s]*=[\s]*[\-\.0-9]*',
                          'starttime': r'[0-9]+[A-Za-z]{3}[0-9]{4} at[\s]+[0-9\s]+:[0-9\s]+:[\s]*[0-9]+',
                          'stoptime': r'[0-9]+:[0-9\s]+:[0-9\s]+[A-Za-z]{3}[0-9]{4}',
-                         'done' : r'JOB DONE.',
-                         'Cell Parameters' : r'CELL_PARAMETERS',
-                         'k-points' : r'k points=[\s]*[0-9]*',
-                         'exitcode' : r'Exit code:[\s0-9]*',
-                         'pressure' : r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
-                         'volume' : r'unit-cell volume[\s]*=[\s]*[0-9\.]*'
+                         'done': r'JOB DONE.',
+                         'Cell Parameters': r'CELL_PARAMETERS',
+                         'k-points': r'k points=[\s]*[0-9]*',
+                         'exitcode': r'Exit code:[\s0-9]*',
+                         'pressure': r'\(kbar\)[\s]*P=[\s]*[0-9\.\-]*',
+                         'volume': r'unit-cell volume[\s]*=[\s]*[0-9\.]*'
                          }
-            for regex in regexlist :
-                searchresult = re.findall(regexlist[regex],line)
-                if searchresult :# isn't empty..
-                    if verbose: print ("We have a match! :" +(searchresult[0]))
+            for regex in regexlist:
+                searchresult = re.findall(regexlist[regex], line)
+                if searchresult:  # isn't empty..
+                    if verbose: print("We have a match! :" + (searchresult[0]))
                     if 'iteration' in regex:
                         newstep = int(searchresult[0].split('#')[1])
-                        if verbose: print ('electron step #' + str(newstep) + " last step was " + str(electronstep))
-                        if electronstep > newstep : #reset to new ionic step
+                        if verbose: print('electron step #' + str(newstep) + " last step was " + str(electronstep))
+                        if electronstep > newstep:  # reset to new ionic step
                             ionstep += 1
-                            if verbose: print ("looks like a new ion step" + str(ionstep))
+                            if verbose: print("looks like a new ion step" + str(ionstep))
                             RelaxationSteps.append([])
                         electronstep = newstep
-                    elif 'total energy' in regex : #total energy
+                    elif 'total energy' in regex:  # total energy
                         newenergy = float(searchresult[0].split('=')[1])
-                        if verbose: print ("\tthis step energy : " + str(newenergy))
-                        RelaxationSteps[ionstep-1].append(newenergy)  #ionstep starts at 1, index starts at 0
+                        if verbose: print("\tthis step energy : " + str(newenergy))
+                        RelaxationSteps[ionstep - 1].append(newenergy)  # ionstep starts at 1, index starts at 0
                     elif 'Cell Parameters' in regex:
                         lattice = []
                         atoms = []
-                        #fileobj.readline()  #read the rest of this line
+                        # fileobj.readline()  #read the rest of this line
                         for i in range(3):
                             lattice.append(fileobj.readline().split())
-                            if verbose : print (lattice)
+                            if verbose: print(lattice)
                         fileobj.readline()
-                        fileobj.readline()  #read the empty line and Atomic_Positions
-                        while True: # is not null
+                        fileobj.readline()  # read the empty line and Atomic_Positions
+                        while True:  # is not null
                             newatom = fileobj.readline().split()
-                            if verbose : print ("new atom: " + str(newatom))
-                            if not newatom or newatom[0] == 'End':  #if empty
+                            if verbose: print("new atom: " + str(newatom))
+                            if not newatom or newatom[0] == 'End':  # if empty
                                 break
                             atoms.append(newatom)
                         atomicStructure = [lattice,atoms]
@@ -1012,9 +1018,9 @@ def calcOverview(outputfile, verbose = False, GetDOS = False):
                     elif 'volume' in regex:
                         volumeList.append(float(searchresult[0].split('=')[1]))
                     elif 'cutoff' in regex:
-                        cutoff = float(searchresult[0].split('=')[1]) # in Ry
+                        cutoff = float(searchresult[0].split('=')[1])  # in Ry
                     elif 'k-points' in regex:
-                        kpts = float(searchresult[0].split('=')[1]) # total # of kpts
+                        kpts = float(searchresult[0].split('=')[1])  # total # of kpts
                     elif 'starttime' in regex:
                         dtsplit = searchresult[0].split(' at ')
                         dtstring = dtsplit[0] + ' at ' + dtsplit[1].replace(' ', '0')
@@ -1022,9 +1028,9 @@ def calcOverview(outputfile, verbose = False, GetDOS = False):
                     elif 'stoptime' in regex:
                         dtsplit = searchresult[0].split('  ')
                         dtstring = dtsplit[0].replace(' ', '0') + '  ' + dtsplit[1]
-                        enddt = dt.datetime.strptime(dtstring,ends_dtformat)
+                        enddt = dt.datetime.strptime(dtstring, ends_dtformat)
                     elif 'exitcode' in regex:
-                        if verbose : print ("Timeout detected! This calculation did not complete! "+ searchresult[0])
+                        if verbose: print("Timeout detected! This calculation did not complete! " + searchresult[0])
                         jobComplete = False
                     elif 'done' in regex:
                         jobComplete = True
@@ -1053,36 +1059,38 @@ def calcOverview(outputfile, verbose = False, GetDOS = False):
             'pressure': PressureList,
             'volume': volumeList}
 
+
 def AtomCount(atomicStructure):
     # Legacy since creation of AtomicStructure class
     species = []
     counts = []
     output = []
-    if not atomicStructure:  #if empty
+    if not atomicStructure:  # if empty
         return output
     for atom in atomicStructure[1]:
         if atom[0] in species:
-            counts[species.index(atom[0])]+=1
+            counts[species.index(atom[0])] += 1
         else:
             species.append(atom[0])
             counts.append(1)
     for index, element in enumerate(species):
-        output.append([element,counts[index]])
+        output.append([element, counts[index]])
     return output
 
-def calcOverview_to_string(calcOverviewDict, refenergies = None):
+
+def calcOverview_to_string(calcOverviewDict, refenergies=None):
     # Legacy before QECalcOut class
     if refenergies is None:
-        refenergies = {'As':-175.65034951, 'In':-410.56656045, 'Sb':-347.3619941658}
+        refenergies = {'As': -175.65034951, 'In': -410.56656045, 'Sb': -347.3619941658}
     numatoms = 0
     refenergy = 0
     strings = []
     for species in AtomCount(calcOverviewDict['AtomicStructure']):
-        refenergy += refenergies[species[0]]*species[1]
+        refenergy += refenergies[species[0]] * species[1]
         numatoms += species[1]
     if numatoms < 1:
         print('Error, no atoms?!')
-        numatoms=1
+        numatoms = 1
     try:
         totalenergy = calcOverviewDict['RelaxationSteps'][-1][-1]
     except (Exception) as exc:
@@ -1118,29 +1126,32 @@ def calcOverview_to_string(calcOverviewDict, refenergies = None):
         strings.append(str(value))
     return headers,strings
 
+
 def parseConfig(fname):
     # Legacy before QECalcOut class
-    with open(fname,'r') as fileobj:
-        filestring = fileobj.readlines()  #change scope to ensure fileobj is closed
-    config = [line.split() for line in filestring]  #split over whitespace, returns a list of list.
-    namelistsarray = [wordlist[0][1:] for wordlist in config if '&' in ''.join(wordlist) and ''.join(wordlist)[0]=='&']
+    with open(fname, 'r') as fileobj:
+        filestring = fileobj.readlines()  # change scope to ensure fileobj is closed
+    config = [line.split() for line in filestring]  # split over whitespace, returns a list of list.
+    namelistsarray = [wordlist[0][1:] for wordlist in config if
+                      '&' in ''.join(wordlist) and ''.join(wordlist)[0] == '&']
     # this iterative searches the list for &'s and puts them in the namelist, getting a list of the special words
-    namelistsarray.append("None")  #add on a dummy index for useless crap
-    Dictionary = {keyword:{} for keyword in namelistsarray}   #create a dictionary using {}, which contains an array of empty dictionries
-    namelist = 'None'  #set first dictionary index to junk, the first namelist is junk
+    namelistsarray.append("None")  # add on a dummy index for useless crap
+    Dictionary = {keyword: {} for keyword in
+                  namelistsarray}  # create a dictionary using {}, which contains an array of empty dictionries
+    namelist = 'None'  # set first dictionary index to junk, the first namelist is junk
     for lines in config:
-        lineAsString_NoWhite = ''.join(lines)  #undo the split, no spaces.
+        lineAsString_NoWhite = ''.join(lines)  # undo the split, no spaces.
         # Setting the dictionary index
-        if len(lineAsString_NoWhite)>1:    # catching zero-length lines
+        if len(lineAsString_NoWhite) > 1:  # catching zero-length lines
             if lineAsString_NoWhite[0] == '/':
                 namelist = "None"  # close a block by sending all data to junk index
-            if lineAsString_NoWhite[0]=='&':
+            if lineAsString_NoWhite[0] == '&':
                 namelist = lines[0][1:]  # set proper index if we found the right one
         # Dict index set, lets populate
-        if "=" in lines:   # then we found a command parameter
+        if "=" in lines:  # then we found a command parameter
             if '!' not in lines[0]:  # check for commented line
-              Dictionary[namelist][lines[0]]=[lines[2]," ".join(lines[4:])]  # Doesn't check for !; commends
-        else:    # handle comment'ed commands
+                Dictionary[namelist][lines[0]] = [lines[2], " ".join(lines[4:])]  # Doesn't check for !; commends
+        else:  # handle comment'ed commands
             pass
     return Dictionary
 

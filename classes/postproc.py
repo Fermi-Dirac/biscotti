@@ -7,58 +7,18 @@ import datetime as dt
 # import hashlib
 # BUF_SIZE = 65536
 
-import logging
 # Setup a logger
-logger = logging.getLogger(__name__)
-loglevel = logging.INFO  # <---- Logger Level
-logger.setLevel(loglevel)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(loglevel)
-console_handler.setFormatter(logging.Formatter('%(name)s - %(levelname)s - %(message)s'))
-logger.addHandler(console_handler)
-# End logging.
+import logging
+from biscotti import setup_logger
+logger = setup_logger(__name__, logging.INFO)
+
 
 class PostProcIn(object):
     def __init__(self, name=None, inputpp=None, plot=None):
         """
-        Class designed to handle input files for pp.x post processing function from quantum espresso.
-        From the docs:
-        Purpose of pp.x: data analysis and plotting.
-
-        The code performs two steps:
-
-        (1) reads the output produced by pw.x, extracts and calculates
-            the desired quantity/quantities (rho, V, ...)
-
-        (2) writes the desired quantity to file in a suitable format for
-            various types of plotting and various plotting programs
-
-        The input data of this program is read from standard input
-        or from file and has the following format:
-
-        NAMELIST &INPUTPP
-           containing the variables for step (1), followed by
-
-        NAMELIST &PLOT
-           containing the variables for step (2)
-
-        The two steps can be performed independently. In order to perform
-        only step (2), leave namelist &INPUTPP blank. In order to perform
-        only step (1), do not specify namelist &PLOT
-
-        Intermediate results from step 1 can be saved to disk (see
-        variable filplot in &INPUTPP) and later read in step 2.
-        Since the file with intermediate results is formatted, it
-        can be safely transferred to a different machine. This
-        also allows plotting of a linear combination (for instance,
-        charge differences) by saving two intermediate files and
-        combining them (see variables weight and filepp in &PLOT)
-
-        All output quantities are in ATOMIC (RYDBERG) UNITS unless
-        otherwise explicitly specified.
-        :param name:
-        :param inputpp:
-        :param plot:
+        :param name: Quick name for this post processing calc
+        :param inputpp: this is the dictionary of the input namelist
+        :param plot: this is the ordered dictionary of the plot namelist
         """
 
         if inputpp is None:
@@ -77,10 +37,6 @@ class PostProcIn(object):
         else:
             self.name = name
 
-    # inputpp_flags_string = r"prefix | outdir | filplot | plot_num | spin_component | spin_component | sample_bias | kpoint | kband | lsign | spin_component | emin | emax | spin_component | spin_component | spin_component"
-    # inputpp_flags = inputpp_flags_string.split("|")
-    # plot_flags_string = r'nfile | filepp | weight | iflag | output_format | fileout | interpolation | e1 | x0 | nx | e1 | e2 | x0 | nx | ny | e1 | e2 | e3 | x0 | nx | ny | nz | radius | nx | ny'
-    # plot_flags = plot_flags_string.split("|")
     def write_to_file(self, folder=None, filename = None):
         if folder is None:
             folder = os.getcwd()
@@ -88,7 +44,7 @@ class PostProcIn(object):
             if not os.path.exists(folder):
                 os.makedirs(folder)
         if filename is None:
-            filename = self.name.replace(' ', '_') + ".ppin"
+            filename = re.sub(r'[\s\(\)]', "_", self.name)
         # Begin file write
         with open(folder + os.path.sep + filename, 'w') as newfile:
             newfile.write("! Quantum Espresso post processing (pp.x) input file.\n"

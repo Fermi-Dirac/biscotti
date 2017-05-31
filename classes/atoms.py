@@ -3,15 +3,8 @@ import re
 import os
 import logging
 # Logging level by default
-logger = logging.getLogger(__name__)
-loglevel = logging.INFO
-logger.setLevel(loglevel)
-console_handler = logging.StreamHandler()
-console_handler.setLevel(loglevel)
-formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
-# End logging.
+from biscotti import setup_logger
+logger = setup_logger(__name__, logging.WARNING)
 
 class Atom(object):
     def __init__(self, species='X', position = np.zeros(3), velocity = np.zeros(3), mass = 0):

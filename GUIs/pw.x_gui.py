@@ -38,6 +38,7 @@ class PWX_Analysis(QtGui.QMainWindow, Ui_MainWindow):
         QtGui.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
+        self.setWindowTitle('pw.x GUI from Biscotti')
 
         # Events to listen for
         self.load_button.clicked.connect(self.load_calc)
@@ -176,7 +177,7 @@ class PWX_Analysis(QtGui.QMainWindow, Ui_MainWindow):
             i += len(ionstep)
 
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QtGui.QApplication([])
     window = PWX_Analysis()
     window.show()
     sys.exit(app.exec_())
