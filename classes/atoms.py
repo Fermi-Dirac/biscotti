@@ -40,7 +40,6 @@ class AtomicStructure(object):
         :param atomsarray: Array of Atom objects whose positions are in cartesean coordinates
         """
         if atomsarray is None:
-            # sentinal value
             atomsarray = []
         self.latticeA = np.array(A)
         self.latticeB = np.array(B)
@@ -85,8 +84,8 @@ class AtomicStructure(object):
                 logger.error("No CELL_PARAMETERS card")
                 lattice = np.identity(3) #TODO account for situations ibrav != 0
             atoms = []
-            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9\-\. ]+)+'
-            # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats
+            regex_atompos = r'ATOMIC_POSITIONS[ A-Za-z\(\)]+(\n[A-Z][a-z][ ]+[0-9eEdD\-\. ]+)+'
+            # Literal ATOMIC_POSITION then anything including parathensis, followed by one cap, one lower case, and then floats with e notation
             atompos_match = re.search(regex_atompos, filestring)
             if not atompos_match:
                 logger.error("No atoms found?")
