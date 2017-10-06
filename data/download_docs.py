@@ -1,3 +1,6 @@
+# I think this is not needed, i should totally use the def files:
+# http://web.mit.edu/espresso_v6.1/amd64_ubuntu1404/qe-6.1/PP/Doc/INPUT_PROJWFC.def
+
 import requests
 from bs4 import BeautifulSoup
 import re

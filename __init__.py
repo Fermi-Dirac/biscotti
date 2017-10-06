@@ -1,6 +1,6 @@
 __all__ = ['classes', 'reporting', 'analysis']
 import logging
-def setup_logger(name, loglevel = logging.INFO):
+def setup_logger(name, loglevel = logging.DEBUG):
     logger = logging.getLogger(name)
     logger.setLevel(loglevel)
     console_handler = logging.StreamHandler()

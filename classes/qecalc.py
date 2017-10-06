@@ -351,6 +351,13 @@ class QECalcIn(object):
 
         # Check existing namelists
 
+        logger.info("Found {0:d} namelists in this input file. {1!s}".format(len(namelistdict), namelistdict.keys()))
+        try:
+            namelistdict['CONTROL']
+        except KeyError:
+            logger.error("This input file has no CONTROL namelist. Is this the right file?")
+            return QECalcIn()
+
         if 'calculation' in namelistdict['CONTROL']:
             calctype = namelistdict['CONTROL']['calculation']
             if calctype not in ['scf', 'nscf', 'bands', 'relax', 'md', 'vc-relax', 'vc-md']:
@@ -474,11 +481,12 @@ class QECalcOut(object):
         #QECalcIn derived variables
         if inpath is None:
             outdir = os.path.dirname(outpath)
-            logger.info("No input file specified, checking outfile folder: " + outdir)
+
             for file in os.listdir(outdir):
                 logger.debug("Maybe this file? " + file )
                 if file.split(".")[-1] == 'in':
                     inpath = os.path.join(outdir,file)
+                    logger.info("No input file specified, checking outfile folder, setting infile to be : " + inpath)
                     break
         if inpath is None: # still..
             logger.error("No input files found!")

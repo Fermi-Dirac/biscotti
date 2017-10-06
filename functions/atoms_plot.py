@@ -28,6 +28,6 @@ def render_atoms(structure : atoms.AtomicStructure, window=gl.GLViewWidget(), ad
     return window
 
 def structure_to_vesta(struct : atoms.AtomicStructure):
-    vesta_dir = r'C:\Program Files (x86)\VESTA-win64\VESTA.exe'
+    vesta_dir = r'C:\Program Files (x86)\VESTA\VESTA.exe'
     struct.write_vasp(folder=tempfile.gettempdir(), filename='POSCAR ' + struct.name + ".vasp")
     subprocess.call('"' + vesta_dir + '" "' + tempfile.gettempdir() + sep + 'POSCAR ' + struct.name + '.vasp"')

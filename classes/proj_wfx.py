@@ -7,7 +7,7 @@ import datetime as dt
 import hashlib
 BUF_SIZE = 65536
 
-sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
+# sys.path.append(r"D:\Users\Chris\Documents\SivaLab\Python")
 
 import logging
 # Logging level by default
