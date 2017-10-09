@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reporting/BatchZip_popup.py" afterPath="$PROJECT_DIR$/reporting/BatchZip_popup.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/analysis/Summary for .tsv" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/postproc.py" afterPath="$PROJECT_DIR$/classes/postproc.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/base.py" afterPath="$PROJECT_DIR$/functions/base.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,101 +23,7 @@
     <favorites_list name="Biscotti" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.47521162">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="postproc.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/classes/postproc.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-209">
-                  <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-                  <folding>
-                    <element signature="e#4225#5192#0" expanded="false" />
-                    <element signature="e#5292#6127#0" expanded="false" />
-                    <element signature="e#6247#6887#0" expanded="false" />
-                    <element signature="e#7043#8724#0" expanded="false" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="atoms_plot.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/functions/atoms_plot.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
-                  <folding>
-                    <element signature="e#0#34#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-          <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="306">
-                  <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
-                  <folding>
-                    <element signature="e#157#175#0" expanded="true" />
-                    <element signature="e#1181#3229#0" expanded="false" />
-                    <element signature="e#3709#6124#0" expanded="false" />
-                    <element signature="e#6170#6533#0" expanded="false" />
-                    <element signature="e#6585#7381#0" expanded="false" />
-                    <element signature="e#7452#11580#0" expanded="false" />
-                    <element signature="e#11645#17452#0" expanded="false" />
-                    <element signature="e#17667#20302#0" expanded="false" />
-                    <element signature="e#19396#20302#0" expanded="false" />
-                    <element signature="e#25639#31625#0" expanded="false" />
-                    <element signature="e#29036#31291#0" expanded="false" />
-                    <element signature="e#31669#34375#0" expanded="false" />
-                    <element signature="e#34474#35371#0" expanded="false" />
-                    <element signature="e#35573#36294#0" expanded="false" />
-                    <element signature="e#36391#37291#0" expanded="false" />
-                    <element signature="e#37373#38138#0" expanded="false" />
-                    <element signature="e#38214#39466#0" expanded="false" />
-                    <element signature="e#39521#40156#0" expanded="false" />
-                    <element signature="e#40228#40681#0" expanded="false" />
-                    <element signature="e#40765#42329#0" expanded="false" />
-                    <marker date="1507326189709" expanded="true" signature="3337:17452" ph="..." />
-                    <marker date="1507326189709" expanded="true" signature="11630:11634" ph="..." />
-                    <marker date="1507326189709" expanded="true" signature="40749:40751" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BatchZip.py" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="68">
-                  <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="BatchZip_popup.py" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-                  <folding>
-                    <element signature="e#0#24#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -190,15 +98,15 @@
         <option value="$PROJECT_DIR$/classes/proj_wfx.py" />
         <option value="$PROJECT_DIR$/classes/__init__.py" />
         <option value="$PROJECT_DIR$/__init__.py" />
-        <option value="$PROJECT_DIR$/functions/base.py" />
         <option value="$PROJECT_DIR$/functions/atoms_plot.py" />
         <option value="$PROJECT_DIR$/classes/postproc.py" />
         <option value="$PROJECT_DIR$/classes/qecalc.py" />
         <option value="$PROJECT_DIR$/reporting/BatchZip_popup.py" />
+        <option value="$PROJECT_DIR$/functions/base.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="3866" />
@@ -563,17 +471,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1933" height="1053" extended-state="7" />
+    <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26321355" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26193002" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26193002" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13809276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13809276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -925,30 +834,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/atoms_plot.py">
+    <entry file="file://$PROJECT_DIR$/functions/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        <state relative-caret-position="765">
+          <caret line="45" column="0" lean-forward="true" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#53#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/functions/base.py">
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="36" column="43" lean-forward="false" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="43" />
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#53#67#0" expanded="false" />
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="47" lean-forward="false" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        <state relative-caret-position="-1479">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
             <element signature="e#157#175#0" expanded="true" />
             <element signature="e#1181#3229#0" expanded="false" />
@@ -977,35 +896,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/postproc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-209">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+        <state relative-caret-position="342">
+          <caret line="259" column="40" lean-forward="true" selection-start-line="259" selection-start-column="40" selection-end-line="259" selection-end-column="40" />
           <folding>
-            <element signature="e#4225#5192#0" expanded="false" />
-            <element signature="e#5292#6127#0" expanded="false" />
-            <element signature="e#6247#6887#0" expanded="false" />
-            <element signature="e#7043#8724#0" expanded="false" />
+            <element signature="e#187#205#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
+    <entry file="file://$PROJECT_DIR$/functions/atoms_plot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="510">
+          <caret line="30" column="46" lean-forward="false" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>

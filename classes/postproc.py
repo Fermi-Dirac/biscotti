@@ -67,7 +67,7 @@ class PostProcIn(object):
             self.check_consistency(fix = True)
             if self.inputpp is None:
                 self.inputpp = odict() # QE requires the inputpp card to exist but be empty if not used.
-                namelistdict = {'INPUTPP': self.inputpp, 'PLOT': self.plot}
+                namelistdict = odict([('INPUTPP',self.inputpp), ('PLOT', self.plot)])
             if self.plot is None:
                 namelistdict = {'INPUTPP': self.inputpp} # Don't write the plot card if not needed
             # Write namelists
@@ -249,12 +249,13 @@ class PostProcIn(object):
         else:
             plot_type = '2D'
         self.setup_plot_defaults(quantity_file, plot_type, output_format, fileout, interpolation)
+        # Lists don't start at 1 for Quantum Espresso!?
         for i, coord in enumerate(plot_line1):
-            self.plot['e1({0:d})'.format(i)] = coord
+            self.plot['e1({0:d})'.format(i+1)] = coord
         for i, coord in enumerate(plot_line2):
-            self.plot['e2({0:d})'.format(i)] = coord
+            self.plot['e2({0:d})'.format(i+1)] = coord
         for i, coord in enumerate(plot_origin):
-            self.plot['x0({0:d})'.format(i)] = coord
+            self.plot['x0({0:d})'.format(i+1)] = coord
         self.plot['nx'] = int(num_x_pts)
         self.plot['ny'] = int(num_y_pts)
 

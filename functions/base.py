@@ -1,12 +1,12 @@
 # This contains a list of essential 'base' programs.
 import os, sys
 from biscotti import setup_logger
-import logging
+
 # Setup a logger
-logger = setup_logger(__name__, logging.INFO)
+logger = setup_logger(__name__)
 # End logging.
 
-def list_folder(rootpath : str, extensions = None, fullpaths=False):
+def list_folder(rootpath : str, extensions = None, fullpaths=False, folders_only=False):
     """
     This function only lists the rootpath folder and its immediate contents
     :param rootpath:
@@ -15,14 +15,15 @@ def list_folder(rootpath : str, extensions = None, fullpaths=False):
     """
     if not os.path.isdir(rootpath):
         rootpath = os.path.basename(rootpath)
-
-    if extensions is None:
+    if extensions is None and folders_only is False:
         files = os.listdir(rootpath)
-
     else:
         if type(extensions) is not list:
             extensions = [extensions]
-        files = [file for file in os.listdir(rootpath) if any([file.endswith(ext) for ext in extensions])]
+        if folders_only:
+            files = [file for file in os.listdir(rootpath) if os.path.isdir(os.path.join(rootpath, file))]
+        else:
+            files = [file for file in os.listdir(rootpath) if any([file.endswith(ext) for ext in extensions])]
     if fullpaths:
         files = [rootpath + os.sep + file for file in files]
     return files
@@ -33,9 +34,7 @@ def scan_folder_for_calcs(rootpath):
     exts = ['.in', '.out', 'slurmout.txt', '.sh']
     files = list_folder(rootpath, exts)
     for file in files:
-        if file.endswith('.pp.in'):
-            calcs_found.append(('pp.x input', rootpath + os.sep + file))
-        elif file.endswith('.in'):
+        if file.endswith('.in'):
             calcs_found.append(('pw.x input', rootpath + os.sep + file))
         elif file.endswith('.out'):
             calcs_found.append(('pw.x output', rootpath + os.sep + file))
