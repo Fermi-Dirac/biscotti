@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab47b32b-b5ac-4c47-9345-0e3c05d2fadd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Biscotti.iml" afterPath="$PROJECT_DIR$/.idea/Biscotti.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/__init__.py" afterPath="$PROJECT_DIR$/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/__init__.py" afterPath="$PROJECT_DIR$/classes/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/postproc.py" afterPath="$PROJECT_DIR$/classes/postproc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/proj_wfx.py" afterPath="$PROJECT_DIR$/classes/proj_wfx.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/qecalc.py" afterPath="$PROJECT_DIR$/classes/qecalc.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/download_docs.py" afterPath="$PROJECT_DIR$/data/download_docs.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/atoms_plot.py" afterPath="$PROJECT_DIR$/functions/atoms_plot.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functions/base.py" afterPath="$PROJECT_DIR$/functions/base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reporting/BatchZip_popup.py" afterPath="$PROJECT_DIR$/reporting/BatchZip_popup.py" />
     </list>
     <ignored path="Biscotti.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,7 +27,7 @@
           <file leaf-file-name="postproc.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/classes/postproc.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-238">
+                <state relative-caret-position="-209">
                   <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
                   <folding>
                     <element signature="e#4225#5192#0" expanded="false" />
@@ -66,7 +55,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-          <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="qecalc.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="306">
@@ -95,6 +84,30 @@
                     <marker date="1507326189709" expanded="true" signature="3337:17452" ph="..." />
                     <marker date="1507326189709" expanded="true" signature="11630:11634" ph="..." />
                     <marker date="1507326189709" expanded="true" signature="40749:40751" ph="..." />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BatchZip.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="BatchZip_popup.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="340">
+                  <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -168,7 +181,6 @@
         <option value="$PROJECT_DIR$/testing/find_bands.py" />
         <option value="$PROJECT_DIR$/data/parser_nb.ipynb" />
         <option value="$PROJECT_DIR$/GUIs/pw.x setup calc.py" />
-        <option value="$PROJECT_DIR$/reporting/BatchZip_popup.py" />
         <option value="$PROJECT_DIR$/GUIs/pw.x_gui.py" />
         <option value="$PROJECT_DIR$/testing/Test qecalcin import.py" />
         <option value="$PROJECT_DIR$/classes/atoms.py" />
@@ -182,10 +194,11 @@
         <option value="$PROJECT_DIR$/functions/atoms_plot.py" />
         <option value="$PROJECT_DIR$/classes/postproc.py" />
         <option value="$PROJECT_DIR$/classes/qecalc.py" />
+        <option value="$PROJECT_DIR$/reporting/BatchZip_popup.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-12" />
     <option name="y" value="-12" />
     <option name="width" value="3866" />
@@ -232,6 +245,11 @@
               <item name="biscotti" type="462c0819:PsiDirectoryNode" />
               <item name="functions" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="biscotti" type="b2602c69:ProjectViewProjectNode" />
+              <item name="biscotti" type="462c0819:PsiDirectoryNode" />
+              <item name="reporting" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -272,7 +290,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RO7_Estimator.pyw">
+  <component name="RunManager" selected="Python.BatchZip_popup">
     <configuration name="BatchZip_popup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -512,11 +530,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RO7_Estimator.pyw" />
-        <item index="1" class="java.lang.String" itemvalue="Python.pw.x_gui" />
-        <item index="2" class="java.lang.String" itemvalue="Python.write POSCAR" />
-        <item index="3" class="java.lang.String" itemvalue="Python.Test qecalcin import" />
-        <item index="4" class="java.lang.String" itemvalue="Python.BatchZip_popup" />
+        <item index="0" class="java.lang.String" itemvalue="Python.BatchZip_popup" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RO7_Estimator.pyw" />
+        <item index="2" class="java.lang.String" itemvalue="Python.pw.x_gui" />
+        <item index="3" class="java.lang.String" itemvalue="Python.write POSCAR" />
+        <item index="4" class="java.lang.String" itemvalue="Python.Test qecalcin import" />
       </list>
     </recent_temporary>
   </component>
@@ -545,14 +563,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="-6" width="1933" height="1053" extended-state="6" />
+    <frame x="-6" y="-6" width="1933" height="1053" extended-state="7" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug Logs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26321355" sideWeight="0.50208336" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26299044" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26193002" sideWeight="0.49791667" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Execute Anonymous" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13809276" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -673,13 +691,6 @@
       </provider>
     </entry>
     <entry file="file://C:/Anaconda3/Lib/logging/__init__.py" />
-    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="14" lean-forward="false" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reporting/calc_analysis_email.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -796,13 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="20" selection-end-column="132" />
         </state>
       </provider>
     </entry>
@@ -941,19 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/postproc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-238">
-          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding>
-            <element signature="e#4225#5192#0" expanded="false" />
-            <element signature="e#5292#6127#0" expanded="false" />
-            <element signature="e#6247#6887#0" expanded="false" />
-            <element signature="e#7043#8724#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/classes/qecalc.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -982,6 +973,39 @@
             <marker date="1507326189709" expanded="true" signature="3337:17452" ph="..." />
             <marker date="1507326189709" expanded="true" signature="11630:11634" ph="..." />
             <marker date="1507326189709" expanded="true" signature="40749:40751" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/postproc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-209">
+          <caret line="4" column="31" lean-forward="false" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
+          <folding>
+            <element signature="e#4225#5192#0" expanded="false" />
+            <element signature="e#5292#6127#0" expanded="false" />
+            <element signature="e#6247#6887#0" expanded="false" />
+            <element signature="e#7043#8724#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reporting/BatchZip_popup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
